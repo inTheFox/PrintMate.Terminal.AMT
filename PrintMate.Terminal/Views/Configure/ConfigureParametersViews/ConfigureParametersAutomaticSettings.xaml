@@ -1,0 +1,355 @@
+<UserControl x:Class="PrintMate.Terminal.Views.Configure.ConfigureParametersViews.ConfigureParametersAutomaticSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PrintMate.Terminal.Views.Configure.ConfigureParametersViews"
+             xmlns:componentsViews="clr-namespace:PrintMate.Terminal.Views.ComponentsViews"
+             mc:Ignorable="d"
+             d:DesignHeight="1045" d:DesignWidth="1079">
+    <UserControl.Resources>
+        <!-- Style for parameter value button -->
+        <Style x:Key="ParameterValueButton" TargetType="Button">
+            <Setter Property="Background" Value="#2a2a2a"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#3a3a3a"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="15 8"/>
+            <Setter Property="MinWidth" Value="100"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="15"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#3a3a3a"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#4a4a4a"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <ScrollViewer PanningMode="Both"
+                      PanningRatio="1.0"
+                      VerticalScrollBarVisibility="Hidden" ManipulationBoundaryFeedback="ScrollViewer_ManipulationBoundaryFeedback"
+                      CanContentScroll="False">
+            <StackPanel>
+                <componentsViews:PageHeader Title="Настройки автоматического процесса"/>
+
+                <!-- Локальные настройки проверок -->
+                <componentsViews:Container Title="Включение и отключение проверок перед печатью слоя" TitleSize="15" Margin="5">
+                    <componentsViews:BoolSwitchContainer Title="Готовность газовой системы" IsChecked="{Binding ReadyGasSystemCheck, Mode=TwoWay}"/>
+                    <componentsViews:BoolSwitchContainer Title="Готовность лазерной системы" IsChecked="{Binding ReadyLaserSystemCheck, Mode=TwoWay}"/>
+                    <componentsViews:BoolSwitchContainer Title="Готовность нагревателя" IsChecked="{Binding ReadyHeatingTableCheck, Mode=TwoWay}"/>
+                    <componentsViews:BoolSwitchContainer Title="Отсутствие ошибок блокировки" IsChecked="{Binding NotErrorsBlockingPrintingCheck, Mode=TwoWay}"/>
+                    <componentsViews:BoolSwitchContainer Title="Ошибка реферирования рекоутера" IsChecked="{Binding RecoaterRefErrorCheck, Mode=TwoWay}"/>
+                    <componentsViews:BoolSwitchContainer Title="Ошибка привода рекоутера" IsChecked="{Binding RecoaterEngineErrorCheck, Mode=TwoWay}"/>
+                    <componentsViews:BoolSwitchContainer Title="Ошибка привода дозатора" IsChecked="{Binding DoserAxesErrorCheck, Mode=TwoWay}"/>
+                    <componentsViews:BoolSwitchContainer Title="Ошибка привода платформы" IsChecked="{Binding PlatformAxesErrorCheck, Mode=TwoWay}"/>
+                </componentsViews:Container>
+
+                <!-- Привода (Axes) Section -->
+                <componentsViews:Container Title="Привода" TitleSize="15" Margin="5">
+                    <componentsViews:BoolSwitchContainer Title="Рекоутер спереди при экспонировании" IsChecked="{Binding RecoaterFrontOnExpose, Mode=TwoWay}"/>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Рекоутер правое конечное положение, мм"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding RecoaterDistRight}" Command="{Binding SelectRecoaterDistRightCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Рекоутер скорость JOG, мм/с"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding JogSpeedRecoater}" Command="{Binding SelectJogSpeedRecoaterCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Компенсация зазора ШВП вниз, мкм"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding PlatformBacklashDown}" Command="{Binding SelectPlatformBacklashDownCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Компенсация погрешности ШВП вниз, мкм"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding PlatformCorrectionDown}" Command="{Binding SelectPlatformCorrectionDownCommand}"/>
+                        </Grid>
+                    </Border>
+                </componentsViews:Container>
+
+                <!-- Газ и фильтры (GasFilter) Section -->
+                <componentsViews:Container Title="Газ и фильтры" TitleSize="15" Margin="5">
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Предупреждение высокий кислород, %"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding AlarmO2, StringFormat=F2}" Command="{Binding SelectAlarmO2Command}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Предупреждение низкое давление инертного газа, bar"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding AlarmInertPressure, StringFormat=F2}" Command="{Binding SelectAlarmInertPressureCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Предупреждение заполнен фильтр, м/с"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding AlarmGasFlow}" Command="{Binding SelectAlarmGasFlowCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Минимальное давление теста герметичности, кПа"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding ErrPresNotSealed, StringFormat=F2}" Command="{Binding SelectErrPresNotSealedCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="ПИД воздуходувки Ki"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding BlowerPidKi, StringFormat=F2}" Command="{Binding SelectBlowerPidKiCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="ПИД воздуходувки Kd"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding BlowerPidKd, StringFormat=F2}" Command="{Binding SelectBlowerPidKdCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Ошибка температуры воздуходувки, °C"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding ErrTempBlower}" Command="{Binding SelectErrTempBlowerCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Ошибка высокий кислород, %"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding ErrO2, StringFormat=F2}" Command="{Binding SelectErrO2Command}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Предупреждение температуры воздуходувки, °C"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding AlarmTempBlower}" Command="{Binding SelectAlarmTempBlowerCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="ПИД воздуходувки Kp"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding BlowerPidKp, StringFormat=F2}" Command="{Binding SelectBlowerPidKpCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Стартовый уровень кислорода, %"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding StartPointO2, StringFormat=F2}" Command="{Binding SelectStartPointO2Command}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Ошибка заполнен фильтр, м/с"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding ErrGasFlow}" Command="{Binding SelectErrGasFlowCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Ошибка низкое давление инертного газа, bar"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding ErrInertPressure, StringFormat=F2}" Command="{Binding SelectErrInertPressureCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Максимальная скорость потока воздуходувки, м/с"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding BlowerMaxFlow}" Command="{Binding SelectBlowerMaxFlowCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Целевой уровень кислорода, %"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding SetPointO2, StringFormat=F2}" Command="{Binding SelectSetPointO2Command}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Ошибка фильтр закрыт, кПа"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding ErrFilterClosed, StringFormat=F2}" Command="{Binding SelectErrFilterClosedCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Значение кислорода при продувке камеры, %"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding InertFillChamber, StringFormat=F2}" Command="{Binding SelectInertFillChamberCommand}"/>
+                        </Grid>
+                    </Border>
+                </componentsViews:Container>
+
+                <!-- Рабочая камера (PChamber) Section -->
+                <componentsViews:Container Title="Рабочая камера" TitleSize="15" Margin="5">
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Предупреждение высокое давление в камере, кПа"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding AlarmPressure, StringFormat=F2}" Command="{Binding SelectAlarmPressureCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Ошибка высокое давление в камере, кПа"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding ErrPressure, StringFormat=F2}" Command="{Binding SelectErrPressureCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Открытие клапана сброса для компенсации избыточного давления, кПа"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding SetExhaustPressure, StringFormat=F2}" Command="{Binding SelectSetExhaustPressureCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" CornerRadius="5" Margin="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center" Grid.Column="0" FontSize="15" Foreground="White" Text="Подача аргона для компенсации низкого давления, кПа"/>
+                            <Button Grid.Column="1" Style="{StaticResource ParameterValueButton}" Content="{Binding SetInertFillPressure, StringFormat=F2}" Command="{Binding SelectSetInertFillPressureCommand}"/>
+                        </Grid>
+                    </Border>
+                </componentsViews:Container>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

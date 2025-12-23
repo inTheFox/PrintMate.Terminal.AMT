@@ -1,0 +1,6 @@
+@PrintMate.WebApi_HostAddress = http://localhost:5001
+
+GET {{PrintMate.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="PrintMate.Terminal.Views.IndicatorPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpf="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+             mc:Ignorable="d"
+             d:DesignHeight="80" d:DesignWidth="400">
+
+    <StackPanel>
+        <!-- Decimal Block -->
+        <Border Background="#212121" x:Name="DecimalBlock" Visibility="{Binding DecimalBlockVisibility}"
+                Padding="5"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Margin="5"
+                Height="85"
+                CornerRadius="10">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Background="#343434" Margin="15" Padding="20 0 20 0" CornerRadius="10">
+                    <TextBlock Grid.Column="1"
+                               FontSize="25"
+                               Foreground="White"
+                               FontWeight="Bold"
+                               TextAlignment="Center"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="0 0 0 0"
+                               Text="{Binding CommandInfo.Title}"/>
+                </Border>
+
+
+                <StackPanel Grid.Column="1" Margin="20 0 0 0" VerticalAlignment="Center">
+                    <TextBlock Grid.Column="1"
+                               Foreground="White"
+                               FontWeight="Bold"
+                               FontSize="12"
+                               TextWrapping="Wrap"
+                               TextAlignment="Left"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Text="{Binding CommandInfo.Title}"/>
+
+                </StackPanel>
+
+            </Grid>
+
+
+        </Border>
+        <!-- Корневой Border растягивается на всю ширину -->
+        <Border x:Name="BoolBlock" Visibility="Collapsed" Background="#292929" Padding="20" HorizontalAlignment="Stretch" CornerRadius="5" Margin="0 1 0 1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border x:Name="B" Grid.Column="0" Background="Black" Margin="10" Padding="20" CornerRadius="10">
+                    <Image Source="{Binding FilePath}"/>
+                </Border>
+
+
+                <StackPanel Grid.Column="1" Margin="20 0 0 0" VerticalAlignment="Center">
+                    <TextBlock Grid.Column="1"
+                               FontSize="20"
+                               Foreground="White"
+                               FontWeight="Bold"
+                               TextAlignment="Center"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 0 0"
+                               Text="{Binding CommandInfo.Title}"/>
+                    <TextBlock Grid.Column="1"
+                               Foreground="Gray"
+                               FontWeight="Bold"
+                               FontSize="12"
+                               TextWrapping="Wrap"
+                               TextAlignment="Left"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Text="текущее состояние"/>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+    </StackPanel>
+    
+</UserControl>

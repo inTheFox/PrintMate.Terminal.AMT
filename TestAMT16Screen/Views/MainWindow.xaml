@@ -1,0 +1,178 @@
+﻿<hc:Window x:Class="TestAMT16Screen.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        mc:Ignorable="d"
+        Title="{Binding Title}" 
+        WindowStartupLocation="CenterScreen"
+        ShowTitle="True"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Height="768" 
+        Width="1024">
+    <Grid>
+        <ScrollViewer x:Name="MainScrollViewer"
+                      Background="LightYellow"
+                      BorderBrush="Gray"
+                      BorderThickness="2"
+                      PanningMode="Both"
+                      PanningRatio="1.0"
+                      CanContentScroll="False"
+                      PreviewMouseDown="ScrollViewer_PreviewMouseDown"
+                      PreviewMouseMove="ScrollViewer_PreviewMouseMove"
+                      PreviewMouseUp="ScrollViewer_PreviewMouseUp">
+
+            <StackPanel Margin="20">
+                <TextBlock Text="ТЕСТОВАЯ СТРАНИЦА ДЛЯ ПРОВЕРКИ ScrollViewer" 
+                           FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+
+                <!-- Повторяющийся блок текста для заполнения -->
+                <RepeatButton Content="Этот RepeatButton — просто маркер (игнорируйте)" 
+                              Visibility="Collapsed"/>
+
+                <!-- Генерируем много текста -->
+                <TextBlock TextWrapping="Wrap" FontSize="16" LineHeight="24">
+                    <Run Text="1. "/><Run Text="Пример длинного абзаца. "/><Run Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "/>
+                    <LineBreak/><Run Text="2. "/><Run Text="Еще один абзац. "/><Run Text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "/>
+                    <LineBreak/><Run Text="3. "/><Run Text="И третий. "/><Run Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. "/>
+                    <LineBreak/><Run Text="4. "/><Run Text="Повторяем для длины... "/><Run Text="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "/>
+                    <LineBreak/><Run Text="5. "/><Run Text="И так далее... "/><Run Text="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. "/>
+                    <LineBreak/><Run Text="6. "/><Run Text="Еще текст. "/><Run Text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident. "/>
+                    <LineBreak/><Run Text="7. "/><Run Text="И снова. "/><Run Text="Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. "/>
+                    <LineBreak/><Run Text="8. "/><Run Text="Завершение. "/><Run Text="Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. "/>
+                    
+                    <!-- Добавим ещё немного -->
+                    <LineBreak/><LineBreak/><Run Text="--- Конец тестового контента ---" FontWeight="Bold"/>
+                </TextBlock>
+                <!-- Генерируем много текста -->
+                <TextBlock TextWrapping="Wrap" FontSize="16" LineHeight="24">
+                    <Run Text="1. "/><Run Text="Пример длинного абзаца. "/><Run Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "/>
+                    <LineBreak/><Run Text="2. "/><Run Text="Еще один абзац. "/><Run Text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "/>
+                    <LineBreak/><Run Text="3. "/><Run Text="И третий. "/><Run Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. "/>
+                    <LineBreak/><Run Text="4. "/><Run Text="Повторяем для длины... "/><Run Text="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "/>
+                    <LineBreak/><Run Text="5. "/><Run Text="И так далее... "/><Run Text="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. "/>
+                    <LineBreak/><Run Text="6. "/><Run Text="Еще текст. "/><Run Text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident. "/>
+                    <LineBreak/><Run Text="7. "/><Run Text="И снова. "/><Run Text="Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. "/>
+                    <LineBreak/><Run Text="8. "/><Run Text="Завершение. "/><Run Text="Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. "/>
+                    
+                    <!-- Добавим ещё немного -->
+                    <LineBreak/><LineBreak/><Run Text="--- Конец тестового контента ---" FontWeight="Bold"/>
+                </TextBlock>
+
+                <StackPanel>
+                    <Button Click="ButtonBase_OnClick" Command="{Binding TestCommand}" Content="Button" Margin="5"/>
+                    <Button IsEnabled="False" Content="Button" Margin="5"/>
+                </StackPanel>
+                <StackPanel>
+                    <Button Click="ButtonBase_OnClick" Command="{Binding TestCommand}" Content="Button" Margin="5" Style="{StaticResource ButtonPrimary}"/>
+                    <Button IsEnabled="False" Content="Button" Margin="5" Style="{StaticResource ButtonPrimary}"/>
+                </StackPanel>
+                <StackPanel>
+                    <Button Click="ButtonBase_OnClick" Command="{Binding TestCommand}" Content="Button" Margin="5" Style="{StaticResource ButtonSuccess}"/>
+                    <Button IsEnabled="False" Content="Button" Margin="5" Style="{StaticResource ButtonSuccess}"/>
+                </StackPanel>
+                <StackPanel>
+                    <Button Click="ButtonBase_OnClick" Command="{Binding TestCommand}" Content="Button" Margin="5" Style="{StaticResource ButtonInfo}"/>
+                    <Button IsEnabled="False" Content="Button" Margin="5" Style="{StaticResource ButtonInfo}"/>
+                </StackPanel>
+                <StackPanel>
+                    <Button Click="ButtonBase_OnClick" Command="{Binding TestCommand}" Content="Button" Margin="5" Style="{StaticResource ButtonWarning}"/>
+                    <Button IsEnabled="False" Content="Button" Margin="5" Style="{StaticResource ButtonWarning}"/>
+                </StackPanel>
+                <StackPanel>
+                    <Button Click="ButtonBase_OnClick" Command="{Binding TestCommand}" Content="Button" Margin="5" Style="{StaticResource ButtonDanger}"/>
+                    <Button IsEnabled="False" Content="Button" Margin="5" Style="{StaticResource ButtonDanger}"/>
+                </StackPanel>
+
+                <!-- Генерируем много текста -->
+                <TextBlock TextWrapping="Wrap" FontSize="16" LineHeight="24">
+                    <Run Text="1. "/><Run Text="Пример длинного абзаца. "/><Run Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "/>
+                    <LineBreak/><Run Text="2. "/><Run Text="Еще один абзац. "/><Run Text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "/>
+                    <LineBreak/><Run Text="3. "/><Run Text="И третий. "/><Run Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. "/>
+                    <LineBreak/><Run Text="4. "/><Run Text="Повторяем для длины... "/><Run Text="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "/>
+                    <LineBreak/><Run Text="5. "/><Run Text="И так далее... "/><Run Text="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. "/>
+                    <LineBreak/><Run Text="6. "/><Run Text="Еще текст. "/><Run Text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident. "/>
+                    <LineBreak/><Run Text="7. "/><Run Text="И снова. "/><Run Text="Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. "/>
+                    <LineBreak/><Run Text="8. "/><Run Text="Завершение. "/><Run Text="Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. "/>
+                    
+                    <!-- Добавим ещё немного -->
+                    <LineBreak/><LineBreak/><Run Text="--- Конец тестового контента ---" FontWeight="Bold"/>
+                </TextBlock>
+                <!-- Генерируем много текста -->
+                <TextBlock TextWrapping="Wrap" FontSize="16" LineHeight="24">
+                    <Run Text="1. "/><Run Text="Пример длинного абзаца. "/><Run Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "/>
+                    <LineBreak/><Run Text="2. "/><Run Text="Еще один абзац. "/><Run Text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "/>
+                    <LineBreak/><Run Text="3. "/><Run Text="И третий. "/><Run Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. "/>
+                    <LineBreak/><Run Text="4. "/><Run Text="Повторяем для длины... "/><Run Text="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "/>
+                    <LineBreak/><Run Text="5. "/><Run Text="И так далее... "/><Run Text="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. "/>
+                    <LineBreak/><Run Text="6. "/><Run Text="Еще текст. "/><Run Text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident. "/>
+                    <LineBreak/><Run Text="7. "/><Run Text="И снова. "/><Run Text="Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. "/>
+                    <LineBreak/><Run Text="8. "/><Run Text="Завершение. "/><Run Text="Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. "/>
+                    
+                    <!-- Добавим ещё немного -->
+                    <LineBreak/><LineBreak/><Run Text="--- Конец тестового контента ---" FontWeight="Bold"/>
+                </TextBlock>
+                <!-- Генерируем много текста -->
+                <TextBlock TextWrapping="Wrap" FontSize="16" LineHeight="24">
+                    <Run Text="1. "/><Run Text="Пример длинного абзаца. "/><Run Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "/>
+                    <LineBreak/><Run Text="2. "/><Run Text="Еще один абзац. "/><Run Text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "/>
+                    <LineBreak/><Run Text="3. "/><Run Text="И третий. "/><Run Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. "/>
+                    <LineBreak/><Run Text="4. "/><Run Text="Повторяем для длины... "/><Run Text="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "/>
+                    <LineBreak/><Run Text="5. "/><Run Text="И так далее... "/><Run Text="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. "/>
+                    <LineBreak/><Run Text="6. "/><Run Text="Еще текст. "/><Run Text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident. "/>
+                    <LineBreak/><Run Text="7. "/><Run Text="И снова. "/><Run Text="Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. "/>
+                    <LineBreak/><Run Text="8. "/><Run Text="Завершение. "/><Run Text="Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. "/>
+                    
+                    <!-- Добавим ещё немного -->
+                    <LineBreak/><LineBreak/><Run Text="--- Конец тестового контента ---" FontWeight="Bold"/>
+                </TextBlock>
+                <!-- Генерируем много текста -->
+                <TextBlock TextWrapping="Wrap" FontSize="16" LineHeight="24">
+                    <Run Text="1. "/><Run Text="Пример длинного абзаца. "/><Run Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "/>
+                    <LineBreak/><Run Text="2. "/><Run Text="Еще один абзац. "/><Run Text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "/>
+                    <LineBreak/><Run Text="3. "/><Run Text="И третий. "/><Run Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. "/>
+                    <LineBreak/><Run Text="4. "/><Run Text="Повторяем для длины... "/><Run Text="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "/>
+                    <LineBreak/><Run Text="5. "/><Run Text="И так далее... "/><Run Text="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. "/>
+                    <LineBreak/><Run Text="6. "/><Run Text="Еще текст. "/><Run Text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident. "/>
+                    <LineBreak/><Run Text="7. "/><Run Text="И снова. "/><Run Text="Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. "/>
+                    <LineBreak/><Run Text="8. "/><Run Text="Завершение. "/><Run Text="Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. "/>
+                    
+                    <!-- Добавим ещё немного -->
+                    <LineBreak/><LineBreak/><Run Text="--- Конец тестового контента ---" FontWeight="Bold"/>
+                </TextBlock>
+                <!-- Генерируем много текста -->
+                <TextBlock TextWrapping="Wrap" FontSize="16" LineHeight="24">
+                    <Run Text="1. "/><Run Text="Пример длинного абзаца. "/><Run Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "/>
+                    <LineBreak/><Run Text="2. "/><Run Text="Еще один абзац. "/><Run Text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "/>
+                    <LineBreak/><Run Text="3. "/><Run Text="И третий. "/><Run Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. "/>
+                    <LineBreak/><Run Text="4. "/><Run Text="Повторяем для длины... "/><Run Text="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "/>
+                    <LineBreak/><Run Text="5. "/><Run Text="И так далее... "/><Run Text="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. "/>
+                    <LineBreak/><Run Text="6. "/><Run Text="Еще текст. "/><Run Text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident. "/>
+                    <LineBreak/><Run Text="7. "/><Run Text="И снова. "/><Run Text="Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. "/>
+                    <LineBreak/><Run Text="8. "/><Run Text="Завершение. "/><Run Text="Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. "/>
+                    
+                    <!-- Добавим ещё немного -->
+                    <LineBreak/><LineBreak/><Run Text="--- Конец тестового контента ---" FontWeight="Bold"/>
+                </TextBlock>
+                <!-- Генерируем много текста -->
+                <TextBlock TextWrapping="Wrap" FontSize="16" LineHeight="24">
+                    <Run Text="1. "/><Run Text="Пример длинного абзаца. "/><Run Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "/>
+                    <LineBreak/><Run Text="2. "/><Run Text="Еще один абзац. "/><Run Text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "/>
+                    <LineBreak/><Run Text="3. "/><Run Text="И третий. "/><Run Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. "/>
+                    <LineBreak/><Run Text="4. "/><Run Text="Повторяем для длины... "/><Run Text="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "/>
+                    <LineBreak/><Run Text="5. "/><Run Text="И так далее... "/><Run Text="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. "/>
+                    <LineBreak/><Run Text="6. "/><Run Text="Еще текст. "/><Run Text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident. "/>
+                    <LineBreak/><Run Text="7. "/><Run Text="И снова. "/><Run Text="Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. "/>
+                    <LineBreak/><Run Text="8. "/><Run Text="Завершение. "/><Run Text="Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. "/>
+                    
+                    <!-- Добавим ещё немного -->
+                    <LineBreak/><LineBreak/><Run Text="--- Конец тестового контента ---" FontWeight="Bold"/>
+                </TextBlock>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</hc:Window>

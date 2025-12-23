@@ -1,0 +1,110 @@
+[
+	{
+		"cardInfo": {
+			"ipAddress": "172.18.34.227",
+			"seqIndex": 0
+		},
+		"processVariablesMap": {
+			"markSpeed": [
+				{
+					"markSpeed": 1000,
+					"jumpSpeed": 3000,
+					"polygonDelay": 170,
+					"jumpDelay": 1100,
+					"markDelay": 1200,
+					"laserOnDelay": 110.0,
+					"laserOffDelay": 120.0,
+					"laserOnDelayForSkyWriting": 130.0,
+					"laserOffDelayForSkyWriting": 140.0,
+					"curBeamDiameterMicron": 65.0,
+					"curPower": 75.0,
+					"jumpMaxLengthLimitMm": 160.0,
+					"minJumpDelay": 400,
+					"swenable": false,
+					"umax": 0.1
+				},
+				{
+					"markSpeed": 2000,
+					"jumpSpeed": 3000,
+					"polygonDelay": 600,
+					"jumpDelay": 1100,
+					"markDelay": 600,
+					"laserOnDelay": 700.0,
+					"laserOffDelay": -320.0,
+					"laserOnDelayForSkyWriting": -200.0,
+					"laserOffDelayForSkyWriting": 1000.0,
+					"curBeamDiameterMicron": 65.0,
+					"curPower": 75.0,
+					"jumpMaxLengthLimitMm": 160.0,
+					"minJumpDelay": 400,
+					"swenable": false,
+					"umax": 0.1
+				}
+			],
+			"nonDepends": [
+				{
+					"markSpeed": 1000,
+					"jumpSpeed": 3000,
+					"polygonDelay": 170,
+					"jumpDelay": 1100,
+					"markDelay": 1200,
+					"laserOnDelay": 110.0,
+					"laserOffDelay": 120.0,
+					"laserOnDelayForSkyWriting": 130.0,
+					"laserOffDelayForSkyWriting": 140.0,
+					"curBeamDiameterMicron": 65.0,
+					"curPower": 75.0,
+					"jumpMaxLengthLimitMm": 160.0,
+					"minJumpDelay": 400,
+					"swenable": false,
+					"umax": 0.1
+				}
+			]
+		},
+		"scannerConfig": {
+			"fieldSizeX": 400.0,
+			"fieldSizeY": 400.0,
+			"protocolCode": 1,
+			"coordinateTypeCode": 5,
+			"offsetX": 0.0,
+			"offsetY": 0.0,
+			"offsetZ": 0.0,
+			"rotateAngle": 0.0
+		},
+		"beamConfig": {
+			"minBeamDiameterMicron": 63.1,
+			"wavelengthNano": 1070.0,
+			"rayleighLengthMicron": 1863.0,
+			"m2": 1.553,
+			"focalLengthMm": 538.46
+		},
+		"laserPowerConfig": {
+			"maxPower": 500.0,
+			"actualPowerCorrectionValue": [
+				0.0,
+				67.0,
+				176.0,
+				281.0,
+				382.0,
+				475.0
+			],
+			"powerOffsetKFactor": -1.1011765,
+			"powerOffsetCFactor": 82.588234
+		},
+		"functionSwitcherConfig": {
+			"enablePowerOffset": true,
+			"enablePowerCorrection": true,
+			"enableZCorrection": true,
+			"enableDiameterChange": true,
+			"enableDynamicChangeVariables": false,
+			"limitVariablesMinPoint": false,
+			"limitVariablesMaxPoint": false,
+			"enableVariableJumpDelay": false
+		},
+		"thirdAxisConfig": {
+			"afactor": 0.0,
+			"cfactor": -7.4747047,
+			"bfactor": 0.013879796
+		}
+	}
+]

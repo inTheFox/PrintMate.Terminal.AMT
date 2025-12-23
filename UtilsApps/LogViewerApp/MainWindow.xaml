@@ -1,0 +1,18 @@
+﻿<hc:Window x:Class="LogViewerApp.MainWindow"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:local="clr-namespace:LogViewerApp"
+           xmlns:prism="http://prismlibrary.com/"
+           xmlns:hc="https://handyorg.github.io/handycontrol"
+           mc:Ignorable="d"
+           Title="Log Viewer - PrintMate"
+           Height="900"
+           Width="1600"
+           WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <ContentControl prism:RegionManager.RegionName="MainRegion"/>
+    </Grid>
+</hc:Window>

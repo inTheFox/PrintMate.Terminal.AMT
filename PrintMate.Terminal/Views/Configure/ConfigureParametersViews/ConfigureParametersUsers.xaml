@@ -1,0 +1,258 @@
+﻿<UserControl x:Class="PrintMate.Terminal.Views.Configure.ConfigureParametersViews.ConfigureParametersUsers"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PrintMate.Terminal.Views.Configure.ConfigureParametersViews"
+             xmlns:componentsViews="clr-namespace:PrintMate.Terminal.Views.ComponentsViews"
+             mc:Ignorable="d" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Border Padding="5" Background="#0b0b0b" Margin="20" CornerRadius="15">
+                <StackPanel>
+                <TextBlock HorizontalAlignment="Center" Margin="0 50 0 0" Foreground="White" FontWeight="Black" FontSize="25">Список пользователей</TextBlock>
+
+                <Grid HorizontalAlignment="Center" Margin="0 20 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Кнопка "Добавить" -->
+                    <Button Grid.Column="0" Margin="5,0,5,0" Height="40" Width="80" Content="Добавить" Command="{Binding CreateUserCommand}" VerticalAlignment="Top">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Black"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="border"
+                                    CornerRadius="5"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#ff6f00"/>
+                                                    <Setter Property="Foreground" Value="White"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter TargetName="border" Property="Background" Value="#CCCCCC"/>
+                                                    <Setter Property="Foreground" Value="#666666"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <!-- Кнопка "Редактировать" -->
+                    <Button Grid.Column="1" Margin="5,0,5,0" Height="40" Width="115" Content="Редактировать" Command="{Binding EditRoleCommand}" IsEnabled="{Binding IsRoleSelected}" VerticalAlignment="Top">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Black"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="border"
+                                    CornerRadius="5"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#ff6f00"/>
+                                                    <Setter Property="Foreground" Value="White"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter TargetName="border" Property="Background" Value="#CCCCCC"/>
+                                                    <Setter Property="Foreground" Value="#666666"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <!-- Кнопка "Удалить" -->
+                    <Button Grid.Column="2" Margin="5,0,5,0" Height="40" Width="80" Content="Удалить" Command="{Binding DeleteUserCommand}" IsEnabled="{Binding IsRoleSelected}">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Black"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="border"
+                                    CornerRadius="5"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#ff6f00"/>
+                                                    <Setter Property="Foreground" Value="White"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter TargetName="border" Property="Background" Value="#CCCCCC"/>
+                                                    <Setter Property="Foreground" Value="#666666"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+                <Border CornerRadius="10" Padding="30 20 30 20" Background="#0e0e0e" Margin="20 30 20 0"  Visibility="{Binding UsersListVisibility}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Foreground="White" FontWeight="Bold" FontSize="15" Text="Фамилия"/>
+                        <TextBlock Grid.Column="1" Foreground="White" FontWeight="Bold" FontSize="15" Text="Имя"/>
+                        <TextBlock Grid.Column="2" Foreground="White" FontWeight="Bold" FontSize="15" Text="Логин"/>
+                        <TextBlock Grid.Column="3" Foreground="White" FontWeight="Bold" FontSize="15" Text="Роль"/>
+                    </Grid>
+                </Border>
+
+                <Border Padding="15">
+                    <ListBox ItemsSource="{Binding Users}"
+                Margin="0 0 0 0"
+                SelectedItem="{Binding SelectedUser}"
+                BorderThickness="0"
+                Background="Transparent"
+                VerticalAlignment="Top"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                Visibility="{Binding UsersListVisibility}">
+
+                        <!-- Стиль контейнера элемента (ListBoxItem) -->
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Focusable" Value="False"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListBoxItem">
+                                            <Border CornerRadius="10" x:Name="itemBorder" Padding="20" Margin="5">
+                                                <Border.Background>
+                                                    <SolidColorBrush x:Name="itemBorderBrush" Color="#0e0e0e"/>
+                                                </Border.Background>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock x:Name="FamilyText" FontSize="15" FontWeight="Bold" Grid.Column="0" Text="{Binding Family}">
+                                                        <TextBlock.Foreground>
+                                                            <SolidColorBrush x:Name="FamilyTextBrush" Color="White"/>
+                                                        </TextBlock.Foreground>
+                                                    </TextBlock>
+                                                    <TextBlock x:Name="NameText" FontSize="15" FontWeight="Bold" Grid.Column="1" Text="{Binding Name}">
+                                                        <TextBlock.Foreground>
+                                                            <SolidColorBrush x:Name="NameTextBrush" Color="White"/>
+                                                        </TextBlock.Foreground>
+                                                    </TextBlock>
+                                                    <TextBlock x:Name="LoginText" FontSize="15" FontWeight="Bold" Grid.Column="2" Text="{Binding Login}">
+                                                        <TextBlock.Foreground>
+                                                            <SolidColorBrush x:Name="LoginTextBrush" Color="White"/>
+                                                        </TextBlock.Foreground>
+                                                    </TextBlock>
+                                                    <TextBlock x:Name="RoleText" FontSize="15" FontWeight="Bold" Grid.Column="3" Text="{Binding RoleDisplayName}">
+                                                        <TextBlock.Foreground>
+                                                            <SolidColorBrush x:Name="RoleTextBrush" Color="White"/>
+                                                        </TextBlock.Foreground>
+                                                    </TextBlock>
+                                                </Grid>
+
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                                                        <i:InvokeCommandAction
+                                                        Command="{Binding DataContext.SelectUser, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                        CommandParameter="{Binding}" />
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </Border>
+
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Trigger.EnterActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <ColorAnimation Storyboard.TargetName="itemBorderBrush" Storyboard.TargetProperty="Color" To="#ff6f00" Duration="0:0:0.5"/>
+                                                                <ColorAnimation Storyboard.TargetName="FamilyTextBrush" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.5"/>
+                                                                <ColorAnimation Storyboard.TargetName="NameTextBrush" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.5"/>
+                                                                <ColorAnimation Storyboard.TargetName="LoginTextBrush" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.5"/>
+                                                                <ColorAnimation Storyboard.TargetName="RoleTextBrush" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.5"/>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.EnterActions>
+                                                    <Trigger.ExitActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <ColorAnimation Storyboard.TargetName="itemBorderBrush" Storyboard.TargetProperty="Color" To="#0e0e0e" Duration="0:0:0.2"/>
+                                                                <ColorAnimation Storyboard.TargetName="FamilyTextBrush" Storyboard.TargetProperty="Color" To="White" Duration="0:0:0.2"/>
+                                                                <ColorAnimation Storyboard.TargetName="NameTextBrush" Storyboard.TargetProperty="Color" To="White" Duration="0:0:0.2"/>
+                                                                <ColorAnimation Storyboard.TargetName="LoginTextBrush" Storyboard.TargetProperty="Color" To="White" Duration="0:0:0.2"/>
+                                                                <ColorAnimation Storyboard.TargetName="RoleTextBrush" Storyboard.TargetProperty="Color" To="White" Duration="0:0:0.2"/>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.ExitActions>
+                                                    <!-- Свечение -->
+                                                    <Setter TargetName="itemBorder" Property="Effect">
+                                                        <Setter.Value>
+                                                            <DropShadowEffect BlurRadius="30" ShadowDepth="0" Opacity="0.6" Color="#ff6f00"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Trigger>
+                                                <!--<Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="itemBorder" Property="Tr" Value="#ff6f00"/>
+                                                    <Setter TargetName="itemBorder" Property="BorderThickness" Value="2"/>
+                                                </Trigger>-->
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.Template>
+                            <ControlTemplate TargetType="ListBox">
+                                <ItemsPresenter />
+                            </ControlTemplate>
+                        </ListBox.Template>
+                    </ListBox>
+                </Border>
+                    <TextBlock Text="Список пользователей пуст"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Foreground="White"
+                               FontSize="16"
+                               FontWeight="SemiBold"
+                               Visibility="{Binding EmptyListVisibility}" />
+            </StackPanel>
+            </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(tree:*)",
+      "Bash(dir /s /b *.dll)",
+      "Bash(dir:*)",
+      "Bash(nul)",
+      "Bash(javap:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

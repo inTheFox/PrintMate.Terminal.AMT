@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Новый профиль",
+    "Projects": [
+      {
+        "Path": "HansDebuggerApp\\HansDebuggerApp.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "LaserConfigurator\\LaserConfigurator.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

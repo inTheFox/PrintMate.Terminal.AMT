@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elements>
+	<element name="Com_Axes_Doser" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_Axes_RecoaterJogLeft" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_Axes_RecoaterJogRight" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_Axes_PlatformJogUp" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_Axes_PlatformStepUp" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_Axes_PlatformJogDown" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_Axes_PlatformStepDown" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_Axes_Stop" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_Axes_RecoaterToLeftPos" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_Axes_RecoaterToRightPos" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_Axes_DoserRef" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_Axes_RecoaterRef" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_Axes_PlatformRef" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_Axes_PlatformRefREL" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_Axes_PlatformPosZero" address="4" groupId="Com" type="Bool"/>
+	
+	<element name="Com_PChamber_LightPB" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_PChamber_Light" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_PChamber_CameraLock" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_PChamber_VExhaustCamera" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_PChamber_VExhaustCameraRegulated" address="4" groupId="Com" type="Bool"/>
+	
+	<element name="Com_GasFilter_VGasToCamera" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_GasFilter_VGasFromCamera" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_GasFilter_ResetInertCons" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_GasFilter_Blower" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_GasFilter_Inert" address="4" groupId="Com" type="Bool"/>
+	
+	<element name="Com_Powder_DoserVibro" address="4" groupId="Com" type="Bool"/>
+	
+	<element name="Com_Laser_Emission" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_Laser_Reset" address="4" groupId="Com" type="Bool"/>
+	
+	<element name="Com_Layer" address="4" groupId="Com" type="Bool" trig_name="Trig_Layer"/>
+	<element name="Com_Recoat" address="4" groupId="Com" type="Bool" trig_name="Trig_Recoat"/>
+	
+	<element name="Com_LaserSystem" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_GasSystem" address="4" groupId="Com" type="Bool"/>
+	
+	<element name="Com_PenultimateLayer" address="4" groupId="Com" type="Bool"/>
+	<element name="Com_HeartBit" address="4" groupId="Com" type="Bool"/>
+	
+	<element name="Trig_Axes_RecoaterRef" address="4" groupId="Trig" type="Bool"/>
+	<element name="Trig_Layer" address="4" groupId="Trig" type="Bool"/>
+	<element name="Trig_Recoat" address="4" groupId="Trig" type="Bool"/>
+	<element name="Trig_AllSystemReady" address="4" groupId="Trig" type="Bool"/>
+	<element name="Trig_SensorKeyLocked" address="4" groupId="Trig" type="Bool"/>
+
+	<element name="AM_PChamber_Pressure" address="4" groupId="AM" type="Real"/>
+	<element name="AM_PChamber_Oxygen" address="4" groupId="AM" type="Real"/>
+	<element name="AM_GasFilter_FilterOxygen" address="4" groupId="AM" type="Real"/>
+	<element name="AM_GasFilter_PressureFilter" address="4" groupId="AM" type="Real"/>
+	<element name="AM_GasFilter_GasFlow" address="4" groupId="AM" type="Real"/>
+	<element name="AM_GasFilter_InertInletPressure" address="4" groupId="AM" type="Real"/>
+	<element name="AM_GasFilter_InertConsumption" address="4" groupId="AM" type="Real"/>
+	<element name="AM_GasFilter_InertCurrentConsumption" address="4" groupId="AM" type="Real"/>
+	<element name="AM_GasFilter_BlowerTemperature" address="4" groupId="AM" type="Real"/>
+	<element name="AM_GasFilter_VenturiTemperature" address="4" groupId="AM" type="Real"/>
+	
+	<element name="AM_Axes_RecoaterABSPosition" address="4" groupId="AM" type="Unsigned"/>
+	<element name="AM_Axes_PlatformRELPosition" address="4" groupId="AM" type="Dint"/>
+	
+	<element name="DISP_PositionRecoater" address="4" groupId="DISP" type="Unsigned"/>
+	<element name="DISP_PositionPlatform" address="4" groupId="DISP" type="Unsigned"/>
+	
+	<element name="DM_PChamber_ChamberDoorLS" address="4" groupId="DM" type="Bool"/>
+	<element name="DM_PChamber_ExhaustValve" address="4" groupId="DM" type="Bool"/>
+	<element name="DM_PChamber_ExhaustValveRegulated" address="4" groupId="DM" type="Bool"/>
+	
+	<element name="DM_GasFilter_FilterPresentLS" address="4" groupId="DM" type="Bool"/>
+	<element name="DM_GasFilter_VToCamera" address="4" groupId="DM" type="Bool"/>
+	<element name="DM_GasFilter_VFromCamera" address="4" groupId="DM" type="Bool"/>
+	
+	<element name="DM_Laser_ChillerOK" address="4" groupId="DM" type="Bool"/>
+	<element name="DM_Laser_PowerStateLaser" address="4" groupId="DM" type="Bool"/>
+	<element name="DM_Laser_EmissionStateLaser" address="4" groupId="DM" type="Bool"/>
+
+	<element name="DM_Axes_RecoaterLeftLS" address="4" groupId="DM" type="Bool"/>
+	<element name="DM_Axes_RecoaterRightLS" address="4" groupId="DM" type="Bool"/>
+	<element name="DM_Axes_PlatformTopLS" address="4" groupId="DM" type="Bool"/>
+	<element name="DM_Axes_PlatformBottomLS" address="4" groupId="DM" type="Bool"/>
+	
+	<element name="DM_Powder_LSRight" address="4" groupId="DM" type="Bool"/>
+	<element name="DM_Powder_LSLeft" address="4" groupId="DM" type="Bool"/>
+	
+	<element name="Set_GasFilter_BlowerSpeed" address="4" groupId="SetPoints" type="Unsigned"/>
+	<element name="Set_Axes_PlatformStep" address="4" groupId="SetPoints" type="Dint"/>
+	<element name="Set_Axes_PlatformSpeed" address="4" groupId="SetPoints" type="Unsigned"/>
+	<element name="Set_Axes_RecoaterSpeed" address="4" groupId="SetPoints" type="Unsigned"/>
+	<element name="Set_Axes_DoserSpeed" address="4" groupId="SetPoints" type="Unsigned"/>
+	<element name="Set_Axes_DoserCounts" address="4" groupId="SetPoints" type="Unsigned"/>
+	
+	<element name="Alarm_PChamber_Unlocked" address="4" groupId="Alarms" type="Bool"/>
+	<element name="Alarm_PChamber_Pressure" address="4" groupId="Alarms" type="Bool"/>
+	<element name="Alarm_PChamber_HighOxygen" address="4" groupId="Alarms" type="Bool"/>
+	<element name="Alarm_GasFilter_HighOxygen" address="4" groupId="Alarms" type="Bool"/>
+	<element name="Alarm_GasFilter_FilterClogg" address="4" groupId="Alarms" type="Bool"/>
+	<element name="Alarm_GasFilter_InertPressure" address="4" groupId="Alarms" type="Bool"/>
+	<element name="Alarm_GasFilter_HighBlowerTemp" address="4" groupId="Alarms" type="Bool"/>
+	<element name="Alarm_GasFilter_InertFlowSensor" address="4" groupId="Alarms" type="Bool"/>
+	<element name="Alarm_Powder_Empty" address="4" groupId="Alarms" type="Bool"/>
+	
+	<element name="Err_PChamber_Pressure" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_PChamber_OxygenSensor" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_PChamber_PressureSensor" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_PChamber_HighOxygen" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_Axes_Platform" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_Axes_Recoater" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_Axes_Doser" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_Axes_ErrPLCModuleExtension" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_Laser_Chiller" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_Laser" address="4" groupId="Errors" type="Bool"/>
+
+	<element name="Err_EmergencyStop" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_GasFilter_BlowerFC" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_GasFilter_FilterPresent" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_GasFilter_PressureSensor" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_GasFilter_OxygenSensor" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_GasFilter_FlowSensor" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_GasFilter_FilterClogg" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_GasFilter_HighOxygen" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_GasFilter_InertPressure" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_GasFilter_HighBlowerTemp" address="4" groupId="Errors" type="Bool"/> 
+	<element name="Err_GasFilter_InertPressureSensor" address="4" groupId="Errors" type="Bool"/> 
+	<element name="Err_GasFilter_FilterClosed" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_GasFilter_VToCameraTimeout" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_GasFilter_VFromCameraTimeout" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_GasFilter_TempBlowerMotorSensor" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_GasFilter_TempVenturiSensor" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_GasFilter_NotSealed" address="4" groupId="Errors" type="Bool"/>
+	
+	<element name="Err_Powder_DoserStuck" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_Powder_Empty" address="4" groupId="Errors" type="Bool"/>
+	<element name="Err_Powder_RecoaterRef" address="4" groupId="Errors" type="Bool"/>
+	
+	<element name="SCP_Axes_RecoaterFrontOnExpose" address="4" groupId="SCP" type="Bool"/>
+	<element name="SCP_Axes_JogSpeedRecoater" address="4" groupId="SCP" type="Unsigned"/>
+	<element name="SCP_Axes_SetRecoaterDistRight" address="4" groupId="SCP" type="Unsigned"/>
+	<element name="SCP_Axes_PlatformBacklashDOWN" address="4" groupId="SCP" type="Unsigned"/>
+	<element name="SCP_Axes_PlatformCorrectionDOWN" address="4" groupId="SCP" type="Unsigned"/>
+	
+	<element name="SCP_Powder_DoserTimeVibrClear" address="4" groupId="SCP" type="Unsigned"/>
+	<element name="SCP_Powder_SetReserveDosesCount" address="4" groupId="SCP" type="Unsigned"/>
+	
+	<element name="SCP_GasFilter_AlarmTempBlower" address="4" groupId="SCP" type="Unsigned"/>
+	<element name="SCP_GasFilter_ErrTempBlower" address="4" groupId="SCP" type="Unsigned"/>
+	<element name="SCP_GasFilter_BlowerMaxFlow" address="4" groupId="SCP" type="Unsigned"/>
+	<element name="SCP_GasFilter_AlarmGasFlow" address="4" groupId="SCP" type="Unsigned"/>
+	<element name="SCP_GasFilter_ErrGasFlow" address="4" groupId="SCP" type="Unsigned"/>
+	<element name="SCP_GasFilter_SetPointO2" address="4" groupId="SCP" type="Real"/>
+	<element name="SCP_GasFilter_StartPointO2" address="4" groupId="SCP" type="Real"/>
+	
+	<element name="SCP_GasFilter_InertFillChamber" address="4" groupId="SCP" type="Real"/>
+	<element name="SCP_GasFilter_AlarmInertPressure" address="4" groupId="SCP" type="Real"/>
+	<element name="SCP_GasFilter_ErrInertPressure" address="4" groupId="SCP" type="Real"/>
+	<element name="SCP_GasFilter_AlarmO2" address="4" groupId="SCP" type="Real"/>
+	<element name="SCP_GasFilter_ErrO2" address="4" groupId="SCP" type="Real"/>
+	<element name="SCP_GasFilter_ErrFilterClosed" address="4" groupId="SCP" type="Real"/>
+	<element name="SCP_GasFilter_ErrPresNotSealed" address="4" groupId="SCP" type="Real"/>
+	
+	<element name="SCP_PChamber_AlarmPressure" address="4" groupId="SCP" type="Real"/>
+	<element name="SCP_PChamber_ErrPressure" address="4" groupId="SCP" type="Real"/>
+	<element name="SCP_PChamber_SetExhaustPressure" address="4" groupId="SCP" type="Real"/>
+	<element name="SCP_PChamber_SetInertFillPressure" address="4" groupId="SCP" type="Real"/>
+	
+	<element name="SCP_SetLayerThickness" address="4" groupId="SCP" type="Unsigned"/>
+	<element name="SCP_GUIState" address="4" groupId="SCP" type="Unsigned"/>
+	
+	<element name="SCP_GasFilter_BlowerPID_Kp" address="4" groupId="SCP" type="Real"/>
+	<element name="SCP_GasFilter_BlowerPID_Kd" address="4" groupId="SCP" type="Real"/>
+	<element name="SCP_GasFilter_BlowerPID_Ki" address="4" groupId="SCP" type="Real"/>
+	
+</elements>

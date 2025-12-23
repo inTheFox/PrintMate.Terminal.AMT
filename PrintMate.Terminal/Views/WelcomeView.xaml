@@ -1,0 +1,807 @@
+<UserControl x:Class="PrintMate.Terminal.Views.WelcomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             d:DesignHeight="1080" d:DesignWidth="1920">
+
+    <UserControl.Resources>
+        <!-- ============== АНИМАЦИИ ПОЯВЛЕНИЯ ============== -->
+        <Storyboard x:Key="ShowSequentially">
+            <!-- Фоновые круги - плавное появление -->
+            <DoubleAnimation Storyboard.TargetName="GlowCircle1"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="0.06" Duration="0:0:2.0"/>
+            <DoubleAnimation Storyboard.TargetName="GlowCircle2"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="0.04" Duration="0:0:2.5" BeginTime="0:0:0.5"/>
+
+            <!-- Логотип - масштабирование + появление -->
+            <DoubleAnimation Storyboard.TargetName="Icon"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="0:0:0.8"/>
+            <DoubleAnimation Storyboard.TargetName="IconScale"
+                             Storyboard.TargetProperty="ScaleX"
+                             From="0.3" To="1" Duration="0:0:0.7">
+                <DoubleAnimation.EasingFunction>
+                    <BackEase Amplitude="0.4" EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="IconScale"
+                             Storyboard.TargetProperty="ScaleY"
+                             From="0.3" To="1" Duration="0:0:0.7">
+                <DoubleAnimation.EasingFunction>
+                    <BackEase Amplitude="0.4" EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <!-- Заголовок - сверху вниз -->
+            <DoubleAnimation Storyboard.TargetName="Title"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="0:0:0.6" BeginTime="0:0:0.4"/>
+            <DoubleAnimation Storyboard.TargetName="TitleTransform"
+                             Storyboard.TargetProperty="Y"
+                             From="-30" To="0" Duration="0:0:0.6" BeginTime="0:0:0.4">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <!-- Подзаголовок -->
+            <DoubleAnimation Storyboard.TargetName="SubTitle"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="0:0:0.5" BeginTime="0:0:0.6"/>
+            <DoubleAnimation Storyboard.TargetName="SubTitleTransform"
+                             Storyboard.TargetProperty="Y"
+                             From="15" To="0" Duration="0:0:0.5" BeginTime="0:0:0.6">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <!-- Карточка авторизации - снизу вверх + появление -->
+            <DoubleAnimation Storyboard.TargetName="LoginCard"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="0:0:0.7" BeginTime="0:0:0.8"/>
+            <DoubleAnimation Storyboard.TargetName="LoginCardTransform"
+                             Storyboard.TargetProperty="Y"
+                             From="50" To="0" Duration="0:0:0.7" BeginTime="0:0:0.8">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <!-- Кнопка входа -->
+            <DoubleAnimation Storyboard.TargetName="NextButton"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="0:0:0.5" BeginTime="0:0:1.2"/>
+            <DoubleAnimation Storyboard.TargetName="ButtonTransform"
+                             Storyboard.TargetProperty="Y"
+                             From="20" To="0" Duration="0:0:0.5" BeginTime="0:0:1.2">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <!-- Версия -->
+            <DoubleAnimation Storyboard.TargetName="VersionText"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="0:0:0.8" BeginTime="0:0:1.5"/>
+        </Storyboard>
+
+        <!-- ============== АНИМАЦИИ УХОДА ============== -->
+        <Storyboard x:Key="HideUpStoryboard">
+            <!-- Всё уезжает вверх и исчезает -->
+            <DoubleAnimation Storyboard.TargetName="Icon"
+                             Storyboard.TargetProperty="Opacity"
+                             To="0" Duration="0:0:0.3"/>
+            <DoubleAnimation Storyboard.TargetName="IconTransform"
+                             Storyboard.TargetProperty="Y"
+                             To="-50" Duration="0:0:0.4">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <DoubleAnimation Storyboard.TargetName="Title"
+                             Storyboard.TargetProperty="Opacity"
+                             To="0" Duration="0:0:0.25" BeginTime="0:0:0.05"/>
+            <DoubleAnimation Storyboard.TargetName="TitleTransform"
+                             Storyboard.TargetProperty="Y"
+                             To="-30" Duration="0:0:0.3" BeginTime="0:0:0.05"/>
+
+            <DoubleAnimation Storyboard.TargetName="SubTitle"
+                             Storyboard.TargetProperty="Opacity"
+                             To="0" Duration="0:0:0.25" BeginTime="0:0:0.08"/>
+
+            <DoubleAnimation Storyboard.TargetName="LoginCard"
+                             Storyboard.TargetProperty="Opacity"
+                             To="0" Duration="0:0:0.35" BeginTime="0:0:0.1"/>
+            <DoubleAnimation Storyboard.TargetName="LoginCardTransform"
+                             Storyboard.TargetProperty="Y"
+                             To="-40" Duration="0:0:0.4" BeginTime="0:0:0.1">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <DoubleAnimation Storyboard.TargetName="NextButton"
+                             Storyboard.TargetProperty="Opacity"
+                             To="0" Duration="0:0:0.3" BeginTime="0:0:0.15"/>
+
+            <DoubleAnimation Storyboard.TargetName="GlowCircle1"
+                             Storyboard.TargetProperty="Opacity"
+                             To="0" Duration="0:0:0.5"/>
+            <DoubleAnimation Storyboard.TargetName="GlowCircle2"
+                             Storyboard.TargetProperty="Opacity"
+                             To="0" Duration="0:0:0.5"/>
+        </Storyboard>
+
+        <!-- ============== АНИМАЦИИ ПОСЛЕ АВТОРИЗАЦИИ ============== -->
+        <!-- Плавное исчезновение формы авторизации -->
+        <Storyboard x:Key="HideLoginFormStoryboard">
+            <DoubleAnimation Storyboard.TargetName="LoginFormContainer"
+                             Storyboard.TargetProperty="Opacity"
+                             To="0" Duration="0:0:0.6">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseInOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+
+        <!-- Появление приветственного текста -->
+        <Storyboard x:Key="ShowWelcomeStoryboard">
+            <!-- Делаем контейнер видимым -->
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="WelcomeContainer"
+                                           Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+
+            <DoubleAnimation Storyboard.TargetName="WelcomeText"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="0:0:1">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <DoubleAnimation Storyboard.TargetName="WelcomeTextSub"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="0:0:1">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <DoubleAnimation Storyboard.TargetName="Bar"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="0:0:1">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <DoubleAnimation Storyboard.TargetName="WelcomeTranslate"
+                             Storyboard.TargetProperty="Y"
+                             From="-50" To="0" Duration="0:0:0.5">
+                <DoubleAnimation.EasingFunction>
+                    <BackEase Amplitude="0.3" EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <DoubleAnimation Storyboard.TargetName="WelcomeTranslateSub"
+                             Storyboard.TargetProperty="Y"
+                             From="-50" To="0" Duration="0:0:0.5">
+                <DoubleAnimation.EasingFunction>
+                    <BackEase Amplitude="0.3" EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="BarTransform"
+                             Storyboard.TargetProperty="Y"
+                             From="-50" To="0" Duration="0:0:0.5">
+                <DoubleAnimation.EasingFunction>
+                    <BackEase Amplitude="0.3" EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+
+        <!-- Уход приветственного текста вверх с исчезновением -->
+        <Storyboard x:Key="HideWelcomeStoryboard">
+            <!-- Скрываем спиннер загрузки -->
+            <DoubleAnimation Storyboard.TargetName="LoadingSpinner"
+                             Storyboard.TargetProperty="Opacity"
+                             To="0" Duration="0:0:0.4">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="LoadingSpinnerTransform"
+                             Storyboard.TargetProperty="Y"
+                             To="-200" Duration="0:0:0.5">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <DoubleAnimation Storyboard.TargetName="WelcomeText"
+                             Storyboard.TargetProperty="Opacity"
+                             To="0" Duration="0:0:0.5">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="WelcomeTextSub"
+                             Storyboard.TargetProperty="Opacity"
+                             To="0" Duration="0:0:0.5">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="Bar"
+                             Storyboard.TargetProperty="Opacity"
+                             To="0" Duration="0:0:0.2">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <DoubleAnimation Storyboard.TargetName="WelcomeTranslate"
+                             Storyboard.TargetProperty="Y"
+                             To="-200" Duration="0:0:0.5">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <DoubleAnimation Storyboard.TargetName="WelcomeTranslateSub"
+                             Storyboard.TargetProperty="Y"
+                             To="-200" Duration="0:0:0.5">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <DoubleAnimation Storyboard.TargetName="BarTransform"
+                             Storyboard.TargetProperty="Y"
+                             To="-200" Duration="0:0:0.5">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+
+        <!-- ============== СТИЛИ ============== -->
+        <Style x:Key="InputBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="#141414"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="20 16"/>
+            <Setter Property="Margin" Value="0 0 0 16"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#2a1a1a"/>
+        </Style>
+
+        <Style x:Key="InputTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="CaretBrush" Value="#ff6f00"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="SelectionBrush" Value="#ff6f00"/>
+        </Style>
+
+        <Style x:Key="InputPasswordStyle" TargetType="PasswordBox">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="CaretBrush" Value="#ff6f00"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="SelectionBrush" Value="#ff6f00"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <!-- Фоновый градиент -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#050505" Offset="0"/>
+                <GradientStop Color="#0a0808" Offset="0.5"/>
+                <GradientStop Color="#080505" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <!-- Декоративные светящиеся круги (красные) -->
+        <Ellipse x:Name="GlowCircle1"
+                 Width="800" Height="800"
+                 Opacity="0"
+                 HorizontalAlignment="Left" VerticalAlignment="Top"
+                 Margin="-300 -300 0 0">
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#ff6f00" Offset="0"/>
+                    <GradientStop Color="#ff6f00" Offset="0.4"/>
+                    <GradientStop Color="Transparent" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+
+        <Ellipse x:Name="GlowCircle2"
+                 Width="600" Height="600"
+                 Opacity="0"
+                 HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                 Margin="0 0 -200 -200">
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#ff6f00" Offset="0"/>
+                    <GradientStop Color="#ff6f00" Offset="0.4"/>
+                    <GradientStop Color="Transparent" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+
+        <!-- Основной контент -->
+        <StackPanel x:Name="LoginFormContainer" HorizontalAlignment="Center" VerticalAlignment="Center" Width="420">
+
+            <!-- Логотип с анимацией -->
+            <Image x:Name="Icon"
+                   Opacity="0"
+                   Margin="0 0 0 25"
+                   Width="110" Height="110"
+                   RenderTransformOrigin="0.5,0.5"
+                   Source="/images/android-chrome-512x512.png">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform x:Name="IconScale" ScaleX="1" ScaleY="1"/>
+                        <TranslateTransform x:Name="IconTransform" Y="0"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+
+            <!-- Заголовок -->
+            <TextBlock x:Name="Title"
+                       Text="Добро пожаловать"
+                       FontSize="36"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Foreground="White"
+                       Opacity="0">
+                <TextBlock.RenderTransform>
+                    <TranslateTransform x:Name="TitleTransform" Y="0"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+
+            <!-- Подзаголовок -->
+            <TextBlock x:Name="SubTitle"
+                       Text="Войдите для продолжения работы"
+                       Margin="0 10 0 35"
+                       FontSize="15"
+                       HorizontalAlignment="Center"
+                       Foreground="#555555"
+                       Opacity="0">
+                <TextBlock.RenderTransform>
+                    <TranslateTransform x:Name="SubTitleTransform" Y="0"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+
+            <!-- Карточка авторизации -->
+            <Border x:Name="LoginCard"
+                    Background="#0d0d0d"
+                    CornerRadius="10"
+                    Padding="35 30"
+                    BorderThickness="1"
+                    BorderBrush="#1a1212"
+                    Opacity="0">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="60" ShadowDepth="0" Opacity="0.6" Color="Black"/>
+                </Border.Effect>
+                <Border.RenderTransform>
+                    <TranslateTransform x:Name="LoginCardTransform" Y="0"/>
+                </Border.RenderTransform>
+
+                <StackPanel>
+                    <!-- Поле логина -->
+                    <TextBlock Text="Л О Г И Н" Foreground="#666666" FontSize="11" FontWeight="Bold"
+                               Margin="5 0 0 10"/>
+                    <Border Style="{StaticResource InputBorderStyle}" Cursor="Hand">
+                        <Grid Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <!-- Иконка пользователя -->
+                            <Path Grid.Column="0"
+                                  Data="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                                  Fill="#ff6f00" Width="22" Height="22"
+                                  Stretch="Uniform" Margin="0 0 15 0" Opacity="0.9"/>
+                            <TextBox Grid.Column="1"
+                                     IsEnabled="False"
+                                     IsHitTestVisible="False"
+                                     x:Name="LoginTextBox"
+                                     Style="{StaticResource InputTextBoxStyle}"
+                                     Text="{Binding Login}"
+                                     Tag="Введите логин"/>
+                        </Grid>
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="TouchDown">
+                                <b:InvokeCommandAction
+                                    Command="{Binding DataContext.ClickLoginCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                    CommandParameter="{Binding}" />
+                            </b:EventTrigger>
+                            <b:EventTrigger EventName="MouseDown">
+                                <b:InvokeCommandAction
+                                    Command="{Binding DataContext.ClickLoginCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                    CommandParameter="{Binding}" />
+                            </b:EventTrigger>
+                        </b:Interaction.Triggers>
+                    </Border>
+
+                    <!-- Поле пароля -->
+                    <TextBlock Text="П А Р О Л Ь" Foreground="#666666" FontSize="11" FontWeight="Bold"
+                               Margin="5 8 0 10"/>
+                    <Border Style="{StaticResource InputBorderStyle}" Margin="0" Cursor="Hand">
+                        <Grid Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <!-- Иконка замка -->
+                            <Path Grid.Column="0"
+                                  Data="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"
+                                  Fill="#ff6f00" Width="22" Height="22"
+                                  Stretch="Uniform" Margin="0 0 15 0" Opacity="0.9"/>
+                            <TextBox Grid.Column="1"
+                                     x:Name="PasswordBox"
+                                     Text="{Binding Password}"
+                                     IsEnabled="False"
+                                     IsHitTestVisible="False"
+                                     Style="{StaticResource InputTextBoxStyle}"/>
+                        </Grid>
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="TouchDown">
+                                <b:InvokeCommandAction
+                                    Command="{Binding DataContext.ClickPasswordCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                    CommandParameter="{Binding}" />
+                            </b:EventTrigger>
+                            <b:EventTrigger EventName="MouseDown">
+                                <b:InvokeCommandAction
+                                    Command="{Binding DataContext.ClickPasswordCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                    CommandParameter="{Binding}" />
+                            </b:EventTrigger>
+                        </b:Interaction.Triggers>
+                    </Border>
+                </StackPanel>
+            </Border>
+
+            <!-- Кнопка входа -->
+            <Button x:Name="NextButton"
+                    Margin="0 25 0 0"
+                    Height="58"
+                    Opacity="0"
+                    Cursor="Hand"
+                    TouchDown="NextButton_OnTouchDown"
+                    Click="NextButton_OnClick"
+                    FocusVisualStyle="{x:Null}">
+                <Button.RenderTransform>
+                    <TranslateTransform x:Name="ButtonTransform" Y="0"/>
+                </Button.RenderTransform>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="ButtonBorder"
+                                            CornerRadius="14"
+                                            BorderThickness="0"
+                                            Background="#ff6f00">
+                                        <Border.Effect>
+                                            <DropShadowEffect BlurRadius="30" ShadowDepth="0" Opacity="0.6" Color="#ff6f00"/>
+                                        </Border.Effect>
+                                        <TextBlock x:Name="ButtonText"
+                                                   Text="Войти в систему"
+                                                   FontSize="17"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="White"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#ff6f00"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#ff6f00"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#252525"/>
+                                            <Setter TargetName="ButtonBorder" Property="Effect" Value="{x:Null}"/>
+                                            <Setter TargetName="ButtonText" Property="Foreground" Value="#555555"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Версия -->
+            <TextBlock x:Name="VersionText"
+                       Text="PrintMate Terminal v1.0"
+                       Margin="0 50 0 0"
+                       FontSize="12"
+                       HorizontalAlignment="Center"
+                       Foreground="#2a2a2a"
+                       Opacity="0"/>
+        </StackPanel>
+
+        <!-- ============== ПРИВЕТСТВЕННЫЙ ЭКРАН ЗАГРУЗКИ ============== -->
+        <Grid x:Name="WelcomeContainer"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              IsHitTestVisible="False"
+              Visibility="Collapsed">
+
+            <!-- Декоративное фоновое свечение -->
+            <Ellipse Width="500" Height="500"
+                     Opacity="0.08"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     Margin="0 -50 0 0">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#ff6f00" Offset="0"/>
+                        <GradientStop Color="#ff6f00" Offset="0.3"/>
+                        <GradientStop Color="Transparent" Offset="1"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <!-- Анимированная иконка загрузки -->
+                <Grid x:Name="LoadingSpinner" Width="120" Height="120" Margin="0 0 0 40">
+                    <Grid.RenderTransform>
+                        <TranslateTransform x:Name="LoadingSpinnerTransform" Y="0"/>
+                    </Grid.RenderTransform>
+                    <!-- Внешнее кольцо с вращением -->
+                    <Ellipse Width="120" Height="120" StrokeThickness="2" Opacity="0.15">
+                        <Ellipse.Stroke>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#ff6f00" Offset="0"/>
+                                <GradientStop Color="Transparent" Offset="0.5"/>
+                                <GradientStop Color="#ff6f00" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Ellipse.Stroke>
+                    </Ellipse>
+
+                    <!-- Среднее кольцо -->
+                    <Ellipse Width="90" Height="90" StrokeThickness="3" Opacity="0.25">
+                        <Ellipse.Stroke>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="Transparent" Offset="0"/>
+                                <GradientStop Color="#ff6f00" Offset="0.3"/>
+                                <GradientStop Color="Transparent" Offset="0.7"/>
+                                <GradientStop Color="#ff6f00" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Ellipse.Stroke>
+                        <Ellipse.RenderTransform>
+                            <RotateTransform x:Name="MiddleRingRotation" CenterX="45" CenterY="45"/>
+                        </Ellipse.RenderTransform>
+                        <Ellipse.Triggers>
+                            <EventTrigger RoutedEvent="Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="(Ellipse.RenderTransform).(RotateTransform.Angle)"
+                                                         From="0" To="360"
+                                                         Duration="0:0:3"
+                                                         RepeatBehavior="Forever"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Ellipse.Triggers>
+                    </Ellipse>
+
+                    <!-- Внутреннее кольцо (обратное вращение) -->
+                    <Ellipse Width="60" Height="60" StrokeThickness="2" Opacity="0.4">
+                        <Ellipse.Stroke>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#ff6f00" Offset="0"/>
+                                <GradientStop Color="Transparent" Offset="0.4"/>
+                                <GradientStop Color="#ff6f00" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Ellipse.Stroke>
+                        <Ellipse.RenderTransform>
+                            <RotateTransform CenterX="30" CenterY="30"/>
+                        </Ellipse.RenderTransform>
+                        <Ellipse.Triggers>
+                            <EventTrigger RoutedEvent="Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="(Ellipse.RenderTransform).(RotateTransform.Angle)"
+                                                         From="360" To="0"
+                                                         Duration="0:0:2"
+                                                         RepeatBehavior="Forever"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Ellipse.Triggers>
+                    </Ellipse>
+
+                    <!-- Центральная точка с пульсацией -->
+                    <Ellipse Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Ellipse.Fill>
+                            <RadialGradientBrush>
+                                <GradientStop Color="#ff8c33" Offset="0"/>
+                                <GradientStop Color="#ff6f00" Offset="0.7"/>
+                                <GradientStop Color="#cc5500" Offset="1"/>
+                            </RadialGradientBrush>
+                        </Ellipse.Fill>
+                        <Ellipse.Effect>
+                            <DropShadowEffect BlurRadius="15" ShadowDepth="0" Opacity="0.8" Color="#ff6f00"/>
+                        </Ellipse.Effect>
+                        <Ellipse.Triggers>
+                            <EventTrigger RoutedEvent="Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="(Ellipse.Effect).(DropShadowEffect.BlurRadius)"
+                                                         From="10" To="25"
+                                                         Duration="0:0:1"
+                                                         AutoReverse="True"
+                                                         RepeatBehavior="Forever"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="(Ellipse.Effect).(DropShadowEffect.Opacity)"
+                                                         From="0.6" To="1"
+                                                         Duration="0:0:1"
+                                                         AutoReverse="True"
+                                                         RepeatBehavior="Forever"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Ellipse.Triggers>
+                    </Ellipse>
+                </Grid>
+
+                <!-- Приветственный текст -->
+                <TextBlock x:Name="WelcomeText"
+                           Text="Добро пожаловать!"
+                           FontSize="38"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Opacity="0"
+                           TextAlignment="Center">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#ffffff" Offset="0"/>
+                            <GradientStop Color="#e0e0e0" Offset="0.5"/>
+                            <GradientStop Color="#ffffff" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.3" Color="#ff6f00"/>
+                    </TextBlock.Effect>
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform x:Name="WelcomeScale" ScaleX="1" ScaleY="1"/>
+                            <TranslateTransform x:Name="WelcomeTranslate" Y="0"/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <!-- Подзаголовок -->
+                <TextBlock x:Name="WelcomeTextSub"
+                           Margin="0 15 0 0"
+                           Text="Загружаем интерфейс..."
+                           FontSize="16"
+                           FontWeight="Normal"
+                           HorizontalAlignment="Center"
+                           Opacity="0"
+                           TextAlignment="Center">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#707070" Offset="0"/>
+                            <GradientStop Color="#888888" Offset="0.5"/>
+                            <GradientStop Color="#707070" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform x:Name="WelcomeScaleSub" ScaleX="1" ScaleY="1"/>
+                            <TranslateTransform x:Name="WelcomeTranslateSub" Y="0"/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <!-- Современный прогресс-бар -->
+                <Grid Margin="0 40 0 0" Width="320" Height="6">
+                    <!-- Фон прогресс-бара -->
+                    <Border CornerRadius="3" Background="#1a1a1a">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#252525" Offset="0"/>
+                                <GradientStop Color="#1f1f1f" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                        <Border.BorderThickness>1</Border.BorderThickness>
+                    </Border>
+
+                    <!-- Анимированная полоса загрузки -->
+                    <Border x:Name="Bar" CornerRadius="3" Opacity="0" ClipToBounds="True">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform x:Name="BarScale" ScaleX="1" ScaleY="1"/>
+                                <TranslateTransform x:Name="BarTransform" Y="0"/>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+
+                        <Canvas ClipToBounds="True">
+                            <!-- Движущийся градиент -->
+                            <Border x:Name="LoadingStripe" Width="150" Height="6" CornerRadius="3" Canvas.Left="-150">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Color="Transparent" Offset="0"/>
+                                        <GradientStop Color="#ff6f00" Offset="0.3"/>
+                                        <GradientStop Color="#ff8c33" Offset="0.5"/>
+                                        <GradientStop Color="#ff6f00" Offset="0.7"/>
+                                        <GradientStop Color="Transparent" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.8" Color="#ff6f00"/>
+                                </Border.Effect>
+                                <Border.Triggers>
+                                    <EventTrigger RoutedEvent="Loaded">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)"
+                                                                 From="-150" To="320"
+                                                                 Duration="0:0:1.5"
+                                                                 RepeatBehavior="Forever"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Border.Triggers>
+                            </Border>
+                        </Canvas>
+                    </Border>
+                </Grid>
+
+                <!-- Статус текст с анимацией точек -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 25 0 0">
+                    <TextBlock Text="Подготовка системы" FontSize="12" Foreground="#404040"/>
+                    <TextBlock x:Name="LoadingDots" FontSize="12" Foreground="#404040">
+                        <TextBlock.Triggers>
+                            <EventTrigger RoutedEvent="Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <StringAnimationUsingKeyFrames Storyboard.TargetProperty="Text"
+                                                                        Duration="0:0:1.5"
+                                                                        RepeatBehavior="Forever">
+                                            <DiscreteStringKeyFrame KeyTime="0:0:0" Value=""/>
+                                            <DiscreteStringKeyFrame KeyTime="0:0:0.4" Value="."/>
+                                            <DiscreteStringKeyFrame KeyTime="0:0:0.8" Value=".."/>
+                                            <DiscreteStringKeyFrame KeyTime="0:0:1.2" Value="..."/>
+                                        </StringAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </TextBlock.Triggers>
+                    </TextBlock>
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+
+
+        <!-- Нижний копирайт -->
+        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 25">
+            <TextBlock Text="2025 PrintMate. Все права защищены."
+                       FontSize="11"
+                       Foreground="#222222"
+                       HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

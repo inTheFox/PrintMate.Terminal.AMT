@@ -1,0 +1,29 @@
+﻿<Application x:Class="PrintMate.Terminal.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:dryIoc="http://prismlibrary.com/"
+             xmlns:converters="clr-namespace:PrintMate.Terminal.Converters">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <hc:ThemeResources />
+                <hc:Theme />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Converters -->
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <converters:BoolToPasswordChangeTextConverter x:Key="BoolToPasswordChangeTextConverter"/>
+
+            <!-- Полное отключение фокусной рамки -->
+            <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}">
+                <Setter Property="Control.Template">
+                    <Setter.Value>
+                        <ControlTemplate />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

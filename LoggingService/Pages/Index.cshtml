@@ -1,0 +1,84 @@
+@page
+@model LoggingService.Pages.IndexModel
+@{
+    ViewData["Title"] = "Просмотр логов";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .log-entry { border-left: 4px solid #6c757d; padding: 10px; margin-bottom: 10px; }
+        .log-trace { border-left-color: #6c757d; }
+        .log-debug { border-left-color: #17a2b8; }
+        .log-information { border-left-color: #28a745; }
+        .log-warning { border-left-color: #ffc107; }
+        .log-error { border-left-color: #dc3545; }
+        .log-critical { border-left-color: #721c24; background-color: #f8d7da; }
+    </style>
+</head>
+<body>
+    <div class="container-fluid mt-4">
+        <h1>Просмотр логов</h1>
+
+        <form method="get" class="row g-3 mb-4">
+            <div class="col-md-3">
+                <label class="form-label">Приложение</label>
+                <input type="text" name="application" class="form-control" value="@Model.Application" />
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Мин. уровень</label>
+                <select name="minLevel" class="form-select">
+                    <option value="">Все</option>
+                    <option value="0" selected="@(Model.MinLevel == 0)">Trace</option>
+                    <option value="1" selected="@(Model.MinLevel == 1)">Debug</option>
+                    <option value="2" selected="@(Model.MinLevel == 2)">Information</option>
+                    <option value="3" selected="@(Model.MinLevel == 3)">Warning</option>
+                    <option value="4" selected="@(Model.MinLevel == 4)">Error</option>
+                    <option value="5" selected="@(Model.MinLevel == 5)">Critical</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Поиск</label>
+                <input type="text" name="search" class="form-control" value="@Model.SearchText" />
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Записей</label>
+                <input type="number" name="take" class="form-control" value="@Model.Take" />
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">&nbsp;</label>
+                <button type="submit" class="btn btn-primary w-100">Поиск</button>
+            </div>
+        </form>
+
+        @if (Model.Logs != null && Model.Logs.Any())
+        {
+            <p class="text-muted">Найдено записей: @Model.TotalCount</p>
+
+            @foreach (var log in Model.Logs)
+            {
+                <div class="log-entry log-@log.Level.ToString().ToLower()">
+                    <div class="d-flex justify-content-between">
+                        <strong>[@log.Level] @log.Application - @log.Category</strong>
+                        <small class="text-muted">@log.Timestamp.ToString("yyyy-MM-dd HH:mm:ss.fff")</small>
+                    </div>
+                    <div>@log.Message</div>
+                    @if (!string.IsNullOrEmpty(log.Exception))
+                    {
+                        <div class="mt-2">
+                            <small class="text-danger">Exception: @log.Exception</small>
+                        </div>
+                    }
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-info">Логи не найдены</div>
+        }
+    </div>
+</body>
+</html>

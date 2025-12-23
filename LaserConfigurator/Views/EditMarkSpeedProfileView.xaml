@@ -1,0 +1,233 @@
+<UserControl x:Class="LaserConfigurator.Views.EditMarkSpeedProfileView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             Width="900" Height="850">
+    <Grid>
+        <!-- Градиентный фон -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#F8F9FA" Offset="0"/>
+                <GradientStop Color="#E9ECEF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid Margin="25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Заголовок с градиентом -->
+            <Border Grid.Row="0" CornerRadius="10" Padding="20" Margin="0,0,0,20">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#667EEA" Offset="0"/>
+                        <GradientStop Color="#764BA2" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.Effect>
+                    <DropShadowEffect Color="#40000000" BlurRadius="15" ShadowDepth="3" Opacity="0.4"/>
+                </Border.Effect>
+                <StackPanel Orientation="Horizontal">
+                    <!-- Иконка настроек -->
+                    <Path Data="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"
+                          Fill="White" Width="28" Height="28" Stretch="Uniform" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                    <TextBlock Text="Редактирование профиля MarkSpeed"
+                               FontSize="22" FontWeight="Bold"
+                               Foreground="White" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Контент с прокруткой -->
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <!-- Основные параметры скорости -->
+                    <Border Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,15">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#20000000" BlurRadius="10" ShadowDepth="2" Opacity="0.2"/>
+                        </Border.Effect>
+                        <StackPanel>
+                            <TextBlock Text="⚡ Основные параметры скорости" FontSize="16" FontWeight="SemiBold"
+                                       Foreground="#667EEA" Margin="0,0,0,15"/>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.2*"/>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Скорость маркировки (мм/с)" Margin="0,0,0,5" FontWeight="Medium" Foreground="#495057"/>
+                                    <hc:NumericUpDown Value="{Binding MarkSpeed}" Minimum="0" Maximum="100000" Margin="0,0,0,18" Height="32"/>
+
+                                    <TextBlock Text="Скорость прыжка (мм/с)" Margin="0,0,0,5" FontWeight="Medium" Foreground="#495057"/>
+                                    <hc:NumericUpDown Value="{Binding JumpSpeed}" Minimum="0" Maximum="100000" Margin="0,0,0,18" Height="32"/>
+
+                                    <TextBlock Text="Максимальная длина прыжка (мм)" Margin="0,0,0,5" FontWeight="Medium" Foreground="#495057"/>
+                                    <hc:NumericUpDown Value="{Binding JumpMaxLengthLimitMm}" Minimum="0" Maximum="10000" DecimalPlaces="2" Margin="0,0,0,0" Height="32"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Text="Мощность лазера" Margin="0,0,0,5" FontWeight="Medium" Foreground="#495057"/>
+                                    <hc:NumericUpDown Value="{Binding CurPower}" Minimum="0" Maximum="1000" DecimalPlaces="1" Margin="0,0,0,18" Height="32"/>
+
+                                    <TextBlock Text="Диаметр луча (мкм)" Margin="0,0,0,5" FontWeight="Medium" Foreground="#495057"/>
+                                    <hc:NumericUpDown Value="{Binding CurBeamDiameterMicron}" Minimum="0" Maximum="1000" DecimalPlaces="1" Margin="0,0,0,18" Height="32"/>
+
+                                    <TextBlock Text="Напряжение Umax" Margin="0,0,0,5" FontWeight="Medium" Foreground="#495057"/>
+                                    <hc:NumericUpDown Value="{Binding Umax}" Minimum="0" Maximum="10" DecimalPlaces="2" Margin="0,0,0,0" Height="32"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Параметры задержек -->
+                    <Border Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,15">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#20000000" BlurRadius="10" ShadowDepth="2" Opacity="0.2"/>
+                        </Border.Effect>
+                        <StackPanel>
+                            <TextBlock Text="⏱️ Параметры задержек" FontSize="16" FontWeight="SemiBold"
+                                       Foreground="#F59E0B" Margin="0,0,0,15"/>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.4*"/>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="1.3*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="Задержка полигона (мкс)" Margin="0,0,0,5" FontWeight="Medium" Foreground="#495057"/>
+                                    <hc:NumericUpDown Value="{Binding PolygonDelay}" Minimum="0" Maximum="100000" Margin="0,0,0,18" Height="32"/>
+
+                                    <TextBlock Text="Задержка прыжка (мкс)" Margin="0,0,0,5" FontWeight="Medium" Foreground="#495057"/>
+                                    <hc:NumericUpDown Value="{Binding JumpDelay}" Minimum="0" Maximum="100000" Margin="0,0,0,18" Height="32"/>
+
+                                    <TextBlock Text="Минимальная задержка прыжка (мкс)" Margin="0,0,0,5" FontWeight="Medium" Foreground="#495057"/>
+                                    <hc:NumericUpDown Value="{Binding MinJumpDelay}" Minimum="0" Maximum="100000" Margin="0,0,0,18" Height="32"/>
+
+                                    <TextBlock Text="Задержка маркировки (мкс)" Margin="0,0,0,5" FontWeight="Medium" Foreground="#495057"/>
+                                    <hc:NumericUpDown Value="{Binding MarkDelay}" Minimum="0" Maximum="100000" Margin="0,0,0,0" Height="32"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Text="Задержка включения лазера (мкс)" Margin="0,0,0,5" FontWeight="Medium" Foreground="#495057"/>
+                                    <hc:NumericUpDown Value="{Binding LaserOnDelay}" Minimum="0" Maximum="10000" DecimalPlaces="1" Margin="0,0,0,18" Height="32"/>
+
+                                    <TextBlock Text="Задержка выключения лазера (мкс)" Margin="0,0,0,5" FontWeight="Medium" Foreground="#495057"/>
+                                    <hc:NumericUpDown Value="{Binding LaserOffDelay}" Minimum="0" Maximum="10000" DecimalPlaces="1" Margin="0,0,0,18" Height="32"/>
+
+                                    <TextBlock Text="Задержка вкл. (SkyWriting, мкс)" Margin="0,0,0,5" FontWeight="Medium" Foreground="#495057"/>
+                                    <hc:NumericUpDown Value="{Binding LaserOnDelayForSkyWriting}" Minimum="0" Maximum="10000" DecimalPlaces="1" Margin="0,0,0,18" Height="32"/>
+
+                                    <TextBlock Text="Задержка выкл. (SkyWriting, мкс)" Margin="0,0,0,5" FontWeight="Medium" Foreground="#495057"/>
+                                    <hc:NumericUpDown Value="{Binding LaserOffDelayForSkyWriting}" Minimum="0" Maximum="10000" DecimalPlaces="1" Margin="0,0,0,0" Height="32"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Дополнительные опции -->
+                    <Border Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,0">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#20000000" BlurRadius="10" ShadowDepth="2" Opacity="0.2"/>
+                        </Border.Effect>
+                        <StackPanel>
+                            <TextBlock Text="🎯 Дополнительные опции" FontSize="16" FontWeight="SemiBold"
+                                       Foreground="#10B981" Margin="0,0,0,15"/>
+
+                            <Border Background="#F0FDF4" BorderBrush="#10B981" BorderThickness="1" CornerRadius="6" Padding="12">
+                                <ToggleButton Content="Включить SkyWriting" IsChecked="{Binding Swenable}"
+                                              Style="{StaticResource ToggleButtonSwitch}" HorizontalAlignment="Left"/>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Кнопки управления -->
+            <Grid Grid.Row="2" Margin="0,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <Border Background="#FEF3C7" BorderBrush="#F59E0B" BorderThickness="1" CornerRadius="6" Padding="10">
+                        <StackPanel Orientation="Horizontal">
+                            <Path Data="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"
+                                  Fill="#F59E0B" Width="16" Height="16" Stretch="Uniform" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                            <TextBlock Text="Изменения применятся после сохранения" FontSize="12" Foreground="#92400E" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Command="{Binding SaveCommand}" Width="130" Height="40" Margin="0,0,10,0">
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource ButtonSuccess}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}"
+                                                    CornerRadius="8"
+                                                    BorderThickness="0">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#40000000" BlurRadius="8" ShadowDepth="2" Opacity="0.3"/>
+                                                </Border.Effect>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <Path Data="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"
+                                                          Fill="White" Width="16" Height="16" Stretch="Uniform" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                                    <TextBlock Text="Сохранить" Foreground="White" FontWeight="SemiBold" FontSize="14" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#059669"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <Button Command="{Binding CancelCommand}" Width="130" Height="40">
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource ButtonDanger}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}"
+                                                    CornerRadius="8"
+                                                    BorderThickness="0">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="#40000000" BlurRadius="8" ShadowDepth="2" Opacity="0.3"/>
+                                                </Border.Effect>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <Path Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+                                                          Fill="White" Width="16" Height="16" Stretch="Uniform" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                                    <TextBlock Text="Отмена" Foreground="White" FontWeight="SemiBold" FontSize="14" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#B91C1C"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,6 @@
+@HansHostProvider_HostAddress = http://localhost:5274
+
+GET {{HansHostProvider_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

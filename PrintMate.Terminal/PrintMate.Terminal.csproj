@@ -1,0 +1,612 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+	  <CETCompat>false</CETCompat>
+	  <OutputType>WinExe</OutputType>
+    <UseWindowsForms>true</UseWindowsForms>
+    <TargetFramework>net9.0-windows7.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>PrintMate.Terminal</AssemblyName>
+    <RootNamespace>PrintMate.Terminal</RootNamespace>
+    <ApplicationIcon>images\app-icon.ico</ApplicationIcon>
+    <Version>1.0.0.0</Version>
+    <Configurations>Debug;Release;ATM32_Debug;ATM16_Debug</Configurations>
+    <Copyright>Copyright © User 2025</Copyright>
+    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <LangVersion>latest</LangVersion>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <Platforms>AnyCPU;x64</Platforms>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;Core</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DefineConstants>TRACE;Core</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;Core</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DefineConstants>TRACE;Core</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="2 куба 50 мм %282 лазера%29.cli" />
+    <None Remove="box_0,5.cli" />
+    <None Remove="images\2d.png" />
+    <None Remove="images\accept.gif" />
+    <None Remove="images\app.png" />
+    <None Remove="images\bd.png" />
+    <None Remove="images\block.png" />
+    <None Remove="images\camera.png" />
+    <None Remove="images\car.png" />
+    <None Remove="images\cli_file.png" />
+    <None Remove="images\cnc_file.png" />
+    <None Remove="images\computer-vision.png" />
+    <None Remove="images\debug.png" />
+    <None Remove="images\disk.png" />
+    <None Remove="images\file.png" />
+    <None Remove="images\folder.png" />
+    <None Remove="images\gas_filters_system_64_%281%29.png" />
+    <None Remove="images\gas_off.png" />
+    <None Remove="images\gas_on.png" />
+    <None Remove="images\gradient.png" />
+    <None Remove="images\gradient2.png" />
+    <None Remove="images\ibp.png" />
+    <None Remove="images\laser.png" />
+    <None Remove="images\laser_off.png" />
+    <None Remove="images\laser_on.png" />
+    <None Remove="images\left_gradient.png" />
+    <None Remove="images\light_off.png" />
+    <None Remove="images\light_on.png" />
+    <None Remove="images\logo_mini.ico" />
+    <None Remove="images\message.png" />
+    <None Remove="images\monitor.png" />
+    <None Remove="images\params.png" />
+    <None Remove="images\parse.gif" />
+    <None Remove="images\pause.png" />
+    <None Remove="images\peoples.png" />
+    <None Remove="images\play_print.png" />
+    <None Remove="images\plc.png" />
+    <None Remove="images\powder.png" />
+    <None Remove="images\process.png" />
+    <None Remove="images\right_gradient.png" />
+    <None Remove="images\saved.png" />
+    <None Remove="images\scanator.png" />
+    <None Remove="images\show.png" />
+    <None Remove="images\start.png" />
+    <None Remove="images\stop.png" />
+    <None Remove="images\success.png" />
+    <None Remove="images\unsaved.png" />
+    <None Remove="mybox.cli" />
+    <None Remove="nul" />
+    <None Remove="Videos\intro.mp4" />
+    <None Remove="Тест 2 лазера %284 детали%29.cli" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="2 куба 50 мм (2 лазера).cli">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="box_0,5.cli">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\active_messages_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\add_rule_32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\add_rule_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\add_user_32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\add_user_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\all_messages_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\amt16_axes_main.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\amt16_doser_funel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\amt16_doser_spin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\amt16_platform.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\amt16_recoater.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\amt16_system_main.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\amt16_system_window_lights.png" />
+    <Content Include="images\amt16_system_window_lights_out.png" />
+    <Content Include="images\gradient2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\left_gradient.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\right_gradient.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mybox.cli">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Opc\Dataset\HardSignal_AMT32.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Opc\Dataset\HardSignal_Lang_AMT32.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Videos\intro.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Тест 2 лазера (4 детали).cli">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="images\2d.png" />
+    <Resource Include="images\accept.gif" />
+    <Resource Include="images\amt32_axes_main.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\amt32_doser_funel.png" />
+    <Content Include="images\amt32_doser_spin.png" />
+    <Resource Include="images\amt32_platform.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\amt32_recoater.png" />
+    <Resource Include="images\amt32_system_main.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\amt32_system_window_lights.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\amt32_system_window_lights_out.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\android-chrome-192x192.png" />
+    <Resource Include="images\android-chrome-512x512.png" />
+    <Content Include="images\apple-touch-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\arrow_bottom_32.png" />
+    <Resource Include="images\app.png" />
+    <Resource Include="images\arrow_bottom_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\arrow_bottom_end_32.png" />
+    <Content Include="images\arrow_bottom_end_64.png" />
+    <Content Include="images\arrow_left_32.png" />
+    <Resource Include="images\arrow_left_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\arrow_left_end_32.png" />
+    <Resource Include="images\arrow_left_end_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\arrow_right_32.png" />
+    <Resource Include="images\arrow_right_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\arrow_right_end_32.png" />
+    <Resource Include="images\arrow_right_end_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\arrow_step_bottom_32.png" />
+    <Resource Include="images\arrow_step_bottom_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\arrow_step_top_32.png" />
+    <Resource Include="images\arrow_step_top_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\arrow_top_32.png" />
+    <Resource Include="images\arrow_top_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\arrow_top_end_32.png" />
+    <Content Include="images\arrow_top_end_64.png" />
+    <Resource Include="images\axes_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\backspace_black.png" />
+    <Resource Include="images\backspace_white.png" />
+    <Content Include="images\backup_32.png" />
+    <Content Include="images\backup_64.png" />
+    <Content Include="images\build.png" />
+    <Content Include="images\button_ok.png" />
+    <Content Include="images\cancel16.png" />
+    <Resource Include="images\capture_recoat_64.png" />
+    <Resource Include="images\capture_reexpose_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\bd.png" />
+    <Resource Include="images\block.png" />
+    <Resource Include="images\camera.png" />
+    <Resource Include="images\car.png" />
+    <Resource Include="images\chamber_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\chamber_light_off_64.png" />
+    <Resource Include="images\chamber_light_off_64_bare.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\chamber_light_on_64.png" />
+    <Resource Include="images\chamber_locked_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\chamber_unlocked_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\chamber_unlocked_64_white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\checkbox_selected_32.png" />
+    <Content Include="images\checkbox_selected_64.png" />
+    <Content Include="images\checkbox_unselected_32.png" />
+    <Content Include="images\checkbox_unselected_64.png" />
+    <Content Include="images\collapsed_arrow_16.png" />
+    <Resource Include="images\cli_file.png" />
+    <Resource Include="images\cnc_file.png" />
+    <Resource Include="images\computer-vision.png" />
+    <Resource Include="images\config_gui_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\config_limits_32.png" />
+    <Content Include="images\config_limits_64.png" />
+    <Content Include="images\config_plc_64.png" />
+    <Resource Include="images\config_process_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\config_settings_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\config_users_32.png" />
+    <Content Include="images\config_users_64.png" />
+    <Content Include="images\connections_32.png" />
+    <Content Include="images\connections_64.png" />
+    <Content Include="images\credits_64.png" />
+    <Content Include="images\current_messages_64.png" />
+    <Content Include="images\defects_round_64.png" />
+    <Content Include="images\defects_square_64.png" />
+    <Content Include="images\doser.png" />
+    <Content Include="images\down16.png" />
+    <Content Include="images\dropdown_arrow_16.png" />
+    <Content Include="images\dropdown_arrow_32.png" />
+    <Content Include="images\dropdown_arrow_64.png" />
+    <Content Include="images\edit_add16.png" />
+    <Resource Include="images\debug.png" />
+    <Resource Include="images\disk.png" />
+    <Resource Include="images\edit_rule_32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\edit_rule_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\edit_user_32.png" />
+    <Content Include="images\edit_user_64.png" />
+    <Content Include="images\eject_32.png" />
+    <Content Include="images\eject_64.png" />
+    <Content Include="images\enter_black.png" />
+    <Content Include="images\enter_white.png" />
+    <Content Include="images\error_message_32.png" />
+    <Content Include="images\error_message_64.png" />
+    <Content Include="images\error_message_64_.png" />
+    <Content Include="images\favicon-16x16.png" />
+    <Content Include="images\favicon-32x32.png" />
+    <Content Include="images\filter_messages_64.png" />
+    <Content Include="images\folder_32.png" />
+    <Resource Include="images\folder_64.png" />
+    <Content Include="images\fullscreen_64.png" />
+    <Resource Include="images\file.png" />
+    <Resource Include="images\folder.png" />
+    <Resource Include="images\gas_filters_system_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\gauges_32.png" />
+    <Resource Include="images\gas_filters_system_64_(1).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\gas_off.png" />
+    <Resource Include="images\gas_on.png" />
+    <Resource Include="images\gauges_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\gauges_favorites_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\gauges_five_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\gauges_three_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\gauges_two_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\get_info_64.png" />
+    <Content Include="images\get_info_disabled_64.png" />
+    <Content Include="images\gordienko_64.png" />
+    <Content Include="images\gordienko_64_hell.png" />
+    <Content Include="images\goto_zero_32.png" />
+    <Resource Include="images\goto_zero_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\go_live_64.png" />
+    <Content Include="images\gridview_32.png" />
+    <Content Include="images\gridview_64.png" />
+    <Content Include="images\harddrive_32.png" />
+    <Content Include="images\harddrive_64.png" />
+    <Content Include="images\icons8-digital-64.png" />
+    <Content Include="images\icon_not_found_32.png" />
+    <Content Include="images\icon_not_found_64.png" />
+    <Content Include="images\indicator_gray_32.png" />
+    <Resource Include="images\gradient.png" />
+    <Resource Include="images\ibp.png" />
+    <Resource Include="images\indicator_gray_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\indicator_green_32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\indicator_green_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\indicator_red_32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\indicator_red_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\indicator_yellow_32.png" />
+    <Content Include="images\indicator_yellow_64.png" />
+    <Resource Include="images\info.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\info_message_32.png" />
+    <Content Include="images\info_message_64.png" />
+    <Content Include="images\info_message_64_.png" />
+    <Content Include="images\init_view_64.png" />
+    <Content Include="images\jobfile_32.png" />
+    <Content Include="images\jobfile_64.png" />
+    <Resource Include="images\joblist_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\join_64.png" />
+    <Content Include="images\korolev.png" />
+    <Resource Include="images\laser.png" />
+    <Resource Include="images\laser_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\layers64.png" />
+    <Content Include="images\listview_32.png" />
+    <Content Include="images\listview_64.png" />
+    <Content Include="images\live_video64.png" />
+    <Content Include="images\login_64.png" />
+    <Content Include="images\logout_64.png" />
+    <Resource Include="images\laser_off.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\laser_on.png" />
+    <Resource Include="images\light_on.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\logo_full.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\logo_full_with_text.png" />
+    <Content Include="images\logo_mini.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="images\logo_mini.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\logo_report.png" />
+    <Content Include="images\main_page_64.png" />
+    <Content Include="images\manual_32.png" />
+    <Resource Include="images\manual_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\message.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\messages_64.png" />
+    <Content Include="images\messages_unred_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\minimize_32.png" />
+    <Content Include="images\minimize_64.png" />
+    <Content Include="images\minus_32.png" />
+    <Content Include="images\minus_64.png" />
+    <Content Include="images\mstile-150x150.png" />
+    <Content Include="images\new.png" />
+    <Content Include="images\new16.png" />
+    <Content Include="images\notfound_64.png" />
+    <Content Include="images\notifications_64.png" />
+    <Content Include="images\ok16.png" />
+    <Content Include="images\on_32.png" />
+    <Content Include="images\on_64.png" />
+    <Content Include="images\open.png" />
+    <Content Include="images\open16.png" />
+    <Content Include="images\pendrive_32.png" />
+    <Content Include="images\pendrive_64.png" />
+    <Content Include="images\plus_32.png" />
+    <Content Include="images\plus_64.png" />
+    <Resource Include="images\params.png" />
+    <Resource Include="images\parse.gif" />
+    <Resource Include="images\pause.png" />
+    <Resource Include="images\peoples.png" />
+    <Resource Include="images\play_print.png" />
+    <Resource Include="images\plc.png" />
+    <Resource Include="images\powder.png" />
+    <Resource Include="images\powder_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\print_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\print_history_64.png" />
+    <Content Include="images\print_history_64_tr.png" />
+    <Content Include="images\recoat_64.png" />
+    <Content Include="images\reexpose_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\reference_32.png" />
+    <Resource Include="images\monitor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\process.png" />
+    <Resource Include="images\reference_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\refresh_32.png" />
+    <Content Include="images\refresh_64.png" />
+    <Content Include="images\remove_32.png" />
+    <Content Include="images\remove_64.png" />
+    <Content Include="images\remove_rule_32.png" />
+    <Content Include="images\remove_rule_64.png" />
+    <Content Include="images\remove_user_32.png" />
+    <Content Include="images\remove_user_64.png" />
+    <Content Include="images\report_32.png" />
+    <Content Include="images\report_64.png" />
+    <Content Include="images\reset_32.png" />
+    <Content Include="images\reset_64.png" />
+    <Content Include="images\round_close_32.png" />
+    <Content Include="images\round_close_64.png" />
+    <Content Include="images\round_pause_64.png" />
+    <Content Include="images\round_play_64.png" />
+    <Content Include="images\round_stop_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\run.png" />
+    <Content Include="images\save.png" />
+    <Content Include="images\see_details_32.png" />
+    <Content Include="images\see_details_64.png" />
+    <Content Include="images\service_32.png" />
+    <Resource Include="images\service_64.png" />
+    <Content Include="images\shift_black.png" />
+    <Content Include="images\shift_white.png" />
+    <Content Include="images\shutdown_app_32.png" />
+    <Content Include="images\shutdown_app_64.png" />
+    <Content Include="images\shutdown_system_32.png" />
+    <Content Include="images\shutdown_system_64.png" />
+    <Content Include="images\stop_32.png" />
+    <Resource Include="images\start.png" />
+    <Resource Include="images\stop.png" />
+    <Resource Include="images\stop_64.png" />
+    <Content Include="images\switch_0_32.png" />
+    <Content Include="images\switch_0_64.png" />
+    <Content Include="images\switch_0_disabled_32.png" />
+    <Content Include="images\switch_0_disabled_64.png" />
+    <Content Include="images\switch_I_32.png" />
+    <Content Include="images\switch_I_64.png" />
+    <Content Include="images\switch_I_disabled_32.png" />
+    <Content Include="images\switch_I_disabled_64.png" />
+    <Content Include="images\switch_text_0_32.png" />
+    <Content Include="images\switch_text_0_64.png" />
+    <Content Include="images\switch_text_I_32.png" />
+    <Content Include="images\switch_text_I_64.png" />
+    <Content Include="images\systems_32.png" />
+    <Resource Include="images\saved.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\scanator.png" />
+    <Resource Include="images\show.png" />
+    <Resource Include="images\success.png" />
+    <Resource Include="images\systems_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\system_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="images\system_state_screen_32.png" />
+    <Content Include="images\system_state_screen_64.png" />
+    <Content Include="images\transparent_32.png" />
+    <Content Include="images\transparent_64.png" />
+    <Content Include="images\up16.png" />
+    <Content Include="images\ups_64.png" />
+    <Content Include="images\ups_battery_alarm_64.png" />
+    <Content Include="images\ups_battery_idle_64.png" />
+    <Content Include="images\ups_connection_alarm_64.png" />
+    <Content Include="images\ups_connection_idle_64.png" />
+    <Content Include="images\ups_inverter_64.png" />
+    <Content Include="images\warning_message_32.png" />
+    <Content Include="images\warning_message_64.png" />
+    <Content Include="images\warning_message_64_.png" />
+    <Content Include="images\zero_32.png" />
+    <Resource Include="images\light_off.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\unsaved.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\zero_64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Emgu.CV" Version="4.12.0.5764" />
+    <PackageReference Include="Emgu.CV.Bitmap" Version="4.12.0.5764" />
+    <PackageReference Include="Emgu.CV.runtime.windows" Version="4.12.0.5764" />
+    <PackageReference Include="HandyControls" Version="3.6.0" />
+    <PackageReference Include="HelixToolkit.SharpDX.Core.Wpf" Version="2.26.0" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-rc5.4" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.NewtonsoftJson" Version="9.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
+    <PackageReference Include="NetTopologySuite" Version="2.6.0" />
+    <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
+    <PackageReference Include="SharpDX" Version="4.2.0" />
+    <PackageReference Include="SharpDX.D3DCompiler" Version="4.2.0" />
+    <PackageReference Include="SharpDX.Direct3D9" Version="4.2.0" />
+    <PackageReference Include="SharpDX.Direct3D11" Version="4.2.0" />
+    <PackageReference Include="SharpDX.DXGI" Version="4.2.0" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.9" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+    <PackageReference Include="Veldrid" Version="4.9.0" />
+    <PackageReference Include="Veldrid.StartupUtilities" Version="4.9.0" />
+    <PackageReference Include="Veldrid.SPIRV" Version="1.0.15" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hans.NET\Hans.NET.csproj" />
+    <ProjectReference Include="..\HansHostProvider.Shared\HansHostProvider.Shared.csproj" />
+    <ProjectReference Include="..\LaserLib\LaserLib.csproj" />
+    <ProjectReference Include="..\LayerAnalyzer.Lib\LayerAnalyzer.Lib.csproj" />
+    <ProjectReference Include="..\LoggingService.Client\LoggingService.Client.csproj" />
+    <ProjectReference Include="..\Observer\Observer.csproj" />
+    <ProjectReference Include="..\Observer.Shared\Observer.Shared.csproj" />
+    <ProjectReference Include="..\Opc2Lib\Opc2Lib.csproj" />
+    <ProjectReference Include="..\PrintSpectator.Shared\PrintSpectator.Shared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Windows.Forms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enums\" />
+    <Folder Include="Parsers\CncParser\" />
+    <Folder Include="ViewModels\ComponentsViewModels\" />
+  </ItemGroup>
+</Project>

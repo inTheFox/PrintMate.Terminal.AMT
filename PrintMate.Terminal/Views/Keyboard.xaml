@@ -1,0 +1,195 @@
+<UserControl x:Class="PrintMate.Terminal.Views.Keyboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:kc="clr-namespace:PrintMate.Terminal.Views.KeyboardComponents"
+             mc:Ignorable="d"
+             Background="Black"
+             x:Name="Root"
+             Width="1920"
+             Height="1080"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center"
+             Focusable="True"
+             FocusVisualStyle="{x:Null}"
+             d:DesignHeight="1080" d:DesignWidth="1920" d:DataContext="KeyboardViewModel">
+
+
+    <Grid>
+        <!-- Полупрозрачный тёмный фон с эффектом затемнения -->
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Border x:Name="TextAreaBorder" Padding="50" Visibility="Collapsed">
+                <StackPanel>
+                    <TextBlock Width="300" TextWrapping="Wrap" x:Name="TitleText" Margin="0 0 0 20" TextAlignment="Center" FontWeight="Regular" Foreground="Gray" FontSize="20" Text="{Binding Title, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                    <!-- Значение с кнопкой Backspace -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock x:Name="ValueText" FontWeight="Bold" FontSize="40" TextAlignment="Center" Foreground="White"
+                                   VerticalAlignment="Center" 
+                                   Text="{Binding Value, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                        <Button x:Name="BackspaceButton"
+                                Width="55" Height="55"
+                                Margin="15,0,0,0"
+                                VerticalAlignment="Center"
+                                Click="OnBackspaceButtonClick">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="ButtonBorder"
+                                            Background="#2C2C2C"
+                                            CornerRadius="10"
+                                            BorderThickness="0">
+                                        <TextBlock Text="⌫"
+                                                   FontSize="28"
+                                                   Foreground="White"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#3C3C3C"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#1C1C1C"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Border HorizontalAlignment="Center" Padding="5" >
+                <StackPanel>
+                    <!-- Индикатор загрузки (показывается пока создаётся клавиатура) -->
+                    <Grid x:Name="LoadingIndicator" Visibility="Visible" Height="400" Width="600">
+                        <Grid.RenderTransform>
+                            <RotateTransform x:Name="LoadingRotation" CenterX="300" CenterY="200" Angle="0"/>
+                        </Grid.RenderTransform>
+
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <!-- Анимированный спиннер --><!--
+                            <Viewbox Width="100" Height="150" Margin="0 0 0 20">
+                                <Canvas Width="150" Height="150">
+                                    <Ellipse Width="150" Height="150"
+                                             Stroke="#3498db"
+                                             StrokeThickness="8"
+                                             StrokeDashArray="70 30"
+                                             StrokeDashOffset="0"
+                                             x:Name="SpinnerEllipse">
+                                        <Ellipse.RenderTransform>
+                                            <RotateTransform x:Name="SpinnerRotation" CenterX="50" CenterY="50"/>
+                                        </Ellipse.RenderTransform>
+                                    </Ellipse>
+                                </Canvas>
+                            </Viewbox>-->
+
+                            <!-- Текст загрузки -->
+                            <TextBlock Text="Загрузка клавиатуры"
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"
+                                       x:Name="LoadingText">
+                            </TextBlock>
+                            <!-- Текст загрузки -->
+                            <TextBlock Text="Пожалуйста подождите"
+                                       FontSize="18"
+                                       FontWeight="Bold"
+                                       Foreground="Gray"
+                                       HorizontalAlignment="Center"
+                                       x:Name="LoadingTextSubTitle">
+                            </TextBlock>
+                            <ProgressBar x:Name="LoadingProgressBar" Style="{StaticResource ProgressBarFlat}" Value="110" Margin="0 20 0 0" Background="Gray" Foreground="Red" Maximum="100" IsIndeterminate="True"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Border HorizontalAlignment="Center" x:Name="KeyboardContainer" Background="Transparent">
+                        <Grid>
+                            <!-- Полная QWERTY клавиатура -->
+                            <kc:FullKeyboard x:Name="FullKeyboardControl" Visibility="Collapsed"/>
+
+                            <!-- Числовая клавиатура -->
+                            <kc:NumpadKeyboard x:Name="NumpadKeyboardControl" Visibility="Collapsed"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- Кнопки для числовой клавиатуры -->
+                    <StackPanel x:Name="NumpadButtonsPanel" Visibility="Visible" Margin="0 15 0 0" Orientation="Vertical" HorizontalAlignment="Center">
+                        <!-- Кнопка Отмена -->
+                        <Button x:Name="NumCancel"
+                                Width="290" Height="55"
+                                Margin="0,0,0,0"
+                                Cursor="Hand"
+                                Click="CloseButtonOnClick">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="ButtonBorder"
+                                            Background="IndianRed"
+                                            CornerRadius="10"
+                                            BorderThickness="0"
+                                            Padding="20,0">
+                                        <TextBlock Text="Отмена"
+                                                   Foreground="White"
+                                                   FontSize="16"
+                                                   FontWeight="SemiBold"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#E53935"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#B71C1C"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <!-- Кнопка Применить -->
+                        <Button x:Name="NumEnter"
+                                Width="290" Height="55"
+                                Margin="0,10,0,0"
+                                IsEnabled="False"
+                                Click="EnterButtonOnClick">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="ButtonBorder"
+                                            Background="LawnGreen"
+                                            CornerRadius="10"
+                                            BorderThickness="0"
+                                            Padding="20,0"
+                                            Cursor="Hand">
+                                        <TextBlock x:Name="ButtonText"
+                                                   Text="Применить"
+                                                   Foreground="Black"
+                                                   FontSize="16"
+                                                   FontWeight="SemiBold"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#43A047"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#1B5E20"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter TargetName="ButtonBorder" Property="Background" Value="#555555"/>
+                                            <Setter TargetName="ButtonBorder" Property="Cursor" Value="Arrow"/>
+                                            <Setter TargetName="ButtonText" Property="Foreground" Value="#888888"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+
+</UserControl>

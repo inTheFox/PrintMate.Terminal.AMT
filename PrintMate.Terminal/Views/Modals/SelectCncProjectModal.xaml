@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="PrintMate.Terminal.Views.Modals.SelectCncProjectModal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PrintMate.Terminal.Views.Modals"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <Grid>
+
+            <Border Background="#1b1b1b" Width="500" Height="250">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Foreground="White" HorizontalAlignment="Center" FontWeight="Black" FontSize="20">Вы выбрали один файл CNC.</TextBlock>
+                <TextBlock Foreground="White" HorizontalAlignment="Center" FontSize="15">Добавить один файл или все файлы из папки ?</TextBlock>
+                    <WrapPanel HorizontalAlignment="Center" Margin="0 50 0 0">
+                    <Button BorderBrush="Transparent" Foreground="Black" Background="#ff4500" Width="200" Height="50" Command="{Binding SingleCommand}" Content="Выбранный файл" Margin="5" Style="{StaticResource ButtonPrimary}"/>
+                    <Button BorderBrush="Transparent" Foreground="Black" Background="#ff4500" Width="200" Height="50" Command="{Binding AllCommand}" Content="Все файлы в папке" Margin="5" Style="{StaticResource ButtonPrimary}"/>
+                    </WrapPanel>
+                </StackPanel>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="50">
+
+                    </DropShadowEffect>
+                </Border.Effect>
+            </Border>
+    </Grid>
+</UserControl>

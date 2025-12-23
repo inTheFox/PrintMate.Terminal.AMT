@@ -1,0 +1,173 @@
+﻿<UserControl x:Class="PrintMate.Terminal.Views.Configure.ConfigureParametersViews.ConfigureParametersPlc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PrintMate.Terminal.Views.Configure.ConfigureParametersViews"
+             xmlns:componentsViews="clr-namespace:PrintMate.Terminal.Views.ComponentsViews"
+             xmlns:views="clr-namespace:PrintMate.Terminal.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="1045" d:DesignWidth="1079">
+
+    <UserControl.Resources>
+        <!-- Modern Status Card Style -->
+        <Style x:Key="StatusCardStyle" TargetType="Border">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#0f0f0f" Offset="0"/>
+                        <GradientStop Color="#0a0a0a" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#1f1f1f" Offset="0"/>
+                        <GradientStop Color="#141414" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="14"/>
+            <Setter Property="Padding" Value="18"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </UserControl.Resources>
+
+    <ScrollViewer PanningMode="Both"
+                  VerticalScrollBarVisibility="Auto"
+                  ManipulationBoundaryFeedback="ScrollViewer_ManipulationBoundaryFeedback"
+                  PanningRatio="1.0"
+                  CanContentScroll="False">
+        <StackPanel Margin="15">
+
+            <!-- PLC Network Status Section -->
+            <componentsViews:Container Title="Статус ПЛК в сети" TitleSize="22">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Connection Status -->
+                    <Border Style="{StaticResource StatusCardStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Icon -->
+                            <Border Width="40" Height="40" CornerRadius="10" Margin="0 0 15 0">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#1a1a1a" Offset="0"/>
+                                        <GradientStop Color="#0f0f0f" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <TextBlock Text="🔗" FontSize="18"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <TextBlock Grid.Column="1"
+                                       Text="Состояние подключения"
+                                       Foreground="#a0a0a0"
+                                       FontSize="14"
+                                       FontWeight="Medium"
+                                       VerticalAlignment="Center"/>
+
+                            <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock FontWeight="Bold"
+                                           FontSize="14"
+                                           Foreground="{Binding ConnectTextColor}"
+                                           VerticalAlignment="Center"
+                                           Text="{Binding ConnectText}"/>
+                                <Image Margin="12 0 0 0" Width="14" Source="{Binding ConnectIconSource}"
+                                       VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- Ping Status -->
+                    <Border Grid.Column="1" Style="{StaticResource StatusCardStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Icon -->
+                            <Border Width="40" Height="40" CornerRadius="10" Margin="0 0 15 0">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#1a1a1a" Offset="0"/>
+                                        <GradientStop Color="#0f0f0f" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <TextBlock Text="📡" FontSize="18"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <TextBlock Grid.Column="1"
+                                       Text="Статус"
+                                       Foreground="#a0a0a0"
+                                       FontSize="14"
+                                       FontWeight="Medium"
+                                       VerticalAlignment="Center"/>
+
+                            <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock FontWeight="Bold"
+                                           FontSize="14"
+                                           Foreground="{Binding PingTextColor}"
+                                           VerticalAlignment="Center"
+                                           Text="{Binding PingText, Mode=TwoWay}"/>
+                                <Image Margin="12 0 0 0" Width="14" Source="{Binding PingIconSource, Mode=TwoWay}"
+                                       VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </componentsViews:Container>
+
+            <!-- PLC Settings Section -->
+            <componentsViews:Container Title="Настройка ПЛК" TitleSize="22">
+                <StackPanel>
+                    <componentsViews:EditboxKeyboard Label="Адрес" Value="{Binding Address, Mode=TwoWay}"/>
+                    <componentsViews:EditboxKeyboard Label="Порт" ValueType="Int" Value="{Binding Port, Mode=TwoWay}"/>
+                    <componentsViews:EditboxKeyboard Label="Таймаут" ValueType="Int" Value="{Binding Timeout, Mode=TwoWay}"/>
+                    <componentsViews:EditboxKeyboard Label="Логин" Value="{Binding Login, Mode=TwoWay}"/>
+                    <componentsViews:EditboxKeyboard Label="Пароль" Value="{Binding Password, Mode=TwoWay}"/>
+                    <componentsViews:EditboxKeyboard Label="NamespaceId" Value="{Binding NamespaceId, Mode=TwoWay}"/>
+                    <componentsViews:EditboxKeyboard Label="Класс" Value="{Binding VarSpace, Mode=TwoWay}"/>
+
+                    <!-- Action Buttons -->
+                    <Grid Margin="0 15 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0"
+                                Command="{Binding OkCommand}"
+                                HorizontalAlignment="Stretch"
+                                Height="50"
+                                Content="Установить"
+                                Margin="5"
+                                Style="{StaticResource ButtonSuccess}"/>
+                        <Button Grid.Column="1"
+                                Command="{Binding ResetCommand}"
+                                HorizontalAlignment="Stretch"
+                                Height="50"
+                                Content="Использовать по умолчанию"
+                                Margin="5"
+                                Style="{StaticResource ButtonDanger}"/>
+                    </Grid>
+                </StackPanel>
+            </componentsViews:Container>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

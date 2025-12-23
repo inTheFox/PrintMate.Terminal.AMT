@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="PrintMate.Terminal.Views.Modals.ProjectLoadingModal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PrintMate.Terminal.Views.Modals"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <Grid>
+        <Border Background="White" Width="500" Height="500" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock VerticalAlignment="Center" Foreground="Black" FontWeight="Black" FontSize="25" HorizontalAlignment="Center">Уже загружаем</TextBlock>
+                <TextBlock VerticalAlignment="Center" Foreground="Black" FontWeight="Black" FontSize="20" HorizontalAlignment="Center" Text="{Binding ProjectName}"/>
+<TextBlock FontSize="15" FontWeight="Bold" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Center">Пожалуйста подождите</TextBlock>
+                <ProgressBar Width="300" Margin="0 30 0 0" Foreground="Red" Style="{StaticResource ProgressBarFlat}" Value="110" Maximum="200" IsIndeterminate="True"/>
+                
+                <Button Command="{Binding NextBackground}" VerticalAlignment="Bottom"  Margin="0 50 0 0" Width="200" Background="Black" Foreground="Gray">Продолжить в фоне</Button>
+            </StackPanel>
+            <Border.Effect>
+                <DropShadowEffect Opacity="30"></DropShadowEffect>
+            </Border.Effect>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,176 @@
+<UserControl x:Class="PrintMate.Terminal.Views.Configure.ConfigureParametersViews.ConfigureParametersScanator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PrintMate.Terminal.Views.Configure.ConfigureParametersViews"
+             xmlns:components="clr-namespace:PrintMate.Terminal.Views.ComponentsViews"
+             mc:Ignorable="d"
+             d:DesignHeight="800" d:DesignWidth="1200">
+
+    <UserControl.Resources>
+        <!-- Section Header Style -->
+        <Style x:Key="SectionHeaderStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0 15 0 10"/>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#ff6f00" Offset="0"/>
+                        <GradientStop Color="#ff9933" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <ScrollViewer PanningMode="Both"
+                  PanningRatio="1.0"
+                  ManipulationBoundaryFeedback="ScrollViewer_ManipulationBoundaryFeedback"
+                  CanContentScroll="False"
+                  VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="15">
+
+            <!-- Header Section -->
+            <components:Container Title="Настройки сканаторной системы" TitleSize="22">
+                <Grid Margin="0 10 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0"
+                            HorizontalAlignment="Stretch"
+                            Height="50"
+                            Command="{Binding ImportCommand}"
+                            Content="Загрузить конфигурацию"
+                            Margin="5"
+                            Style="{StaticResource ButtonSuccess}"/>
+                    <Button Grid.Column="1"
+                            HorizontalAlignment="Stretch"
+                            Height="50"
+                            Command="{Binding ResetCommand}"
+                            Content="Использовать по умолчанию"
+                            Margin="5"
+                            Style="{StaticResource ButtonDanger}"/>
+                </Grid>
+            </components:Container>
+
+            <!-- Scanners Configuration -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Scanner 1 -->
+                <components:Container Grid.Column="0" Title="Сканатор 172.18.34.227" TitleSize="20">
+                    <StackPanel Margin="5">
+                        <!-- CardInfo -->
+                        <TextBlock Text="Информация о карте" Style="{StaticResource SectionHeaderStyle}"/>
+                        <components:ParameterAndValueView ParameterName="IP адрес (IpAddress)" ParameterValue="{Binding Scanner1.CardInfo.IpAddress}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Индекс (SeqIndex)" ParameterValue="{Binding Scanner1.CardInfo.SeqIndex}" Margin="0,5"/>
+
+                        <!-- ScannerConfig -->
+                        <TextBlock Text="Конфигурация сканера" Style="{StaticResource SectionHeaderStyle}"/>
+                        <components:ParameterAndValueView ParameterName="Размер поля X, мм" ParameterValue="{Binding Scanner1.ScannerConfig.FieldSizeX}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Размер поля Y, мм" ParameterValue="{Binding Scanner1.ScannerConfig.FieldSizeY}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Код протокола" ParameterValue="{Binding Scanner1.ScannerConfig.ProtocolCode}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Смещение X, мм" ParameterValue="{Binding Scanner1.ScannerConfig.OffsetX}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Смещение Y, мм" ParameterValue="{Binding Scanner1.ScannerConfig.OffsetY}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Смещение Z, мм" ParameterValue="{Binding Scanner1.ScannerConfig.OffsetZ}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Масштаб X" ParameterValue="{Binding Scanner1.ScannerConfig.ScaleX}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Масштаб Y" ParameterValue="{Binding Scanner1.ScannerConfig.ScaleY}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Угол поворота, °" ParameterValue="{Binding Scanner1.ScannerConfig.RotateAngle}" Margin="0,5"/>
+
+                        <!-- BeamConfig -->
+                        <TextBlock Text="Конфигурация луча" Style="{StaticResource SectionHeaderStyle}"/>
+                        <components:ParameterAndValueView ParameterName="Мин. диаметр луча, мкм" ParameterValue="{Binding Scanner1.BeamConfig.MinBeamDiameterMicron}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Длина волны, нм" ParameterValue="{Binding Scanner1.BeamConfig.WavelengthNano}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Длина Рэлея, мкм" ParameterValue="{Binding Scanner1.BeamConfig.RayleighLengthMicron}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="M²" ParameterValue="{Binding Scanner1.BeamConfig.M2}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Фокусное расстояние, мм" ParameterValue="{Binding Scanner1.BeamConfig.FocalLengthMm}" Margin="0,5"/>
+
+                        <!-- LaserPowerConfig -->
+                        <TextBlock Text="Мощность лазера" Style="{StaticResource SectionHeaderStyle}"/>
+                        <components:ParameterAndValueView ParameterName="Макс. мощность, Вт" ParameterValue="{Binding Scanner1.LaserPowerConfig.MaxPower}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="K-фактор смещения" ParameterValue="{Binding Scanner1.LaserPowerConfig.PowerOffsetKFactor}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="C-фактор смещения" ParameterValue="{Binding Scanner1.LaserPowerConfig.PowerOffsetCFactor}" Margin="0,5"/>
+
+                        <!-- FunctionSwitcherConfig -->
+                        <TextBlock Text="Переключатели функций" Style="{StaticResource SectionHeaderStyle}"/>
+                        <components:ParameterAndValueView ParameterName="Смещение мощности" ParameterValue="{Binding Scanner1.FunctionSwitcherConfig.EnablePowerOffset}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Коррекция мощности" ParameterValue="{Binding Scanner1.FunctionSwitcherConfig.EnablePowerCorrection}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Z-коррекция" ParameterValue="{Binding Scanner1.FunctionSwitcherConfig.EnableZCorrection}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Изменение диаметра" ParameterValue="{Binding Scanner1.FunctionSwitcherConfig.EnableDiameterChange}" Margin="0,5"/>
+
+                        <!-- ProcessVariablesMap -->
+                        <TextBlock Text="Процессные переменные" Style="{StaticResource SectionHeaderStyle}"/>
+                        <StackPanel DataContext="{Binding Scanner1.ProcessVariablesMap.NonDepends[0]}">
+                            <components:ParameterAndValueView ParameterName="Скорость маркировки, мм/с" ParameterValue="{Binding MarkSpeed}" Margin="0,5"/>
+                            <components:ParameterAndValueView ParameterName="Скорость прыжка, мм/с" ParameterValue="{Binding JumpSpeed}" Margin="0,5"/>
+                            <components:ParameterAndValueView ParameterName="Задержка полигона, мкс" ParameterValue="{Binding PolygonDelay}" Margin="0,5"/>
+                            <components:ParameterAndValueView ParameterName="Текущий диаметр луча, мкм" ParameterValue="{Binding CurBeamDiameterMicron}" Margin="0,5"/>
+                            <components:ParameterAndValueView ParameterName="Текущая мощность, Вт" ParameterValue="{Binding CurPower}" Margin="0,5"/>
+                        </StackPanel>
+                    </StackPanel>
+                </components:Container>
+
+                <!-- Scanner 2 -->
+                <components:Container Grid.Column="1" Title="Сканатор 172.18.34.228" TitleSize="20">
+                    <StackPanel Margin="5">
+                        <!-- CardInfo -->
+                        <TextBlock Text="Информация о карте" Style="{StaticResource SectionHeaderStyle}"/>
+                        <components:ParameterAndValueView ParameterName="IP адрес (IpAddress)" ParameterValue="{Binding Scanner2.CardInfo.IpAddress}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Индекс (SeqIndex)" ParameterValue="{Binding Scanner2.CardInfo.SeqIndex}" Margin="0,5"/>
+
+                        <!-- ScannerConfig -->
+                        <TextBlock Text="Конфигурация сканера" Style="{StaticResource SectionHeaderStyle}"/>
+                        <components:ParameterAndValueView ParameterName="Размер поля X, мм" ParameterValue="{Binding Scanner2.ScannerConfig.FieldSizeX}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Размер поля Y, мм" ParameterValue="{Binding Scanner2.ScannerConfig.FieldSizeY}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Код протокола" ParameterValue="{Binding Scanner2.ScannerConfig.ProtocolCode}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Смещение X, мм" ParameterValue="{Binding Scanner2.ScannerConfig.OffsetX}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Смещение Y, мм" ParameterValue="{Binding Scanner2.ScannerConfig.OffsetY}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Смещение Z, мм" ParameterValue="{Binding Scanner2.ScannerConfig.OffsetZ}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Масштаб X" ParameterValue="{Binding Scanner2.ScannerConfig.ScaleX}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Масштаб Y" ParameterValue="{Binding Scanner2.ScannerConfig.ScaleY}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Угол поворота, °" ParameterValue="{Binding Scanner2.ScannerConfig.RotateAngle}" Margin="0,5"/>
+
+                        <!-- BeamConfig -->
+                        <TextBlock Text="Конфигурация луча" Style="{StaticResource SectionHeaderStyle}"/>
+                        <components:ParameterAndValueView ParameterName="Мин. диаметр луча, мкм" ParameterValue="{Binding Scanner2.BeamConfig.MinBeamDiameterMicron}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Длина волны, нм" ParameterValue="{Binding Scanner2.BeamConfig.WavelengthNano}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Длина Рэлея, мкм" ParameterValue="{Binding Scanner2.BeamConfig.RayleighLengthMicron}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="M²" ParameterValue="{Binding Scanner2.BeamConfig.M2}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Фокусное расстояние, мм" ParameterValue="{Binding Scanner2.BeamConfig.FocalLengthMm}" Margin="0,5"/>
+
+                        <!-- LaserPowerConfig -->
+                        <TextBlock Text="Мощность лазера" Style="{StaticResource SectionHeaderStyle}"/>
+                        <components:ParameterAndValueView ParameterName="Макс. мощность, Вт" ParameterValue="{Binding Scanner2.LaserPowerConfig.MaxPower}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="K-фактор смещения" ParameterValue="{Binding Scanner2.LaserPowerConfig.PowerOffsetKFactor}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="C-фактор смещения" ParameterValue="{Binding Scanner2.LaserPowerConfig.PowerOffsetCFactor}" Margin="0,5"/>
+
+                        <!-- FunctionSwitcherConfig -->
+                        <TextBlock Text="Переключатели функций" Style="{StaticResource SectionHeaderStyle}"/>
+                        <components:ParameterAndValueView ParameterName="Смещение мощности" ParameterValue="{Binding Scanner2.FunctionSwitcherConfig.EnablePowerOffset}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Коррекция мощности" ParameterValue="{Binding Scanner2.FunctionSwitcherConfig.EnablePowerCorrection}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Z-коррекция" ParameterValue="{Binding Scanner2.FunctionSwitcherConfig.EnableZCorrection}" Margin="0,5"/>
+                        <components:ParameterAndValueView ParameterName="Изменение диаметра" ParameterValue="{Binding Scanner2.FunctionSwitcherConfig.EnableDiameterChange}" Margin="0,5"/>
+
+                        <!-- ProcessVariablesMap -->
+                        <TextBlock Text="Процессные переменные" Style="{StaticResource SectionHeaderStyle}"/>
+                        <StackPanel DataContext="{Binding Scanner2.ProcessVariablesMap.NonDepends[0]}">
+                            <components:ParameterAndValueView ParameterName="Скорость маркировки, мм/с" ParameterValue="{Binding MarkSpeed}" Margin="0,5"/>
+                            <components:ParameterAndValueView ParameterName="Скорость прыжка, мм/с" ParameterValue="{Binding JumpSpeed}" Margin="0,5"/>
+                            <components:ParameterAndValueView ParameterName="Задержка полигона, мкс" ParameterValue="{Binding PolygonDelay}" Margin="0,5"/>
+                            <components:ParameterAndValueView ParameterName="Текущий диаметр луча, мкм" ParameterValue="{Binding CurBeamDiameterMicron}" Margin="0,5"/>
+                            <components:ParameterAndValueView ParameterName="Текущая мощность, Вт" ParameterValue="{Binding CurPower}" Margin="0,5"/>
+                        </StackPanel>
+                    </StackPanel>
+                </components:Container>
+            </Grid>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

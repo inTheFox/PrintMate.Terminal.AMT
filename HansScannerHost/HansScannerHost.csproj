@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Platforms>x64</Platforms>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="System.Text.Json" Version="9.0.0" />
+  </ItemGroup>
+
+  <!-- Reference Hans.NET project for SDK access -->
+  <ItemGroup>
+    <ProjectReference Include="..\Hans.NET\Hans.NET.csproj" />
+  </ItemGroup>
+
+  <!-- Copy native Hans DLLs to output -->
+  <ItemGroup>
+    <None Include="..\Hans.NET\*.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

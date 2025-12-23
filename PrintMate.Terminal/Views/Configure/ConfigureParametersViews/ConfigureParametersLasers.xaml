@@ -1,0 +1,220 @@
+﻿<UserControl x:Class="PrintMate.Terminal.Views.Configure.ConfigureParametersViews.ConfigureParametersLasers"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PrintMate.Terminal.Views.Configure.ConfigureParametersViews"
+             xmlns:componentsViews="clr-namespace:PrintMate.Terminal.Views.ComponentsViews"
+             xmlns:vmSpace="clr-namespace:PrintMate.Terminal.ViewModels.Configure.ConfigureParametersViewModels"
+             xmlns:views="clr-namespace:PrintMate.Terminal.Views"
+             d:DataContext="{d:DesignInstance Type=vmSpace:ConfigureParametersLasersViewModel, IsDesignTimeCreatable=True}"
+             mc:Ignorable="d"
+             d:DesignHeight="1045" d:DesignWidth="1079">
+
+    <UserControl.Resources>
+        <!-- Modern Status Card Style -->
+        <Style x:Key="StatusCardStyle" TargetType="Border">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#0f0f0f" Offset="0"/>
+                        <GradientStop Color="#0a0a0a" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#1f1f1f" Offset="0"/>
+                        <GradientStop Color="#141414" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="14"/>
+            <Setter Property="Padding" Value="18"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Border>
+        <ScrollViewer PanningMode="Both"
+                      PanningRatio="1.0"
+                      ManipulationBoundaryFeedback="ScrollViewer_ManipulationBoundaryFeedback"
+                      CanContentScroll="False"
+                      VerticalScrollBarVisibility="Auto">
+
+            <StackPanel Margin="15">
+
+                <!-- Connection Settings Section -->
+                <componentsViews:Container Title="Настройка подключения к лазерам" TitleSize="22">
+                    <StackPanel>
+                        <!-- IP Address Inputs -->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <componentsViews:EditboxKeyboard Label="IP-адрес первого лазера"
+                                                             Value="{Binding Laser1Address, Mode=TwoWay}"/>
+                            <componentsViews:EditboxKeyboard Grid.Column="1"
+                                                             Label="IP-адрес второго лазера"
+                                                             Value="{Binding Laser2Address, Mode=TwoWay}"/>
+                        </Grid>
+
+                        <!-- Status Cards -->
+                        <Grid Margin="0 15 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Laser 1 Status -->
+                            <Border Style="{StaticResource StatusCardStyle}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Status Icon -->
+                                    <Border Width="40" Height="40" CornerRadius="10" Margin="0 0 15 0">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#1a1a1a" Offset="0"/>
+                                                <GradientStop Color="#0f0f0f" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <TextBlock Text="1" FontSize="18" FontWeight="Bold"
+                                                   Foreground="#ff6f00"
+                                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+
+                                    <TextBlock Grid.Column="1"
+                                               Text="Статус"
+                                               Foreground="#a0a0a0"
+                                               FontSize="14"
+                                               FontWeight="Medium"
+                                               VerticalAlignment="Center"/>
+
+                                    <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock FontWeight="Bold"
+                                                   FontSize="14"
+                                                   Foreground="White"
+                                                   VerticalAlignment="Center"
+                                                   Text="{Binding Laser1ConnectionText}"/>
+                                        <Image Margin="12 0 0 0" Width="14" Source="{Binding Laser1IconSrc}"
+                                               VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+
+                            <!-- Laser 2 Status -->
+                            <Border Grid.Column="1" Style="{StaticResource StatusCardStyle}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Status Icon -->
+                                    <Border Width="40" Height="40" CornerRadius="10" Margin="0 0 15 0">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#1a1a1a" Offset="0"/>
+                                                <GradientStop Color="#0f0f0f" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <TextBlock Text="2" FontSize="18" FontWeight="Bold"
+                                                   Foreground="#ff6f00"
+                                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+
+                                    <TextBlock Grid.Column="1"
+                                               Text="Статус"
+                                               Foreground="#a0a0a0"
+                                               FontSize="14"
+                                               FontWeight="Medium"
+                                               VerticalAlignment="Center"/>
+
+                                    <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock FontWeight="Bold"
+                                                   FontSize="14"
+                                                   Foreground="White"
+                                                   VerticalAlignment="Center"
+                                                   Text="{Binding Laser2ConnectionText}"/>
+                                        <Image Margin="12 0 0 0" Width="14" Source="{Binding Laser2IconSrc}"
+                                               VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <!-- Action Buttons -->
+                        <Grid Margin="0 15 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button Grid.Column="0"
+                                    Command="{Binding SaveCommand}"
+                                    HorizontalAlignment="Stretch"
+                                    Height="50"
+                                    Content="Установить"
+                                    Margin="5"
+                                    Style="{StaticResource ButtonSuccess}"/>
+                            <Button Grid.Column="1"
+                                    Command="{Binding ResetCommand}"
+                                    HorizontalAlignment="Stretch"
+                                    Height="50"
+                                    Content="Использовать по умолчанию"
+                                    Margin="5"
+                                    Style="{StaticResource ButtonDanger}"/>
+                        </Grid>
+                    </StackPanel>
+                </componentsViews:Container>
+
+                <!-- Laser Systems Status Section -->
+                <componentsViews:Container Title="Статус лазерных систем" TitleSize="22">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Laser 1 Panel -->
+                        <componentsViews:Container Grid.Column="0" Title="Лазер №1" TitleSize="18">
+                            <StackPanel>
+                                <componentsViews:LaserSystemStatusViewxaml LaserStatus="{Binding Laser1Status, Mode=TwoWay}"/>
+                                <Button HorizontalAlignment="Stretch"
+                                        Height="50"
+                                        Margin="5 15 5 5"
+                                        Content="Включить/выключить пилотный лазер"
+                                        Command="{Binding SwitchAb1}"
+                                        Style="{StaticResource ButtonWarning}"/>
+                            </StackPanel>
+                        </componentsViews:Container>
+
+                        <!-- Laser 2 Panel -->
+                        <componentsViews:Container Grid.Column="1" Title="Лазер №2" TitleSize="18">
+                            <StackPanel>
+                                <componentsViews:LaserSystemStatusViewxaml LaserStatus="{Binding Laser2Status, Mode=TwoWay}"/>
+                                <Button HorizontalAlignment="Stretch"
+                                        Height="50"
+                                        Margin="5 15 5 5"
+                                        Content="Включить/выключить пилотный лазер"
+                                        Command="{Binding SwitchAb2}"
+                                        Style="{StaticResource ButtonWarning}"/>
+                            </StackPanel>
+                        </componentsViews:Container>
+                    </Grid>
+                </componentsViews:Container>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Border>
+</UserControl>

@@ -1,0 +1,259 @@
+@page "/"
+@inject ServiceMonitorService ServiceMonitor
+@inject IHostApplicationLifetime ApplicationLifetime
+@implements IDisposable
+
+<PageTitle>Мониторинг сервисов</PageTitle>
+
+<div class="container-fluid mt-4">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4">
+                <i class="bi bi-gear-fill"></i> Мониторинг сервисов
+            </h1>
+            <p class="lead text-muted">Управление и мониторинг запущенных сервисов</p>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary btn-lg me-2" @onclick="RefreshStatus">
+                <i class="bi bi-arrow-clockwise"></i> Обновить
+            </button>
+            <button class="btn btn-danger btn-lg" @onclick="ShutdownObserver">
+                <i class="bi bi-power"></i> Закрыть Observer
+            </button>
+        </div>
+    </div>
+
+    @if (services == null)
+    {
+        <div class="text-center py-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Загрузка...</span>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            @foreach (var service in services)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm @(service.IsRunning ? "border-success" : "border-secondary")">
+                        <div class="card-header @(service.IsRunning ? "bg-success" : "bg-secondary") text-white">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="card-title mb-0">
+                                    <i class="bi @(service.IsRunning ? "bi-check-circle-fill" : "bi-x-circle-fill")"></i>
+                                    @service.Id
+                                </h5>
+                                <span class="badge @(service.IsRunning ? "bg-light text-success" : "bg-light text-secondary")">
+                                    @(service.IsRunning ? "Запущен" : "Остановлен")
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <strong><i class="bi bi-link-45deg"></i> URL:</strong>
+                                <div class="text-muted">
+                                    @if (service.IsRunning)
+                                    {
+                                        <a href="@service.Url" target="_blank" class="text-decoration-none">@service.Url</a>
+                                    }
+                                    else
+                                    {
+                                        <span>@service.Url</span>
+                                    }
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <strong><i class="bi bi-terminal"></i> Аргументы:</strong>
+                                <div class="text-muted small">@service.StartupArguments</div>
+                            </div>
+                            @if (service.ProcessId.HasValue)
+                            {
+                                <div class="mb-3">
+                                    <strong><i class="bi bi-cpu"></i> Process ID:</strong>
+                                    <div class="text-muted">@service.ProcessId</div>
+                                </div>
+                            }
+                            <div class="mb-2">
+                                <strong><i class="bi bi-folder"></i> Путь:</strong>
+                                <div class="text-muted small text-break">@service.Path</div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-grid gap-2">
+                                @if (service.IsRunning)
+                                {
+                                    <button class="btn btn-danger" @onclick="() => StopService(service.Id)" disabled="@isProcessing">
+                                        <i class="bi bi-stop-circle"></i> Остановить
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-success" @onclick="() => StartService(service.Id)" disabled="@isProcessing">
+                                        <i class="bi bi-play-circle"></i> Запустить
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="row mt-4">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-info-circle"></i> Статистика</h5>
+                        <div class="row text-center">
+                            <div class="col">
+                                <h3 class="text-success">@services.Count(s => s.IsRunning)</h3>
+                                <p class="text-muted">Запущено</p>
+                            </div>
+                            <div class="col">
+                                <h3 class="text-secondary">@services.Count(s => !s.IsRunning)</h3>
+                                <p class="text-muted">Остановлено</p>
+                            </div>
+                            <div class="col">
+                                <h3 class="text-primary">@services.Count</h3>
+                                <p class="text-muted">Всего</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i> @errorMessage
+            <button type="button" class="btn-close" @onclick="ClearError"></button>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(successMessage))
+    {
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            <i class="bi bi-check-circle-fill"></i> @successMessage
+            <button type="button" class="btn-close" @onclick="ClearSuccess"></button>
+        </div>
+    }
+</div>
+
+@code {
+    private List<ServiceStatusDto>? services;
+    private System.Threading.Timer? timer;
+    private string? errorMessage;
+    private string? successMessage;
+    private bool isProcessing = false;
+
+    protected override void OnInitialized()
+    {
+        LoadServices();
+        // Автообновление каждые 2 секунды
+        timer = new System.Threading.Timer(async _ =>
+        {
+            await InvokeAsync(() =>
+            {
+                LoadServices();
+                StateHasChanged();
+            });
+        }, null, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2));
+    }
+
+    private void LoadServices()
+    {
+        try
+        {
+            services = ServiceMonitor.GetServicesStatus();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Ошибка загрузки сервисов: {ex.Message}";
+        }
+    }
+
+    private void RefreshStatus()
+    {
+        ClearMessages();
+        LoadServices();
+    }
+
+    private async Task StartService(string serviceId)
+    {
+        if (isProcessing) return;
+
+        isProcessing = true;
+        ClearMessages();
+
+        try
+        {
+            var serviceInfo = ServiceMonitor.GetServicesInfo().FirstOrDefault(s => s.Id == serviceId);
+            if (serviceInfo != null)
+            {
+                ServiceMonitor.StartService(serviceInfo);
+                await Task.Delay(1000); // Ждем немного перед обновлением
+                LoadServices();
+                successMessage = $"Сервис {serviceId} успешно запущен";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Ошибка запуска сервиса {serviceId}: {ex.Message}";
+        }
+        finally
+        {
+            isProcessing = false;
+        }
+    }
+
+    private async Task StopService(string serviceId)
+    {
+        if (isProcessing) return;
+
+        isProcessing = true;
+        ClearMessages();
+
+        try
+        {
+            var serviceInfo = ServiceMonitor.GetServicesInfo().FirstOrDefault(s => s.Id == serviceId);
+            if (serviceInfo != null)
+            {
+                ServiceMonitor.StopService(serviceInfo);
+                await Task.Delay(1000); // Ждем немного перед обновлением
+                LoadServices();
+                successMessage = $"Сервис {serviceId} успешно остановлен";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Ошибка остановки сервиса {serviceId}: {ex.Message}";
+        }
+        finally
+        {
+            isProcessing = false;
+        }
+    }
+
+    private void ShutdownObserver()
+    {
+        successMessage = "Завершение работы Observer...";
+        StateHasChanged();
+        ApplicationLifetime.StopApplication();
+    }
+
+    private void ClearError() => errorMessage = null;
+    private void ClearSuccess() => successMessage = null;
+    private void ClearMessages()
+    {
+        errorMessage = null;
+        successMessage = null;
+    }
+
+    public void Dispose()
+    {
+        timer?.Dispose();
+    }
+}

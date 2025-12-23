@@ -1,0 +1,352 @@
+<hc:Window x:Class="LaserCalibrator.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        mc:Ignorable="d"
+        Title="Калибровка центров лазеров"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
+        ShowTitle="True"
+        Height="950"
+        Width="1500"
+        MinHeight="850"
+        MinWidth="1300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="420"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Левая панель - параметры -->
+        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="15">
+                <TextBlock Text="Калибровка смещения центров лазеров"
+                           FontSize="16" FontWeight="Bold"
+                           Margin="0,0,0,15"/>
+
+                <!-- Конфигурация -->
+                <GroupBox Header="Конфигурация" Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBox hc:InfoElement.Title="Файл конфигурации"
+                                 Style="{StaticResource TextBoxExtend}"
+                                 IsEnabled="False"
+                                 Text="{Binding ConfigFilePath}"
+                                 Margin="0,10,0,5"/>
+                        <UniformGrid Columns="2">
+                            <Button Command="{Binding LoadConfigCommand}"
+                                    Content="Загрузить"
+                                    Style="{StaticResource ButtonPrimary}"
+                                    Margin="0,5,5,5"/>
+                            <Button Command="{Binding SaveConfigCommand}"
+                                    Content="Сохранить"
+                                    Style="{StaticResource ButtonSuccess}"
+                                    Margin="5,5,0,5"/>
+                        </UniformGrid>
+                    </StackPanel>
+                </GroupBox>
+
+                <!-- Подключение к сканаторам -->
+                <GroupBox Header="Подключение к сканаторам" Margin="0,0,0,10">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Column="0"
+                                     hc:InfoElement.Title="Лазер 1 IP"
+                                     Style="{StaticResource TextBoxExtend}"
+                                     Text="{Binding Laser1IpAddress, UpdateSourceTrigger=PropertyChanged}"
+                                     Margin="0,10,5,5"/>
+                            <Ellipse Grid.Column="1" Width="16" Height="16"
+                                     Fill="{Binding Laser1StatusColor}"
+                                     VerticalAlignment="Bottom" Margin="0,0,0,8"/>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Column="0"
+                                     hc:InfoElement.Title="Лазер 2 IP"
+                                     Style="{StaticResource TextBoxExtend}"
+                                     Text="{Binding Laser2IpAddress, UpdateSourceTrigger=PropertyChanged}"
+                                     Margin="0,5,5,5"/>
+                            <Ellipse Grid.Column="1" Width="16" Height="16"
+                                     Fill="{Binding Laser2StatusColor}"
+                                     VerticalAlignment="Bottom" Margin="0,0,0,8"/>
+                        </Grid>
+                        <UniformGrid Columns="2" Margin="0,5,0,0">
+                            <Button Command="{Binding ConnectCommand}"
+                                    Content="Подключить"
+                                    Style="{StaticResource ButtonSuccess}"
+                                    Margin="0,0,5,0"/>
+                            <Button Command="{Binding DisconnectCommand}"
+                                    Content="Отключить"
+                                    Style="{StaticResource ButtonDanger}"
+                                    Margin="5,0,0,0"/>
+                        </UniformGrid>
+                    </StackPanel>
+                </GroupBox>
+
+                <!-- Управление красным лазером -->
+                <GroupBox Header="Красный лазер (Pilot)" Margin="0,0,0,10">
+                    <StackPanel>
+                        <UniformGrid Columns="2" Margin="0,5,0,0">
+                            <CheckBox Content="Лазер 1"
+                                      IsChecked="{Binding Laser1GuideLaserOn}"
+                                      Margin="0,0,5,0"/>
+                            <CheckBox Content="Лазер 2"
+                                      IsChecked="{Binding Laser2GuideLaserOn}"
+                                      Margin="5,0,0,0"/>
+                        </UniformGrid>
+                        <Button Command="{Binding ToggleGuideLasersCommand}"
+                                Content="{Binding GuideLasersButtonText}"
+                                Margin="0,10,0,0"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <!-- Позиционирование -->
+                <GroupBox Header="Позиция точек (мм)" Margin="0,0,0,10">
+                    <StackPanel>
+                        <!-- Общая целевая позиция -->
+                        <TextBlock Text="Целевая позиция (оба лазера):" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                        <UniformGrid Columns="2">
+                            <TextBox hc:InfoElement.Title="X"
+                                     Style="{StaticResource TextBoxExtend}"
+                                     Text="{Binding TargetX, UpdateSourceTrigger=PropertyChanged}"
+                                     Margin="0,0,5,5"/>
+                            <TextBox hc:InfoElement.Title="Y"
+                                     Style="{StaticResource TextBoxExtend}"
+                                     Text="{Binding TargetY, UpdateSourceTrigger=PropertyChanged}"
+                                     Margin="5,0,0,5"/>
+                        </UniformGrid>
+                        <Button Command="{Binding MoveToTargetCommand}"
+                                Content="Переместить оба лазера в цель"
+                                Style="{StaticResource ButtonPrimary}"
+                                Margin="0,5,0,0"/>
+                        <Button Command="{Binding MoveToCenterCommand}"
+                                Content="В центр (0, 0)"
+                                Margin="0,5,0,5"/>
+
+                        <!-- Лазер 1 позиция -->
+                        <TextBlock Text="Лазер 1 позиция:" FontWeight="SemiBold" Foreground="#4A90D9" Margin="0,10,0,5"/>
+                        <UniformGrid Columns="3">
+                            <hc:NumericUpDown hc:InfoElement.Title="X"
+                                              
+                                              Value="{Binding Laser1TargetX, UpdateSourceTrigger=PropertyChanged}"
+                                              Margin="0,0,5,5"/>
+                            <hc:NumericUpDown hc:InfoElement.Title="Y"
+                                     
+                                     Value="{Binding Laser1TargetY, UpdateSourceTrigger=PropertyChanged}"
+                                     Margin="5,0,0,5"/>
+                            <hc:NumericUpDown hc:InfoElement.Title="Z"
+                                              
+                                              Value="{Binding Laser1TargetZ, UpdateSourceTrigger=PropertyChanged}"
+                                              Margin="5,0,0,5"/>
+                        </UniformGrid>
+                        <Button Command="{Binding MoveLaser1Command}"
+                                Content="Переместить Лазер 1"
+                                Margin="0,5,0,5"/>
+
+                        <!-- Лазер 2 позиция -->
+                        <TextBlock Text="Лазер 2 позиция:" FontWeight="SemiBold" Foreground="#D9944A" Margin="0,10,0,5"/>
+                        <UniformGrid Columns="3">
+                            <hc:NumericUpDown hc:InfoElement.Title="X"
+                                              
+                                              Value="{Binding Laser2TargetX, UpdateSourceTrigger=PropertyChanged}"
+                                              Margin="0,0,5,5"/>
+                            <hc:NumericUpDown hc:InfoElement.Title="Y"
+                                             
+                                              Value="{Binding Laser2TargetY, UpdateSourceTrigger=PropertyChanged}"
+                                              Margin="5,0,0,5"/>
+                            <hc:NumericUpDown hc:InfoElement.Title="Z"
+                                             
+                                              Value="{Binding Laser2TargetZ, UpdateSourceTrigger=PropertyChanged}"
+                                              Margin="5,0,0,5"/>
+                        </UniformGrid>
+                        <Button Command="{Binding MoveLaser2Command}"
+                                Content="Переместить Лазер 2"
+                                Margin="0,5,0,0"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <!-- Смещение (Offset) -->
+                <GroupBox Header="Смещение центров (Offset)" Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="Лазер 1:" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                        <UniformGrid Columns="2">
+                            <TextBox hc:InfoElement.Title="Offset X"
+                                     Style="{StaticResource TextBoxExtend}"
+                                     Text="{Binding Laser1OffsetX, UpdateSourceTrigger=PropertyChanged}"
+                                     Margin="0,0,5,5"/>
+                            <TextBox hc:InfoElement.Title="Offset Y"
+                                     Style="{StaticResource TextBoxExtend}"
+                                     Text="{Binding Laser1OffsetY, UpdateSourceTrigger=PropertyChanged}"
+                                     Margin="5,0,0,5"/>
+                        </UniformGrid>
+
+                        <TextBlock Text="Лазер 2:" FontWeight="SemiBold" Margin="0,10,0,5"/>
+                        <UniformGrid Columns="2">
+                            <TextBox hc:InfoElement.Title="Offset X"
+                                     Style="{StaticResource TextBoxExtend}"
+                                     Text="{Binding Laser2OffsetX, UpdateSourceTrigger=PropertyChanged}"
+                                     Margin="0,0,5,5"/>
+                            <TextBox hc:InfoElement.Title="Offset Y"
+                                     Style="{StaticResource TextBoxExtend}"
+                                     Text="{Binding Laser2OffsetY, UpdateSourceTrigger=PropertyChanged}"
+                                     Margin="5,0,0,5"/>
+                        </UniformGrid>
+
+                        <Button Command="{Binding ApplyOffsetsCommand}"
+                                Content="Применить смещения"
+                                Style="{StaticResource ButtonWarning}"
+                                Margin="0,10,0,0"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <!-- Быстрая калибровка -->
+                <GroupBox Header="Быстрая калибровка" Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="Шаг корректировки (мм):" Margin="0,5,0,5"/>
+                        <hc:NumericUpDown Value="{Binding AdjustStep}"
+                                          Minimum="0.001" Maximum="10"
+                                          Increment="0.1"
+                                          Margin="0,0,0,10"/>
+
+                        <TextBlock Text="Лазер 1:" FontWeight="SemiBold" Margin="0,5,0,5"/>
+                        <UniformGrid Columns="4">
+                            <Button Content="←" Command="{Binding Laser1AdjustLeftCommand}" Margin="1"/>
+                            <Button Content="→" Command="{Binding Laser1AdjustRightCommand}" Margin="1"/>
+                            <Button Content="↑" Command="{Binding Laser1AdjustUpCommand}" Margin="1"/>
+                            <Button Content="↓" Command="{Binding Laser1AdjustDownCommand}" Margin="1"/>
+                        </UniformGrid>
+
+                        <TextBlock Text="Лазер 2:" FontWeight="SemiBold" Margin="0,10,0,5"/>
+                        <UniformGrid Columns="4">
+                            <Button Content="←" Command="{Binding Laser2AdjustLeftCommand}" Margin="1"/>
+                            <Button Content="→" Command="{Binding Laser2AdjustRightCommand}" Margin="1"/>
+                            <Button Content="↑" Command="{Binding Laser2AdjustUpCommand}" Margin="1"/>
+                            <Button Content="↓" Command="{Binding Laser2AdjustDownCommand}" Margin="1"/>
+                        </UniformGrid>
+                    </StackPanel>
+                </GroupBox>
+
+                <!-- Информация -->
+                <GroupBox Header="Информация" Margin="0,0,0,10">
+                    <TextBlock Text="{Binding StatusInfo}"
+                               TextWrapping="Wrap"
+                               Margin="5"/>
+                </GroupBox>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Правая панель - визуализация -->
+        <Grid Grid.Column="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="Визуализация позиций лазеров"
+                       FontSize="16" FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,10"/>
+
+            <!-- Canvas для визуализации -->
+            <Border Grid.Row="1"
+                    BorderBrush="Gray"
+                    BorderThickness="1"
+                    Background="#1E1E1E">
+                <Canvas x:Name="PreviewCanvas"
+                        ClipToBounds="True"
+                        SizeChanged="PreviewCanvas_SizeChanged">
+                    <!-- Сетка -->
+                    <Line x:Name="AxisX" Stroke="#444444" StrokeThickness="1"/>
+                    <Line x:Name="AxisY" Stroke="#444444" StrokeThickness="1"/>
+
+                    <!-- Поле лазера 1 -->
+                    <Rectangle x:Name="Laser1Field"
+                               Stroke="#4A90D9"
+                               StrokeThickness="2"
+                               Fill="#224A90D9"
+                               StrokeDashArray="4,2"/>
+
+                    <!-- Поле лазера 2 -->
+                    <Rectangle x:Name="Laser2Field"
+                               Stroke="#D9944A"
+                               StrokeThickness="2"
+                               Fill="#22D9944A"
+                               StrokeDashArray="4,2"/>
+
+                    <!-- Зона перекрытия -->
+                    <Rectangle x:Name="OverlapZone"
+                               Stroke="#4AD94A"
+                               StrokeThickness="2"
+                               Fill="#334AD94A"/>
+
+                    <!-- Целевая позиция (перекрестие) -->
+                    <Line x:Name="TargetCrossH" Stroke="#FFFFFF" StrokeThickness="1"/>
+                    <Line x:Name="TargetCrossV" Stroke="#FFFFFF" StrokeThickness="1"/>
+                    <Ellipse x:Name="TargetCircle"
+                             Width="20" Height="20"
+                             Stroke="#FFFFFF"
+                             StrokeThickness="2"
+                             Fill="Transparent"/>
+
+                    <!-- Точка лазера 1 (синяя) -->
+                    <Ellipse x:Name="Laser1Point"
+                             Width="16" Height="16"
+                             Fill="#4A90D9"
+                             Stroke="White"
+                             StrokeThickness="2"/>
+
+                    <!-- Точка лазера 2 (оранжевая) -->
+                    <Ellipse x:Name="Laser2Point"
+                             Width="16" Height="16"
+                             Fill="#D9944A"
+                             Stroke="White"
+                             StrokeThickness="2"/>
+
+                    <!-- Центр системы -->
+                    <Ellipse x:Name="SystemCenter"
+                             Width="8" Height="8"
+                             Fill="White"/>
+
+                    <!-- Подписи -->
+                    <TextBlock x:Name="Laser1Label" Text="Л1" Foreground="#4A90D9" FontWeight="Bold" FontSize="14"/>
+                    <TextBlock x:Name="Laser2Label" Text="Л2" Foreground="#D9944A" FontWeight="Bold" FontSize="14"/>
+                    <TextBlock x:Name="TargetLabel" Text="Цель" Foreground="White" FontSize="12"/>
+                </Canvas>
+            </Border>
+
+            <!-- Легенда и координаты -->
+            <StackPanel Grid.Row="2" Margin="0,10,0,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                        <Ellipse Width="16" Height="16" Fill="#4A90D9" Margin="0,0,5,0"/>
+                        <TextBlock Text="Лазер 1" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                        <Ellipse Width="16" Height="16" Fill="#D9944A" Margin="0,0,5,0"/>
+                        <TextBlock Text="Лазер 2" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Width="16" Height="16" Stroke="White" StrokeThickness="2" Fill="Transparent" Margin="0,0,5,0"/>
+                        <TextBlock Text="Цель" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+                <TextBlock Text="{Binding CoordinatesInfo}"
+                           HorizontalAlignment="Center"
+                           Margin="0,10,0,0"
+                           FontFamily="Consolas"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</hc:Window>

@@ -1,0 +1,49 @@
+using Microsoft.EntityFrameworkCore;
+using LoggingService.Shared.Models;
+using LogLevel = LoggingService.Shared.Models.LogLevel;
+
+namespace LoggingService.Data
+{
+    public class LogDbContext : DbContext
+    {
+        private readonly string _connectionString;
+
+        public DbSet<LogEntryEntity> Logs { get; set; }
+
+        public LogDbContext(IConfiguration configuration)
+        {
+            var dbPath = configuration.GetValue<string>("LogDatabasePath")
+                ?? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs.db");
+            _connectionString = $"Data Source={dbPath}";
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite(_connectionString);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<LogEntryEntity>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.HasIndex(e => e.Timestamp);
+                entity.HasIndex(e => e.Level);
+                entity.HasIndex(e => e.Application);
+                entity.HasIndex(e => new { e.Application, e.Timestamp });
+            });
+        }
+    }
+
+    public class LogEntryEntity
+    {
+        public long Id { get; set; }
+        public DateTime Timestamp { get; set; }
+        public LogLevel Level { get; set; }
+        public string Application { get; set; } = string.Empty;
+        public string Category { get; set; } = string.Empty;
+        public string Message { get; set; } = string.Empty;
+        public string? Exception { get; set; }
+        public string? PropertiesJson { get; set; }
+    }
+}

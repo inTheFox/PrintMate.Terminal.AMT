@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="OpcDebugger.Views.NumericRegisterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OpcDebugger.Views"
+             mc:Ignorable="d" 
+             Background="Transparent"
+             d:DesignHeight="500" d:DesignWidth="300">
+    <Border Margin="10" Background="Transparent" VerticalAlignment="Stretch">
+        <StackPanel Margin="0" VerticalAlignment="Stretch">
+
+            <TextBlock x:Name="CurrentValueText" FontWeight="Bold" FontSize="70" TextAlignment="Center" Foreground="White">0</TextBlock>
+            <TextBlock FontWeight="Bold" FontSize="15" TextAlignment="Center" Foreground="Gray">текущее значение</TextBlock>
+
+            <TextBox x:Name="NewValueEdit" Foreground="White" FontSize="15" Height="50" Margin="10 30 10 0" Background="#292929" BorderBrush="Transparent"/>
+            <Button x:Name="EnterButton" Height="50" Content="Применить" FontWeight="Bold" FontSize="15" Background="#66FF66" BorderBrush="Transparent" HorizontalAlignment="Stretch" Margin="10 10 10 0"/>
+        </StackPanel>
+    </Border>
+</UserControl>

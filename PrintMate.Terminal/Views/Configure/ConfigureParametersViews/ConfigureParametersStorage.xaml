@@ -1,0 +1,115 @@
+<UserControl x:Class="PrintMate.Terminal.Views.Configure.ConfigureParametersViews.ConfigureParametersStorage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PrintMate.Terminal.Views.Configure.ConfigureParametersViews"
+             xmlns:componentsViews="clr-namespace:PrintMate.Terminal.Views.ComponentsViews"
+             mc:Ignorable="d"
+             d:DesignHeight="1045" d:DesignWidth="1079">
+
+    <ScrollViewer PanningMode="Both" VerticalScrollBarVisibility="Hidden" ManipulationBoundaryFeedback="ScrollViewer_ManipulationBoundaryFeedback"
+                  PanningRatio="1.0"
+                  CanContentScroll="False">
+        <StackPanel>
+            <!-- Information Section -->
+            <componentsViews:Container Title="Информация о конфигурации" Margin="5 10 10 0">
+                <StackPanel>
+                    <Border Background="#161616" Padding="20" Margin="5" CornerRadius="10">
+                        <StackPanel>
+                            <TextBlock Foreground="White" FontSize="15" FontWeight="Bold" Margin="0 0 0 10">Путь к файлу конфигурации</TextBlock>
+                            <TextBlock Foreground="LightGray" FontSize="13" Text="{Binding CurrentConfigPath}" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="#161616" Padding="20" Margin="5" CornerRadius="10">
+                        <StackPanel>
+                            <TextBlock Foreground="White" FontSize="15" FontWeight="Bold" Margin="0 0 0 10">Последнее сохранение</TextBlock>
+                            <TextBlock Foreground="LightGray" FontSize="13" Text="{Binding LastSaveTime, StringFormat='dd.MM.yyyy HH:mm:ss'}"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </componentsViews:Container>
+
+            <!-- Export/Import Section -->
+            <componentsViews:Container Title="Управление настройками" Margin="5 10 10 0">
+                <StackPanel>
+                    <TextBlock Foreground="LightGray" FontSize="13" Margin="10 5 10 15" TextWrapping="Wrap">
+                        Экспортируйте текущие настройки для резервного копирования или импортируйте настройки из файла.
+                    </TextBlock>
+
+                    <Grid Margin="0 10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0"
+                                Command="{Binding ExportCommand}"
+                                HorizontalAlignment="Stretch"
+                                Height="60"
+                                Content="Экспортировать настройки"
+                                Margin="5"
+                                Style="{StaticResource ButtonSuccess}"/>
+
+                        <Button Grid.Column="1"
+                                Command="{Binding ImportCommand}"
+                                HorizontalAlignment="Stretch"
+                                Height="60"
+                                Content="Импортировать настройки"
+                                Margin="5"
+                                Style="{StaticResource ButtonSuccess}"/>
+                    </Grid>
+
+                    <Border Background="#2D2D2D" Padding="15" Margin="5 10" CornerRadius="5">
+                        <StackPanel>
+                            <TextBlock Foreground="Orange" FontSize="12" FontWeight="Bold" Margin="0 0 0 5">
+                                ⚠ Внимание при импорте:
+                            </TextBlock>
+                            <TextBlock Foreground="LightGray" FontSize="11" TextWrapping="Wrap">
+                                • Импорт заменит все текущие настройки приложения
+                                <LineBreak/>
+                                • Приложение автоматически перезапустится после импорта
+                                <LineBreak/>
+                                • Резервная копия текущих настроек будет создана автоматически
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </componentsViews:Container>
+
+            <!-- Reset Section -->
+            <componentsViews:Container Title="Сброс настроек" Margin="5 10 10 0">
+                <StackPanel>
+                    <TextBlock Foreground="LightGray" FontSize="13" Margin="10 5 10 15" TextWrapping="Wrap">
+                        Сбросить все настройки приложения к значениям по умолчанию.
+                    </TextBlock>
+
+                    <Button Command="{Binding ResetAllCommand}"
+                            HorizontalAlignment="Stretch"
+                            Height="60"
+                            Content="Сбросить все настройки к значениям по умолчанию"
+                            Margin="5"
+                            Style="{StaticResource ButtonDanger}"/>
+
+                    <Border Background="#3D1F1F" Padding="15" Margin="5 10" CornerRadius="5">
+                        <StackPanel>
+                            <TextBlock Foreground="IndianRed" FontSize="12" FontWeight="Bold" Margin="0 0 0 5">
+                                ⚠ ВНИМАНИЕ:
+                            </TextBlock>
+                            <TextBlock Foreground="LightGray" FontSize="11" TextWrapping="Wrap">
+                                • Это действие удалит ВСЕ пользовательские настройки
+                                <LineBreak/>
+                                • Настройки PLC, лазеров, сканаторов будут сброшены
+                                <LineBreak/>
+                                • Приложение автоматически перезапустится
+                                <LineBreak/>
+                                • Резервная копия будет создана перед сбросом
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </componentsViews:Container>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

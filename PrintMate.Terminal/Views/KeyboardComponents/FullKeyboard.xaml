@@ -1,0 +1,239 @@
+<UserControl x:Class="PrintMate.Terminal.Views.KeyboardComponents.FullKeyboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="1200">
+
+    <UserControl.Resources>
+        <Style x:Key="KeyButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="0"
+                                CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#2A2A2A"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#000000"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SpecialKeyStyle" TargetType="Button" BasedOn="{StaticResource KeyButtonStyle}">
+            <Setter Property="Background" Value="#2C2C2C"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </UserControl.Resources>
+
+    <StackPanel x:Name="RootPanel" Width="1100">
+        <!-- Английская раскладка -->
+        <StackPanel x:Name="EnglishLayout" Visibility="Visible">
+            <!-- Строка 1: цифры и символы -->
+            <UniformGrid Rows="1" Columns="13">
+                <Button Content="`" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="` ~"/>
+                <Button Content="1" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="1 !"/>
+                <Button Content="2" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="2 @"/>
+                <Button Content="3" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="3 #"/>
+                <Button Content="4" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="4 $"/>
+                <Button Content="5" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="5 %"/>
+                <Button Content="6" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="6 ^"/>
+                <Button Content="7" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="7 &amp;"/>
+                <Button Content="8" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="8 *"/>
+                <Button Content="9" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="9 ("/>
+                <Button Content="0" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="0 )"/>
+                <Button Content="-" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="- _"/>
+                <Button Content="=" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="= +"/>
+            </UniformGrid>
+
+            <!-- Строка 2: QWERTY -->
+            <UniformGrid Rows="1" Columns="13">
+                <Button Content="Q" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="q Q"/>
+                <Button Content="W" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="w W"/>
+                <Button Content="E" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="e E"/>
+                <Button Content="R" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="r R"/>
+                <Button Content="T" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="t T"/>
+                <Button Content="Y" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="y Y"/>
+                <Button Content="U" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="u U"/>
+                <Button Content="I" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="i I"/>
+                <Button Content="O" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="o O"/>
+                <Button Content="P" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="p P"/>
+                <Button Content="[" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="[ {"/>
+                <Button Content="]" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="] }"/>
+                <Button Content="\" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="\ |"/>
+            </UniformGrid>
+
+            <!-- Строка 3: ASDFGH -->
+            <UniformGrid Rows="1" Columns="12">
+                <Button Content="A" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="a A"/>
+                <Button Content="S" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="s S"/>
+                <Button Content="D" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="d D"/>
+                <Button Content="F" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="f F"/>
+                <Button Content="G" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="g G"/>
+                <Button Content="H" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="h H"/>
+                <Button Content="J" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="j J"/>
+                <Button Content="K" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="k K"/>
+                <Button Content="L" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="l L"/>
+                <Button Content=";" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="; :"/>
+                <Button Content="'" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="' &quot;"/>
+                <Button x:Name="EnterButton" Content="Enter" Style="{StaticResource SpecialKeyStyle}" Click="OnEnterClick" Background="LawnGreen" Foreground="Black"/>
+            </UniformGrid>
+
+            <!-- Строка 4: ZXCVBN -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" x:Name="ShiftButton" Content="Shift" Style="{StaticResource SpecialKeyStyle}" Click="OnShiftClick"/>
+                <Button Grid.Column="1" Content="Z" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="z Z"/>
+                <Button Grid.Column="2" Content="X" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="x X"/>
+                <Button Grid.Column="3" Content="C" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="c C"/>
+                <Button Grid.Column="4" Content="V" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="v V"/>
+                <Button Grid.Column="5" Content="B" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="b B"/>
+                <Button Grid.Column="6" Content="N" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="n N"/>
+                <Button Grid.Column="7" Content="M" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="m M"/>
+                <Button Grid.Column="8" Content="," Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag=", &lt;"/>
+                <Button Grid.Column="9" Content="." Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag=". >"/>
+                <Button Grid.Column="10" Content="/" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="/ ?"/>
+                <Button Grid.Column="11" x:Name="BackspaceButton" Content="⌫" Style="{StaticResource SpecialKeyStyle}" Click="OnBackspaceClick"/>
+            </Grid>
+
+            <!-- Строка 5: Space, Lang -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" x:Name="LangButton" Content="RU/EN" Style="{StaticResource SpecialKeyStyle}" Click="OnLangClick"/>
+                <Button Grid.Column="1" Content="Space" Style="{StaticResource KeyButtonStyle}" Click="OnSpaceClick"/>
+                <Button Grid.Column="2" Content="Отмена" Style="{StaticResource SpecialKeyStyle}" Background="Red" Click="OnCancelClick"/>
+            </Grid>
+        </StackPanel>
+
+        <!-- Русская раскладка -->
+        <StackPanel x:Name="RussianLayout" Visibility="Collapsed">
+            <!-- Строка 1: цифры и символы -->
+            <UniformGrid Rows="1" Columns="13">
+                <Button Content="ё" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="ё Ё"/>
+                <Button Content="1" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="1 !"/>
+                <Button Content="2" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="2 &quot;"/>
+                <Button Content="3" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="3 №"/>
+                <Button Content="4" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="4 ;"/>
+                <Button Content="5" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="5 %"/>
+                <Button Content="6" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="6 :"/>
+                <Button Content="7" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="7 ?"/>
+                <Button Content="8" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="8 *"/>
+                <Button Content="9" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="9 ("/>
+                <Button Content="0" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="0 )"/>
+                <Button Content="-" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="- _"/>
+                <Button Content="=" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="= +"/>
+            </UniformGrid>
+
+            <!-- Строка 2: ЙЦУКЕН -->
+            <UniformGrid Rows="1" Columns="13">
+                <Button Content="й" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="й Й"/>
+                <Button Content="ц" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="ц Ц"/>
+                <Button Content="у" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="у У"/>
+                <Button Content="к" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="к К"/>
+                <Button Content="е" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="е Е"/>
+                <Button Content="н" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="н Н"/>
+                <Button Content="г" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="г Г"/>
+                <Button Content="ш" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="ш Ш"/>
+                <Button Content="щ" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="щ Щ"/>
+                <Button Content="з" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="з З"/>
+                <Button Content="х" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="х Х"/>
+                <Button Content="ъ" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="ъ Ъ"/>
+                <Button Content="\" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="\ /"/>
+            </UniformGrid>
+
+            <!-- Строка 3: ФЫВАПР -->
+            <UniformGrid Rows="1" Columns="12">
+                <Button Content="ф" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="ф Ф"/>
+                <Button Content="ы" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="ы Ы"/>
+                <Button Content="в" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="в В"/>
+                <Button Content="а" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="а А"/>
+                <Button Content="п" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="п П"/>
+                <Button Content="р" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="р Р"/>
+                <Button Content="о" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="о О"/>
+                <Button Content="л" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="л Л"/>
+                <Button Content="д" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="д Д"/>
+                <Button Content="ж" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="ж Ж"/>
+                <Button Content="э" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="э Э"/>
+                <Button Content="Enter" Style="{StaticResource SpecialKeyStyle}" Click="OnEnterClick" Background="LawnGreen" Foreground="Black"/>
+            </UniformGrid>
+
+            <!-- Строка 4: ЯЧСМИТ -->
+            <Grid Cursor="">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="Shift" Style="{StaticResource SpecialKeyStyle}" Click="OnShiftClick"/>
+                <Button Grid.Column="1" Content="я" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="я Я"/>
+                <Button Grid.Column="2" Content="ч" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="ч Ч"/>
+                <Button Grid.Column="3" Content="с" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="с С"/>
+                <Button Grid.Column="4" Content="м" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="м М"/>
+                <Button Grid.Column="5" Content="и" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="и И"/>
+                <Button Grid.Column="6" Content="т" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="т Т"/>
+                <Button Grid.Column="7" Content="ь" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="ь Ь"/>
+                <Button Grid.Column="8" Content="б" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="б Б"/>
+                <Button Grid.Column="9" Content="ю" Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag="ю Ю"/>
+                <Button Grid.Column="10" Content="." Style="{StaticResource KeyButtonStyle}" Click="OnKeyClick" Tag=". ,"/>
+                <Button Grid.Column="11" Content="⌫" Style="{StaticResource SpecialKeyStyle}" Click="OnBackspaceClick"/>
+            </Grid>
+
+            <!-- Строка 5: Space, Lang -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="RU/EN" Style="{StaticResource SpecialKeyStyle}" Click="OnLangClick"/>
+                <Button Grid.Column="1" Content="Пробел" Style="{StaticResource KeyButtonStyle}" Click="OnSpaceClick"/>
+                <Button Grid.Column="2" Content="Отмена" Style="{StaticResource SpecialKeyStyle}" Background="Red" Click="OnCancelClick"/>
+            </Grid>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

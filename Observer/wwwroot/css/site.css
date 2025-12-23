@@ -1,0 +1,148 @@
+/* Общие стили */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Карточки сервисов */
+.card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-header {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+}
+
+/* Кнопки */
+.btn {
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Анимация спиннера */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Стили для ошибок Blazor */
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
+
+/* Улучшенные бейджи */
+.badge {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.65rem;
+}
+
+/* Анимация для алертов */
+.alert {
+    animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Статус индикаторы */
+.border-success {
+    border-width: 2px !important;
+}
+
+.border-secondary {
+    border-width: 2px !important;
+}
+
+/* Улучшенные иконки */
+.bi {
+    vertical-align: middle;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+
+    .lead {
+        font-size: 1rem;
+    }
+}
+
+/* Плавная прокрутка */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ссылки */
+a {
+    transition: color 0.2s ease-in-out;
+}
+
+/* Тени для карточек */
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+/* Текст */
+.text-break {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/* Улучшенные заголовки карточек */
+.card-title {
+    font-weight: 600;
+}
+
+/* Стили для статистики */
+.text-center h3 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* Прозрачный футер карточки */
+.card-footer.bg-transparent {
+    background-color: rgba(0, 0, 0, 0.02) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}

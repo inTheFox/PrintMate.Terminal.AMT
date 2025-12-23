@@ -1,0 +1,55 @@
+<UserControl x:Class="PrintMate.Terminal.Controls.IsometricViewportControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="800"
+             Background="Black"
+             Focusable="True"
+             Loaded="UserControl_Loaded"
+             SizeChanged="UserControl_SizeChanged">
+
+    <Grid x:Name="RootGrid">
+        <!-- Основное изображение с рендером -->
+        <Image x:Name="RenderImage"
+               Stretch="None"
+               RenderOptions.BitmapScalingMode="NearestNeighbor"
+               MouseLeftButtonDown="RenderImage_MouseLeftButtonDown"
+               MouseLeftButtonUp="RenderImage_MouseLeftButtonUp"
+               MouseRightButtonDown="RenderImage_MouseRightButtonDown"
+               MouseRightButtonUp="RenderImage_MouseRightButtonUp"
+               MouseMove="RenderImage_MouseMove"
+               MouseWheel="RenderImage_MouseWheel"/>
+
+        <!-- Информационная панель (опционально) -->
+        <Border x:Name="InfoPanel"
+                Visibility="Collapsed"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="10"
+                Padding="8"
+                Background="#80000000"
+                CornerRadius="4">
+            <StackPanel>
+                <TextBlock x:Name="FpsText" Foreground="White" FontSize="12"/>
+                <TextBlock x:Name="LayerText" Foreground="White" FontSize="12"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Подсказка управления -->
+        <Border HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="10"
+                Padding="8"
+                Background="#60000000"
+                CornerRadius="4">
+            <StackPanel Opacity="0.7">
+                <TextBlock Foreground="Gray" FontSize="10" Text="ЛКМ - вращение"/>
+                <TextBlock Foreground="Gray" FontSize="10" Text="ПКМ - панорамирование"/>
+                <TextBlock Foreground="Gray" FontSize="10" Text="Колесо - масштаб"/>
+                <TextBlock Foreground="Gray" FontSize="10" Text="R - сброс камеры"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

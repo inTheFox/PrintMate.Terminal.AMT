@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="PrintMate.Terminal.Views.ComponentsViews.ParameterAndValueView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PrintMate.Terminal.Views.ComponentsViews"
+             mc:Ignorable="d" 
+            >
+    <Grid>
+            <Border Padding="15" Background="#1b1b1b" CornerRadius="5"> 
+                <StackPanel>
+                    <TextBlock Foreground="Gray" FontWeight="Bold" FontSize="12" Text="{Binding .ParameterName, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                    <TextBlock  Foreground="GhostWhite" FontWeight="Bold" FontSize="18" Text="{Binding .ParameterValue, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

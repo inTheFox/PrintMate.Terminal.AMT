@@ -1,0 +1,367 @@
+<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PrintMate.Terminal.Views"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+             x:Class="PrintMate.Terminal.Views.ManualControlSystems"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <!-- Animation -->
+        <Storyboard x:Key="ShowMainView">
+            <DoubleAnimation Storyboard.TargetName="mainContainer"
+                             Storyboard.TargetProperty="Opacity"
+                             To="1" Duration="0:0:0.5">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+
+        <!-- System Control Card Style -->
+        <Style x:Key="SystemCardStyle" TargetType="Border">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#0a0a0a" Offset="0"/>
+                        <GradientStop Color="#060606" Offset="0.5"/>
+                        <GradientStop Color="#080808" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#1f1f1f" Offset="0"/>
+                        <GradientStop Color="#141414" Offset="0.5"/>
+                        <GradientStop Color="#1a1a1a" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Padding" Value="15"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="15" ShadowDepth="0" Opacity="0.3" Color="#000000"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#121212" Offset="0"/>
+                                <GradientStop Color="#0a0a0a" Offset="0.5"/>
+                                <GradientStop Color="#0e0e0e" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderBrush">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#ff6f00" Offset="0"/>
+                                <GradientStop Color="#cc5500" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.35" Color="#ff6f00"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Icon Container Style -->
+        <Style x:Key="IconContainerStyle" TargetType="Border">
+            <Setter Property="Width" Value="48"/>
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Margin" Value="0 0 12 0"/>
+        </Style>
+
+        <!-- Image Container Style -->
+        <Style x:Key="ImageContainerStyle" TargetType="Border">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#0a0a0a" Offset="0"/>
+                        <GradientStop Color="#060606" Offset="0.5"/>
+                        <GradientStop Color="#080808" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#1f1f1f" Offset="0"/>
+                        <GradientStop Color="#141414" Offset="0.5"/>
+                        <GradientStop Color="#1a1a1a" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="25" ShadowDepth="0" Opacity="0.4" Color="#000000"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard Storyboard="{StaticResource ShowMainView}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+
+    <Grid x:Name="mainContainer" Opacity="0" Margin="20 0 20 20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid Grid.Row="0" Margin="0 0 0 20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Accent Line -->
+            <Border Width="4" CornerRadius="2" Margin="0 0 15 0" VerticalAlignment="Stretch">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#ff6f00" Offset="0"/>
+                        <GradientStop Color="#cc5500" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="8" ShadowDepth="0" Opacity="0.4" Color="#ff6f00"/>
+                </Border.Effect>
+            </Border>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                <TextBlock Text="Управление системами"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="#f0f0f0"/>
+                <TextBlock Text="Контроль газовой и лазерной систем оборудования"
+                           FontSize="14"
+                           Foreground="#606060"
+                           Margin="0 5 0 0"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Equipment Image -->
+            <Border Grid.Column="0" Style="{StaticResource ImageContainerStyle}" Margin="0 0 20 0">
+                <Grid>
+                    <!-- Main Equipment Image -->
+                    <Image Source="/images/amt32_system_main.png"
+                           Stretch="Uniform"
+                           RenderOptions.BitmapScalingMode="HighQuality"/>
+
+                    <!-- Light Overlay -->
+                    <Image Source="/images/amt32_system_window_lights.png"
+                           Opacity="{Binding LightCameraImageVisibility}"
+                           Stretch="Uniform"
+                           RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Grid>
+            </Border>
+
+            <!-- Control Panel -->
+            <StackPanel Grid.Column="1" Width="280" VerticalAlignment="Top">
+                <!-- Gas System Card -->
+                <Border Style="{StaticResource SystemCardStyle}" Margin="0 0 0 15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Icon -->
+                        <Border Grid.Column="0" Style="{StaticResource IconContainerStyle}" Background="{Binding GasSystemColor}">
+                            <Image Source="{Binding GasSystemImagePath}"
+                                   Width="26" Height="26"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Border>
+
+                        <!-- Text -->
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="Система подачи газа"
+                                       FontSize="14"
+                                       FontWeight="SemiBold"
+                                       Foreground="#e0e0e0"/>
+                            <TextBlock Text="защитная атмосфера"
+                                       FontSize="11"
+                                       Foreground="#505050"
+                                       Margin="0 3 0 0"/>
+                        </StackPanel>
+
+                        <!-- Status Indicator -->
+                        <Border Grid.Column="2" Width="12" Height="12" CornerRadius="6" VerticalAlignment="Center">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <RadialGradientBrush>
+                                                <GradientStop Color="#505050" Offset="0"/>
+                                                <GradientStop Color="#303030" Offset="1"/>
+                                            </RadialGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsGasEnabled}" Value="True">
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <RadialGradientBrush>
+                                                        <GradientStop Color="#4CAF50" Offset="0"/>
+                                                        <GradientStop Color="#388E3C" Offset="1"/>
+                                                    </RadialGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.7" Color="#4CAF50"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+                    </Grid>
+
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                            <b:InvokeCommandAction
+                                Command="{Binding DataContext.GasButtonCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                CommandParameter="{Binding}" />
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </Border>
+
+                <!-- Laser System Card -->
+                <Border Style="{StaticResource SystemCardStyle}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Icon -->
+                        <Border Grid.Column="0" Style="{StaticResource IconContainerStyle}" Background="{Binding LaserSystemColor}">
+                            <Image Source="{Binding LaserSystemImagePath}"
+                                   Width="26" Height="26"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Border>
+
+                        <!-- Text -->
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="Лазерная система"
+                                       FontSize="14"
+                                       FontWeight="SemiBold"
+                                       Foreground="#e0e0e0"/>
+                            <TextBlock Text="источник излучения"
+                                       FontSize="11"
+                                       Foreground="#505050"
+                                       Margin="0 3 0 0"/>
+                        </StackPanel>
+
+                        <!-- Status Indicator -->
+                        <Border Grid.Column="2" Width="12" Height="12" CornerRadius="6" VerticalAlignment="Center">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <RadialGradientBrush>
+                                                <GradientStop Color="#505050" Offset="0"/>
+                                                <GradientStop Color="#303030" Offset="1"/>
+                                            </RadialGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsLaserEnabled}" Value="True">
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <RadialGradientBrush>
+                                                        <GradientStop Color="#4CAF50" Offset="0"/>
+                                                        <GradientStop Color="#388E3C" Offset="1"/>
+                                                    </RadialGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.7" Color="#4CAF50"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+                    </Grid>
+
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                            <b:InvokeCommandAction
+                                Command="{Binding DataContext.LaserButtonCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                CommandParameter="{Binding}" />
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </Border>
+
+                <!-- Info Section -->
+                <Border Margin="0 20 0 0" Padding="15" CornerRadius="12">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#0c0c0c" Offset="0"/>
+                            <GradientStop Color="#080808" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#1a1a1a" Offset="0"/>
+                            <GradientStop Color="#141414" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                    <Border.BorderThickness>1</Border.BorderThickness>
+
+                    <StackPanel>
+                        <TextBlock Text="Информация"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Foreground="#888888"
+                                   Margin="0 0 0 8"/>
+                        <TextBlock Text="Нажмите на карточку системы для включения или отключения. Перед изменением состояния будет запрошено подтверждение."
+                                   FontSize="11"
+                                   Foreground="#505050"
+                                   TextWrapping="Wrap"
+                                   LineHeight="18"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="PrintMate.Terminal.Views.IndicatorForMonitoring"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:PrintMate.Terminal.ViewModels" xmlns:models="clr-namespace:PrintMate.Terminal.Models"
+            >
+    <!-- Фиксированная высота -->
+
+    <Grid>
+        <!-- Bool Block -->
+        <Border Background="#161616" x:Name="BoolBlock"
+                Padding="5"
+                MouseDown="OnLikeIndicatorCallback"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Margin="10"
+                MinHeight="70"
+                CornerRadius="10">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+
+                </Grid.ColumnDefinitions>
+
+                <Image x:Name="ImageIndicator" Width="15" Margin="15 0 0 0"/>
+
+                <StackPanel Grid.Column="1" Margin="20 0 0 0" VerticalAlignment="Center">
+                    <TextBlock Grid.Column="1"
+                               FontSize="15"
+                               Foreground="White"
+                               FontWeight="Bold"
+                               TextAlignment="Left"
+                               TextWrapping="Wrap"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="0 0 0 0"
+                               Text="{Binding CommandInfo.Title, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                </StackPanel>
+
+                <Image x:Name="BoolSavedIcon" Margin="5" VerticalAlignment="Bottom" Width="20 " Grid.Column="2" />
+
+            </Grid>
+
+
+        </Border>
+
+        <!-- Decimal Block -->
+        <Border Background="#161616" x:Name="DecimalBlock" MouseDown="OnLikeIndicatorCallback"
+                Padding="5"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Margin="5"
+                Height="85"
+
+                CornerRadius="15">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Background="Black" Margin="15" Padding="20 0 20 0" CornerRadius="10">
+                    <TextBlock Grid.Column="1"
+                               x:Name="AnimatedTextBlock" 
+                               FontSize="25"
+                               Foreground="White"
+                               FontWeight="DemiBold"
+                               TextAlignment="Center"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="0 0 0 0"
+                               Text="{Binding Value, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                </Border>
+
+
+                <StackPanel Grid.Column="1" Margin="5 0 0 0" VerticalAlignment="Center">
+                    <TextBlock Grid.Column="1"
+                               Foreground="White"
+                               FontWeight="ExtraBold"
+                               FontSize="13"
+                               TextWrapping="Wrap"
+                               TextAlignment="Left"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Text="{Binding CommandInfo.Title, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+
+                </StackPanel>
+
+                <Image x:Name="DecimalSavedIcon" Margin="5" VerticalAlignment="Bottom" Width="20 " Grid.Column="2"  />
+
+            </Grid>
+
+
+        </Border>
+    </Grid>
+</UserControl>

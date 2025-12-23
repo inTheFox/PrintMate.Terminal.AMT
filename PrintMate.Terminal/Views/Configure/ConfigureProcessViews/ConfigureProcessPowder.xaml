@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="PrintMate.Terminal.Views.Configure.ConfigureProcessViews.ConfigureProcessPowder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PrintMate.Terminal.Views.Configure.ConfigureProcessViews"
+             xmlns:controls="clr-namespace:PrintMate.Terminal.Views.ComponentsViews"
+             xmlns:opc2Lib="clr-namespace:Opc2Lib;assembly=Opc2Lib"
+             mc:Ignorable="d" 
+             Background="Black"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <ScrollViewer PanningMode="Both" VerticalScrollBarVisibility="Hidden" ManipulationBoundaryFeedback="ScrollViewer_ManipulationBoundaryFeedback"
+                  PanningRatio="1.0"
+                  CanContentScroll="False">
+            <StackPanel>
+                <controls:Container Margin="5 10 10 0" Title="Сигналы">
+                    <UniformGrid Columns="2">
+                        <controls:PLCLogicIndicator CommandInfo="{x:Static opc2Lib:OpcCommands.DM_Powder_LSLeft}" Margin="1"/>
+                        <controls:PLCLogicIndicator CommandInfo="{x:Static opc2Lib:OpcCommands.DM_Powder_LSRight}" Margin="1"/>
+                        <controls:PLCLogicIndicator CommandInfo="{x:Static opc2Lib:OpcCommands.DM_Powder_PowderDispose_DoorLeftLS}" Margin="1"/>
+                        <controls:PLCLogicIndicator CommandInfo="{x:Static opc2Lib:OpcCommands.DM_Powder_PowderDispose_DoorRightLS}" Margin="1"/>
+                        <controls:PLCLogicIndicator CommandInfo="{x:Static opc2Lib:OpcCommands.DM_Powder_PowderDispose_DoserLeftLS}" Margin="1"/>
+                        <controls:PLCLogicIndicator CommandInfo="{x:Static opc2Lib:OpcCommands.DM_Powder_PowderDispose_DoserRightLS}" Margin="1"/>
+                    </UniformGrid>
+                </controls:Container>
+                <controls:Container Margin="5 10 10 0" Title="Управление">
+                    <UniformGrid Columns="2">
+                        <controls:PLCBoolSwitch CommandInfo="{x:Static opc2Lib:OpcCommands.Com_Axes_DoserRef}" Margin="1"/>
+                        <controls:PLCBoolSwitch CommandInfo="{x:Static opc2Lib:OpcCommands.Com_Axes_Doser}" Margin="1"/>
+                        <controls:PLCBoolSwitch CommandInfo="{x:Static opc2Lib:OpcCommands.Com_Powder_DoserVibro}" Margin="1"/>
+                    </UniformGrid>
+                </controls:Container>
+
+                <controls:Container Margin="5 10 10 0" Title="Сенсоры">
+                    <UniformGrid Columns="2">
+                        <controls:PLCDecimalView CommandInfo="{x:Static opc2Lib:OpcCommands.AM_Powder_Level1}" Margin="1"/>
+                        <controls:PLCDecimalView CommandInfo="{x:Static opc2Lib:OpcCommands.AM_Powder_Level2}" Margin="1"/>
+                        <controls:PLCDecimalView CommandInfo="{x:Static opc2Lib:OpcCommands.AM_Axes_RecoaterABSPosition}" Margin="1"/>
+                    </UniformGrid>
+                </controls:Container>
+
+                <controls:Container Margin="5 10 10 0" Title="Уставки">
+                    <UniformGrid Columns="2">
+                        <controls:PLCDecimalView CommandInfo="{x:Static opc2Lib:OpcCommands.Set_Axes_DoserSpeed}" Margin="1"/>
+                        <controls:PLCDecimalView CommandInfo="{x:Static opc2Lib:OpcCommands.Set_Axes_DoserCounts}" Margin="1"/>
+                        <controls:PLCDecimalView CommandInfo="{x:Static opc2Lib:OpcCommands.Set_Axes_RecoaterSpeed}" Margin="1"/>
+                    </UniformGrid>
+                </controls:Container>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="PrintMate.Terminal.Views.Modals.AddProjectSuccessfullView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PrintMate.Terminal.Views.Modals"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
+             mc:Ignorable="d"
+             d:DesignHeight="800" d:DesignWidth="900">
+    <Grid Width="900" Height="800">
+        <Border Background="#121212">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <!-- GIF контейнер с анимацией scale + fade + bounce -->
+                <Border Opacity="0" x:Name="GifImageBorder" Padding="45" Background="#1a1a1a" CornerRadius="150" RenderTransformOrigin="0.5,0.5">
+                    <Border.RenderTransform>
+                        <ScaleTransform x:Name="GifScaleTransform" ScaleX="0.8" ScaleY="0.8"/>
+                    </Border.RenderTransform>
+                    <Image Opacity="1" x:Name="GifImage" Width="200" Source="/images/success.png"/>
+                </Border>
+
+                <!-- Заголовок с анимацией slide-up + fade -->
+                <TextBlock Opacity="0" x:Name="TitleText" Margin="0 10 0 5" Foreground="White" HorizontalAlignment="Center" FontWeight="Bold" FontSize="30" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform x:Name="TitleTranslateTransform" Y="30"/>
+                    </TextBlock.RenderTransform>
+                    Проект загружен
+                </TextBlock>
+
+                <!-- Подзаголовок с анимацией slide-up + fade -->
+                <TextBlock Opacity="0" x:Name="SubtitleText" Foreground="Gray" HorizontalAlignment="Center" FontWeight="Medium" FontSize="20" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform x:Name="SubtitleTranslateTransform" Y="20"/>
+                    </TextBlock.RenderTransform>
+                    благодарим за ожидание
+                </TextBlock>
+
+                <!-- Кнопка с анимацией scale + fade -->
+                <Button Height="50" Foreground="Black" BorderBrush="Transparent" Opacity="0" x:Name="NextButton" Background="GreenYellow" Margin="0 50 0 0" Click="NextButton_OnClick" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <ScaleTransform x:Name="ButtonScaleTransform" ScaleX="0.8" ScaleY="0.8"/>
+                    </Button.RenderTransform>
+                    Завершить
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

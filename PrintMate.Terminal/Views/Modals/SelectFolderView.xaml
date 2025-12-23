@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="PrintMate.Terminal.Views.Modals.SelectFolderView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PrintMate.Terminal.Views.Modals"
+             xmlns:componentsViews="clr-namespace:PrintMate.Terminal.Views.ComponentsViews"
+             Background="Black"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel>
+            <componentsViews:Container Title="Диски" TitleSize="10">
+                <StackPanel>
+                    <Border Padding="10" Background="#1f1f1f"> 
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Image Width="30" Source="/images/disk.png" Margin="0 0 10 0"/>
+                            <TextBlock FontWeight="Bold" VerticalAlignment="Center" Foreground="White" Grid.Column="1">Диск D</TextBlock>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </componentsViews:Container>
+            <componentsViews:Container Title="Быстрый доступ" TitleSize="10">
+                <StackPanel>
+
+                </StackPanel>
+            </componentsViews:Container>
+        </StackPanel>
+        
+        <Border Grid.Column="1">
+
+        </Border>
+    </Grid>
+</UserControl>

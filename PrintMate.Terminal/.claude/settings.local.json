@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet build:*)",
+      "Bash(taskkill:*)",
+      "Bash(Select-String -Pattern \"error|warning|succeeded|failed\" -CaseSensitive)",
+      "Bash(Select-Object -Last 10)",
+      "Bash(dotnet ef migrations add:*)",
+      "Bash(Select-Object -Last 20)",
+      "Bash(find:*)",
+      "Bash(Select-String -Pattern \"error|warning|Build succeeded\")",
+      "Bash(Select-Object -First 20)",
+      "Bash(Select-String -Pattern \"error|warning|succeeded|failed\")",
+      "Bash(Select-String -Pattern \"error|warning|Build succeeded|Build FAILED\")",
+      "Bash(Select-Object -First 30)",
+      "Bash(findstr:*)",
+      "Bash(Get-Content \"E:\\PrintMateActual\\PrintMate.Terminal\\Rendering\\DX11Renderer.cs\")",
+      "Bash(Select-Object -Skip 544 -First 20)",
+      "Bash(del \"E:\\PrintMateActual\\PrintMate.Terminal\\Rendering\\LayerOptimizations.cs\")",
+      "Bash(dotnet clean:*)",
+      "Bash(dotnet run:*)",
+      "Bash(powershell:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

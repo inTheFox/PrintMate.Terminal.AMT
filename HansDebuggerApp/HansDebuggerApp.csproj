@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>HansDebuggerApp</AssemblyName>
+    <RootNamespace>HansDebuggerApp</RootNamespace>
+    <Version>1.0.0.0</Version>
+    <Configurations>Debug;Release</Configurations>
+    <Copyright>Copyright © inTheFox 2025</Copyright>
+    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <LangVersion>latest</LangVersion>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;Core</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;Core</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="images\indicator_green_32.png" />
+    <None Remove="images\indicator_red_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\indicator_green_32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\indicator_red_32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="HandyControls" Version="3.6.0" />
+    <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hans.NET\Hans.NET.csproj" />
+    <ProjectReference Include="..\Opc2Lib\Opc2Lib.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Services\ScannerService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

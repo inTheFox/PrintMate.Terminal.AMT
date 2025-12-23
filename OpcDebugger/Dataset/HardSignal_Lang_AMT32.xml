@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<locales>
+<!-- COM section -->
+	<locale name="Com_Axes_Doser" ru="Дозатор" en="Doser"/>
+	<locale name="Com_Axes_RecoaterJogLeft" ru="Рекоутер вперед" en="Recoater forward"/>
+	<locale name="Com_Axes_RecoaterJogRight" ru="Рекоутер назад" en="Recoater backward"/>
+	<locale name="Com_Axes_PlatformJogUp" ru="Плафторма вверх" en="Platform jog up"/>
+	<locale name="Com_Axes_PlatformStepUp" ru="Плафторма шаг вверх" en="Platform step up"/>
+	<locale name="Com_Axes_PlatformJogDown" ru="Плафторма вниз" en="Platform jog down"/>
+	<locale name="Com_Axes_PlatformStepDown" ru="Плафторма шаг вниз" en="Platform step down"/>
+	<locale name="Com_Axes_Stop" ru="Привода стоп" en="Axes stop"/>
+	<locale name="Com_Axes_RecoaterToLeftPos" ru="Рекоутер положение спереди" en="Recoater front pos"/>
+	<locale name="Com_Axes_RecoaterToRightPos" ru="Рекоутер положение сзади" en="Recoater back pos"/>
+	<locale name="Com_Axes_DoserRef" ru="Реферирование дозатора" en="Doser homing"/>
+	<locale name="Com_Axes_RecoaterRef" ru="Реферирование рекоутера" en="Recoater homing"/>
+	<locale name="Com_Axes_PlatformRef" ru="Реферирование платформы" en="Platform homing"/>
+	<locale name="Com_Axis_PlatformRefREL" ru="Установка нуля платформы" en="Set platform zero"/>
+	<locale name="Com_Axis_PlatformPosZero" ru="Перемещение платформы в 0" en="Move platform to 0"/>
+	<locale name="Com_PChamber_LightPB" ru="Свет системы контроля" en="Light for control system"/>
+	<locale name="Com_PChamber_Light" ru="Свет в камере" en="Chamber light"/>
+	<locale name="Com_PChamber_CameraLock" ru="Замок камеры" en="Chamber lock"/>
+	<locale name="Com_PChamber_VExhaustCamera" ru="Клапан сброса давления камеры" en="Chamber exhaust valve"/>
+	<locale name="Com_PChamber_VExhaustCameraRegulated" ru="Дроссель сброса давления камеры" en="Chamber exhaust orifice"/>
+	<locale name="Com_GasFilter_VGasToCamera" ru="Клапан впускного коллектора" en="Chamber input valve"/>
+	<locale name="Com_GasFilter_VGasFromCamera" ru="Клапан выпускного коллектора" en="Chamber output valve"/>
+	<locale name="Com_GasFilter_ResetInertCons" ru="Сброс расхода инертного газа" en="Reset inert gas consumption"/>
+	<locale name="Com_GasFilter_Blower" ru="Воздуходувка" en="Blower"/>
+	<locale name="Com_GasFilter_Inert" ru="Напуск инертного газа" en="Inert gas"/>
+	<locale name="Com_Powder_DoserVibro" ru="Виброочистка дозатора" en="Doser vibro clear"/>
+	<locale name="Com_Layer" ru="Пуск нанесения слоя" en="Undefined"/>
+	<locale name="Com_Recoat" ru="Нанести порошок" en="Undefined"/>
+	<locale name="Com_LaserSystem" ru="Лазерная система" en="Laser system"/>
+	<locale name="Com_GasSystem" ru="Газовая система" en="Gas and filters system"/>
+	<locale name="Com_Laser_Emission" ru="Излучение" en="Emission"/>
+	<locale name="Com_Laser_Reset" ru="Сброс ошибок лазера" en="Laser error reset"/>
+	<locale name="Com_PenultimateLayer" ru="Начинаем печатать предпоследний слой" en="Undefined"/>
+	<locale name="Com_HeartBit" ru="Сигнал наличия связи с ПЛК" en="Undefined"/>
+<!-- TRIG section -->
+	<locale name="Trig_Axes_RecoaterRef" ru="Рекоутер отреферирован" en="Recoater is homed"/>
+	<locale name="Trig_Layer" ru="Слой нанесен" en="Undefined"/>
+	<locale name="Trig_Recoat" ru="Нанесен порошок" en="Undefined"/>
+	<locale name="Trig_AllSystemReady" ru="ПЛК готовность к печати" en="PLC ready for print"/>
+	<locale name="Trig_SensorKeyLocked" ru="Ключ отключения сенсора" en="Undefined"/>
+<!-- AM section Process Chamber -->
+	<locale name="AM_PChamber_Pressure" ru="Давление в камере, кПа" en="Chamber pressure, kPa"/>
+	<locale name="AM_PChamber_Oxygen" ru="Кислород в камере, %" en="Chamber oxygen, %"/>
+<!-- AM section Gas and Filters -->
+	<locale name="AM_GasFilter_FilterOxygen" ru="Кислород в фильтре, %" en="Oxygen in filter, %"/>
+	<locale name="AM_GasFilter_PressureFilter" ru="Давление на фильтре, кПа" en="Filter pressure, kPa"/>
+	<locale name="AM_GasFilter_GasFlow" ru="Расход газовой среды, м³/ч" en="Process gas flow, m³/h"/>
+	<locale name="AM_GasFilter_InertInletPressure" ru="Давление инертного газа, bar" en="Inert gas pressure, bar"/>
+	<locale name="AM_GasFilter_InertConsumption" ru="Расход инертного газа, м³" en="Inert gas consumption, m³"/>
+	<locale name="AM_GasFilter_InertCurrentConsumption" ru="Мгновенный расход инертного газа, л/м" en="Current inert gas flow, l/m"/>
+	<locale name="AM_GasFilter_BlowerTemperature" ru="Темепература воздуходувки, °C" en="Blower temperature, °C"/>
+	<locale name="AM_GasFilter_VenturiTemperature" ru="Температура датчика расхода, °C" en="Consumption sensor temperature, °C"/>
+<!-- AM section Laser -->
+<!-- AM section Axes -->
+	<locale name="AM_Axes_RecoaterABSPosition" ru="Текущая позиция рекоутера, мм" en="Recoater pos, mm"/>
+	<locale name="AM_Axes_PlatformRELPosition" ru="Положение платформы, мкм" en="Platform pos, mkm"/>
+<!-- DISP section -->
+	<locale name="DISP_PositionRecoater" ru="Позиция рекоутра" en="Carriage position"/>
+	<locale name="DISP_PositionPlatform" ru="Позиция платформы" en="Platform position"/>
+<!-- DM section Process Chamber -->
+	<locale name="DM_PChamber_ChamberDoorLS" ru="Дверь концевик" en="Door limit switch"/>
+	<locale name="DM_PChamber_ExhaustValve" ru="Сбросной клапан" en="Exhaust valve"/>
+	<locale name="DM_PChamber_ExhaustValveRegulated" ru="Сбросной дроссель" en="Exhaust orifice"/>
+<!-- DM section Gas Filters -->
+	<locale name="DM_GasFilter_FilterPresentLS" ru="Фильтр установлен" en="Filter is present"/>
+	<locale name="DM_GasFilter_VToCamera" ru="Впускная задвижка" en="Inlet valve"/>
+	<locale name="DM_GasFilter_VFromCamera" ru="Выпускная задвижка" en="Outlet valve"/>
+<!-- DM section Laser -->
+	<locale name="DM_Laser_ChillerOK" ru="Чиллер состояние" en="Chiller state"/>
+	<locale name="DM_Laser_PowerStateLaser" ru="Лазер питание" en="Laser power"/>
+	<locale name="DM_Laser_EmissionStateLaser" ru="Лазер излучение" en="Laser emission"/>
+<!-- DM section Axes -->
+	<locale name="DM_Axes_RecoaterLeftLS" ru="Рекоутер концевик спереди" en="Recoater limit switch front"/>
+	<locale name="DM_Axes_RecoaterRightLS" ru="Рекоутер концевик сзади" en="Recoater limit switch back"/>
+	<locale name="DM_Axes_PlatformTopLS" ru="Платформа концевик верх" en="Platform limit switch top"/>
+	<locale name="DM_Axes_PlatformBottomLS" ru="Платформа концевик низ" en="Platform limit switch bottom"/>
+<!-- DM section Powder -->
+	<locale name="DM_Powder_LSRight" ru="Датчик наличия порошка справа" en="Powder sensor right"/>
+	<locale name="DM_Powder_LSLeft" ru="Датчик наличия порошка слева" en="Powder sensor left"/>
+<!-- SET section GasFilter -->
+	<locale name="Set_GasFilter_BlowerSpeed" ru="Обдув скорость, %" en="Blower speed, %"/>
+<!-- SET section Axes -->
+	<locale name="Set_Axes_PlatformStep" ru="Шаг платформы, мкм" en="Platform step, mkm"/>
+	<locale name="Set_Axes_PlatformSpeed" ru="Платформа скорость, мм/с" en="Platform speed, mm/s"/>
+	<locale name="Set_Axes_RecoaterSpeed" ru="Рекоутер скорость, мм/с" en="Recoater speed, mm/s"/>
+	<locale name="Set_Axes_DoserSpeed" ru="Дозатор скорость, об/мин" en="Doser speed, rnd/min"/>
+	<locale name="Set_Axes_DoserCounts" ru="Дозатор кол-во порошка, дозы" en="Doser counts, dose"/>
+<!-- Alarm section PChamber -->
+	<locale name="Alarm_PChamber_Unlocked" ru="Дверь камеры не закрыта" en="Process chamber door unlocked"/>
+	<locale name="Alarm_PChamber_Pressure" ru="Высокое давление в камере" en="High process chamber pressure"/>
+	<locale name="Alarm_PChamber_HighOxygen" ru="Высокое содержание кислорода в камере" en="High oxygen in process chamber"/>
+<!-- Alarm section GasFilter -->
+	<locale name="Alarm_GasFilter_HighOxygen" ru="Высокое содержание кислорода в фильтре" en="High oxygen in filter"/>
+	<locale name="Alarm_GasFilter_FilterClogg" ru="Фильтр загрезнен" en="Filter is clogged"/>
+	<locale name="Alarm_GasFilter_InertPressure" ru="Низкое давление инертного газа" en="Inert gas low pressure"/>
+	<locale name="Alarm_GasFilter_HighBlowerTemp" ru="Высокая темепратура воздуходувки" en="High blower temperature"/>
+	<locale name="Alarm_GasFilter_InertFlowSensor" ru="Неисправность датчика потока инертного газа" en="Inert gas flow sensor alarm"/>
+<!-- Alarm section Powder -->
+	<locale name="Alarm_Powder_Empty" ru="Низкий уровень порошка в бункере" en="Low powder level in powder feeder"/>
+<!-- Error section PChamber -->
+	<locale name="Err_PChamber_Pressure" ru="Высокое давление в камере" en="High process chamber pressure"/>
+	<locale name="Err_PChamber_HighOxygen" ru="Высокое содержание кислорода в камере" en="High oxygen in process chamber"/>
+	<locale name="Err_PChamber_PressureSensor" ru="Неисправность датчика давления в камере" en="Process chamber pressure sensor error"/>
+	<locale name="Err_PChamber_OxygenSensor" ru="Неисправность датчика кислорода в камере" en="Process chamber oxygen sensor error"/>
+<!-- Error section Axes -->
+	<locale name="Err_Axes_Platform" ru="Ошибка привода платформы" en="Platform axis error"/>
+	<locale name="Err_Axes_Recoater" ru="Ошибка привода рекоутера" en="Recoater axis error"/>
+	<locale name="Err_Axes_Doser" ru="Ошибка привода дозатора" en="Doser axis error"/>
+	<locale name="Err_Axes_ErrPLCModuleExtension" ru="Ошибка модуля ПЛК" en="PLC module error"/>
+<!-- Error section Laser -->
+	<locale name="Err_Laser_Chiller" ru="Ошибка чиллера" en="Chiller error"/>
+	<locale name="Err_Laser" ru="Ошибка лазера" en="Laser source error"/>
+<!-- Error -->
+	<locale name="Err_EmergencyStop" ru="Нажата кнопка аварийной остановки" en="Emergency stop button is pressed"/>
+<!-- Error section GasFilter -->
+	<locale name="Err_GasFilter_BlowerFC" ru="Ошибка ПЧ воздуходвки" en="Blower FC error"/>
+	<locale name="Err_GasFilter_FilterPresent" ru="Фильтр не установлен" en="Filter is not installed"/>
+	<locale name="Err_GasFilter_PressureSensor" ru="Неисправность датчика давления в фильтре" en="Filter pressure sensor error"/>
+	<locale name="Err_GasFilter_OxygenSensor" ru="Неисправность датчика кислорода в фильтре" en="Filter oxygen sensor error"/>
+	<locale name="Err_GasFilter_FlowSensor" ru="Неисправность датчика скорости потока в фильтре" en="Filter flow velocity sensor error"/>
+	<locale name="Err_GasFilter_FilterClogg" ru="Фильтр загрезнен" en="Filter is clogged"/>
+	<locale name="Err_GasFilter_HighOxygen" ru="Высокое содержание кислорода в фильтре" en="High oxygen in filter"/>
+	<locale name="Err_GasFilter_InertPressure" ru="Низкое давление инертного газа" en="Inert gas low pressure"/>
+	<locale name="Err_GasFilter_HighBlowerTemp" ru="Высокая темепратура воздуходувки" en="High blower temperature"/>
+	<locale name="Err_GasFilter_InertPressureSensor" ru="Неисправность датчика давления инертного газа" en="Inert gas pressure sensor error"/>
+	<locale name="Err_GasFilter_FilterClosed" ru="Задвижки фильтра закрыты" en="Filter valves are closed"/>
+	<locale name="Err_GasFilter_VToCameraTimeout" ru="Превышено время операции впускной задвижки" en="Inlet valve operation timeout"/>
+	<locale name="Err_GasFilter_VFromCameraTimeout" ru="Превышено время операции выпускной задвижки" en="Outlet valve operation timeout"/>
+	<locale name="Err_GasFilter_TempBlowerMotorSensor" ru="Неисправность датчика температуры воздуходвки" en="Blower temperature sensor error"/>
+	<locale name="Err_GasFilter_TempVenturiSensor" ru="Неисправность датчика температуры газовой системы" en="Gas system temperature sensor error"/>
+	<locale name="Err_GasFilter_NotSealed" ru="Газовая система не герметична" en="Gas system is not sealed"/>
+<!-- Error section Powder -->
+	<locale name="Err_Powder_DoserStuck" ru="Движение дозатора заблокировано" en="Doser movement is blocked"/>
+	<locale name="Err_Powder_Empty" ru="Бункер для порошка пуст" en="Powder feeder is empty"/>
+	<locale name="Err_Powder_RecoaterRef" ru="Рекоутер не отреферирован" en="Recoater is not homed"/>
+
+<!-- SetControlParameter section Axes -->
+	<locale name="SCP_Axes_JogSpeedRecoater" ru="Рекоутер скорость JOG, мм/с" en="Carriage JOG speed, mm/s"/>
+	<locale name="SCP_Axes_SetRecoaterDistRight" ru="Рекоутер правое конечное положение, мм" en="Carriage right end pos, mm"/>
+	<locale name="SCP_Axes_RecoaterFrontOnExpose" ru="Рекоутер спереди при экспонировании" en="Leave recoater on front side on exposure"/>
+	<locale name="SCP_Axes_PlatformBacklashDOWN" ru="Компенсация зазора ШВП вниз, мкм" en="Platform backlash compensation down, mkm"/>
+	<locale name="SCP_Axes_PlatformCorrectionDOWN" ru="Компенсация погрешности ШВП вниз, мкм" en="Platform error compensation down, mkm"/>
+<!-- SetControlParameter section Powder -->
+	<locale name="SCP_Powder_DoserTimeVibrClear" ru="Время вибрационной очистки дозатора, с" en="Doser vibration cleaning time, s"/>
+	<locale name="SCP_Powder_SetReserveDosesCount" ru="Резерв порошка, доз" en="Powder reserve, dose"/>
+<!-- SetControlParameter section GasFilter -->
+	<locale name="SCP_GasFilter_AlarmTempBlower" ru="Предупреждение температуры воздуходувки, °C" en="Alarm high blower temperature, °C"/>
+	<locale name="SCP_GasFilter_ErrTempBlower" ru="Ошибка температуры воздуходувки, °C" en="Error high blower temperature, °C"/>
+	<locale name="SCP_GasFilter_BlowerMaxFlow" ru="Максимальная скорость потока воздуходувки, м/с" en="Maximum blower flow velocity, m/s"/>
+	<locale name="SCP_GasFilter_AlarmGasFlow" ru="Предупреждение заполнен фильтр, м/с" en="Warning dirty filter, m/s"/>
+	<locale name="SCP_GasFilter_ErrGasFlow" ru="Ошибка заполнен фильтр, м/с" en="Error dirty filter, m/s"/>
+	<locale name="SCP_GasFilter_SetPointO2" ru="Целевой уровень кислорода, %" en="Target oxygen level, %"/>
+	<locale name="SCP_GasFilter_StartPointO2" ru="Стартовый уровень кислорода, %" en="Start oxygen level, %"/>
+
+	<locale name="SCP_GasFilter_InertFillChamber" ru="Значение кислорода при продувке камеры, %" en="Process chamber inert blow oxygen, %"/>
+	<locale name="SCP_GasFilter_AlarmInertPressure" ru="Предупреждение низкое давление инертного газа, bar" en="Alarm inert gas input pressure, bar"/>
+	<locale name="SCP_GasFilter_ErrInertPressure" ru="Ошибка низкое давление инертного газа, bar" en="Error inert gas input pressure, bar"/>
+	<locale name="SCP_GasFilter_AlarmO2" ru="Предупреждение выскоий кислород, %" en="Warning high oxygen, %"/>
+	<locale name="SCP_GasFilter_ErrO2" ru="Ошибка выскоий кислород, %" en="Error high oxygen, %"/>
+	<locale name="SCP_GasFilter_ErrFilterClosed" ru="Ошибка фильтр закрыт, кПа" en="Error filter is closed, kPa"/>
+	<locale name="SCP_GasFilter_ErrPresNotSealed" ru="Минимльное давление теста герметичности, кПа" en="Minimum pressure for seal test, kPa"/>
+<!-- SetControlParameter section GasFilter -->
+	<locale name="SCP_PChamber_AlarmPressure" ru="Предупреждение высокое давление в камере, кПа" en="Warning process chamber high pressure, kPa"/>
+	<locale name="SCP_PChamber_ErrPressure" ru="Ошибка высокое давление в камере, кПа" en="Error process chamber high pressure, kPa"/>
+	<locale name="SCP_PChamber_SetExhaustPressure" ru="Открытие клапана сброса для компенсации избыточного давления, кПа" en="Blow off valve for high chamber pressure, kPa"/>
+	<locale name="SCP_PChamber_SetInertFillPressure" ru="Подача аргона для компенсации низкого давления, кПа" en="Inert fill for low chamber pressure, kPa"/>
+<!-- SetControlParameter -->
+	<locale name="SCP_SetLayerThickness" ru="Толщина слоя, мкм" en="Layer thickness, mkm"/>
+	<locale name="SCP_GUIState" ru="Состояние GUI печати (0-нет печати, 1-пауза, 2-печать)" en="GUI print state"/>
+	
+	<locale name="SCP_GasFilter_BlowerPID_Kp" ru="ПИД воздуходувки Kp" en="Blower PID Kp"/>
+	<locale name="SCP_GasFilter_BlowerPID_Kd" ru="ПИД воздуходувки Kd" en="Blower PID Kd"/>
+	<locale name="SCP_GasFilter_BlowerPID_Ki" ru="ПИД воздуходувки Ki" en="Blower PID Ki"/>
+</locales>

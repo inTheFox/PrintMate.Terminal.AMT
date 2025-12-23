@@ -1,0 +1,134 @@
+[
+	{
+		"cardInfo": {
+			"ipAddress": "172.18.34.227",
+			"seqIndex": 0,
+			"comment": "TEST: Z-correction DISABLED to test basic diameter control"
+		},
+		"processVariablesMap": {
+			"nonDepends": [
+				{
+					"markSpeed": 1000,
+					"jumpSpeed": 25000,
+					"polygonDelay": 170,
+					"jumpDelay": 40000,
+					"markDelay": 1200,
+					"laserOnDelay": 110.0,
+					"laserOffDelay": 120.0,
+					"laserOnDelayForSkyWriting": 130.0,
+					"laserOffDelayForSkyWriting": 140.0,
+					"curBeamDiameterMicron": 65.0,
+					"curPower": 50.0,
+					"jumpMaxLengthLimitMm": 400.0,
+					"minJumpDelay": 400,
+					"swenable": true,
+					"umax": 0.1
+				}
+			],
+			"markSpeed": [
+				{
+					"markSpeed": 800,
+					"jumpSpeed": 25000,
+					"polygonDelay": 385,
+					"jumpDelay": 40000,
+					"markDelay": 470,
+					"laserOnDelay": 420.0,
+					"laserOffDelay": 490.0,
+					"laserOnDelayForSkyWriting": 600.0,
+					"laserOffDelayForSkyWriting": 730.0,
+					"curBeamDiameterMicron": 65.0,
+					"curPower": 50.0,
+					"jumpMaxLengthLimitMm": 400.0,
+					"minJumpDelay": 400,
+					"swenable": true,
+					"umax": 0.1
+				},
+				{
+					"markSpeed": 1250,
+					"jumpSpeed": 25000,
+					"polygonDelay": 465,
+					"jumpDelay": 40000,
+					"markDelay": 496,
+					"laserOnDelay": 375.0,
+					"laserOffDelay": 500.0,
+					"laserOnDelayForSkyWriting": 615.0,
+					"laserOffDelayForSkyWriting": 725.0,
+					"curBeamDiameterMicron": 65.0,
+					"curPower": 50.0,
+					"jumpMaxLengthLimitMm": 400.0,
+					"minJumpDelay": 400,
+					"swenable": true,
+					"umax": 0.1
+				},
+				{
+					"markSpeed": 2000,
+					"jumpSpeed": 25000,
+					"polygonDelay": 600,
+					"jumpDelay": 40000,
+					"markDelay": 540,
+					"laserOnDelay": 330.0,
+					"laserOffDelay": 530.0,
+					"laserOnDelayForSkyWriting": 630.0,
+					"laserOffDelayForSkyWriting": 720.0,
+					"curBeamDiameterMicron": 65.0,
+					"curPower": 50.0,
+					"jumpMaxLengthLimitMm": 400.0,
+					"minJumpDelay": 400,
+					"swenable": true,
+					"umax": 0.1
+				}
+			]
+		},
+		"scannerConfig": {
+			"fieldSizeX": 400.0,
+			"fieldSizeY": 400.0,
+			"protocolCode": 1,
+			"coordinateTypeCode": 5,
+			"offsetX": 0.0,
+			"offsetY": 105.03,
+			"offsetZ": -0.001,
+			"scaleX": 1.0,
+			"scaleY": 1.0,
+			"scaleZ": 1.0,
+			"rotateAngle": 0.0
+		},
+		"beamConfig": {
+			"minBeamDiameterMicron": 65.0,
+			"wavelengthNano": 1070.0,
+			"rayleighLengthMicron": 1921.0,
+			"m2": 1.593,
+			"focalLengthMm": 538.46,
+			"actualPowerOffsetValue": [64.7, 71.0, 102.5, 136.4, 208.5, 265.6]
+		},
+		"laserPowerConfig": {
+			"maxPower": 500.0,
+			"actualPowerCorrectionValue": [
+				0.0,
+				67.0,
+				176.0,
+				281.0,
+				382.0,
+				475.0
+			],
+			"powerOffsetKFactor": -0.6839859,
+			"powerOffsetCFactor": 51.298943
+		},
+		"functionSwitcherConfig": {
+			"enablePowerOffset": false,
+			"enablePowerCorrection": true,
+			"enableZCorrection": false,
+			"enableDiameterChange": true,
+			"enableDynamicChangeVariables": true,
+			"limitVariablesMinPoint": true,
+			"limitVariablesMaxPoint": true,
+			"enableVariableJumpDelay": true
+		},
+		"thirdAxisConfig": {
+			"bfactor": 0.013944261,
+			"cfactor": -7.870427,
+			"afactor": 0.0,
+			"baseFocal": 538.46,
+			"correctionPolynomial": [0.0, 0.013944261, -7.870427]
+		}
+	}
+]

@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="PrintMate.Terminal.Views.ComponentsViews.LaserSystemStatusViewxaml"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PrintMate.Terminal.Views.ComponentsViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="400">
+<Border>
+    <StackPanel>
+        <local:Container Title="Информация об оборудовании ">
+            <UniformGrid Columns="2">
+                <local:ParameterAndValueView Margin="5" ParameterValue="Режим работы" ParameterName="{Binding LaserStatus.RMT, RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+                <local:ParameterAndValueView Margin="5" ParameterValue="Средняя мощность" ParameterName="{Binding LaserStatus.ROP, RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+                <local:ParameterAndValueView Margin="5" ParameterValue="Температура корпуса" ParameterName="{Binding LaserStatus.RCT, RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+                <local:ParameterAndValueView Margin="5" ParameterValue="Температура платы" ParameterName="{Binding LaserStatus.RBT, RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+                <local:ParameterAndValueView Margin="5" ParameterValue="ID устройства" ParameterName="{Binding LaserStatus.RID, RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+                <local:ParameterAndValueView Margin="5" ParameterValue="Версия прошивки" ParameterName="{Binding LaserStatus.RFV, RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+                    <local:ParameterAndValueView Margin="5" ParameterValue="Обновлен" ParameterName="{Binding LaserStatus.Update, RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+</UniformGrid>
+            </local:Container>
+        <local:Container Title="Регистры и состояния">
+                <local:LogicIndicator Title="{Binding StatusDescriptions[0], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}" 
+                                      Value="{Binding LaserStatus.STAStates[0], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+                <local:LogicIndicator Title="{Binding StatusDescriptions[1], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}" 
+                                      Value="{Binding LaserStatus.STAStates[1], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+                <local:LogicIndicator Title="{Binding StatusDescriptions[2], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}" 
+                                      Value="{Binding LaserStatus.STAStates[2], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+                <local:LogicIndicator Title="{Binding StatusDescriptions[4], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}" 
+                                      Value="{Binding LaserStatus.STAStates[4], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+                <local:LogicIndicator Title="{Binding StatusDescriptions[8], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}" 
+                                      Value="{Binding LaserStatus.STAStates[8], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+                <local:LogicIndicator Title="{Binding StatusDescriptions[10], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}" 
+                                      Value="{Binding LaserStatus.STAStates[10], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+                <local:LogicIndicator Title="{Binding StatusDescriptions[11], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}" 
+                                      Value="{Binding LaserStatus.STAStates[11], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+                <local:LogicIndicator Title="{Binding StatusDescriptions[12], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}" 
+                                      Value="{Binding LaserStatus.STAStates[12], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+                <local:LogicIndicator Title="{Binding StatusDescriptions[13], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}" 
+                                      Value="{Binding LaserStatus.STAStates[13], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+                <local:LogicIndicator Title="{Binding StatusDescriptions[18], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}" 
+                                      Value="{Binding LaserStatus.STAStates[18], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+                <local:LogicIndicator Title="{Binding StatusDescriptions[19], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}" 
+                                      Value="{Binding LaserStatus.STAStates[19], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+                <local:LogicIndicator Title="{Binding StatusDescriptions[24], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}" 
+                                      Value="{Binding LaserStatus.STAStates[24], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+                <local:LogicIndicator Title="{Binding StatusDescriptions[27], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}" 
+                                      Value="{Binding LaserStatus.STAStates[27], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+                <local:LogicIndicator Title="{Binding StatusDescriptions[28], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}" 
+                                      Value="{Binding LaserStatus.STAStates[28], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+                <local:LogicIndicator Title="{Binding StatusDescriptions[29], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}" 
+                                      Value="{Binding LaserStatus.STAStates[29], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+                <local:LogicIndicator Title="{Binding StatusDescriptions[30], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}" 
+                                      Value="{Binding LaserStatus.STAStates[30], RelativeSource={RelativeSource AncestorType={x:Type local:LaserSystemStatusViewxaml}}}"/>
+
+            </local:Container>
+        </StackPanel>
+</Border>
+   
+</UserControl>

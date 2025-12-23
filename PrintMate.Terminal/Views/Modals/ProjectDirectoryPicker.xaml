@@ -1,0 +1,227 @@
+﻿<UserControl x:Class="PrintMate.Terminal.Views.Modals.ProjectDirectoryPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:componentsViews="clr-namespace:PrintMate.Terminal.Views.ComponentsViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920">
+
+    <Grid x:Name="MainGrid" Opacity="1">
+        <Border Background="#121212" Width="900" Height="900">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                    
+
+                <Border Padding="10">
+                    <StackPanel>
+                        <componentsViews:Container Title="Выберите диск" TitleSize="20" Margin="0 0 0 10">
+                            <Border Grid.Column="0" Margin="10" Background="Transparent" CornerRadius="0" HorizontalAlignment="Stretch">
+                                <ListBox ItemsSource="{Binding Drives}"
+SelectedItem="{Binding SelectedDrive}"
+HorizontalAlignment="Stretch"
+Background="Transparent"
+BorderThickness="0"
+ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectionChanged="ListBox_SelectionChanged">
+                                    <!--<ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel HorizontalAlignment="Stretch"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>-->
+
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Background="#161616" Padding="10" Margin="5" CornerRadius="10" x:Name="DriveBorder" HorizontalAlignment="Stretch">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Border Background="Black" Padding="10" CornerRadius="10">
+                                                        <Image Width="30" Source="/images/disk.png" />
+                                                    </Border>
+                                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                        <TextBlock Grid.Column="1" Margin="10 0 20 0 " FontSize="15" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Name, StringFormat='Диск {0}'}"/>
+                                                        <TextBlock Grid.Column="1" Margin="10 0 20 0 " FontSize="10" FontWeight="Bold" Foreground="Gray" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding VolumeLabel, StringFormat='Диск {0}'}"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Border>
+                                            <DataTemplate.Triggers>
+                                                <DataTrigger 
+                                Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" 
+                                Value="True">
+                                                    <Setter TargetName="DriveBorder" Property="Background" Value="#ff4500" />
+                                                </DataTrigger>
+                                            </DataTemplate.Triggers>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+
+
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ListBoxItem">
+                                                        <Border Background="{TemplateBinding Background}">
+                                                            <ContentPresenter />
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                </ListBox>
+
+
+
+                            </Border>
+                        </componentsViews:Container>
+                        <componentsViews:Container Title="Панель быстрого доступа" TitleSize="15">
+                            <Border Grid.Column="0" Margin="10" Background="Transparent" CornerRadius="0" HorizontalAlignment="Stretch">
+                                <ListBox ItemsSource="{Binding SpecialFolders}"
+SelectedItem="{Binding SelectedSpecialFolder}"
+HorizontalAlignment="Stretch"
+Background="Transparent"
+BorderThickness="0"
+ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectionChanged="ListBox_SelectionChanged">
+
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel/>
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Background="#161616" Padding="10" Margin="5" CornerRadius="15" x:Name="SpecialFolderBorder">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Border Background="Black" Padding="10" CornerRadius="10">
+                                                        <Image Width="30" Source="/images/disk.png" />
+                                                    </Border>
+                                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                        <TextBlock Grid.Column="1" Margin="10 0 20 0 " FontSize="15" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Name}"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Border>
+                                            <DataTemplate.Triggers>
+                                                <DataTrigger 
+               Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" 
+               Value="True">
+                                                    <Setter TargetName="SpecialFolderBorder" Property="Background" Value="#ff4500" />
+                                                </DataTrigger>
+                                            </DataTemplate.Triggers>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+
+
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ListBoxItem">
+                                                        <Border Background="{TemplateBinding Background}">
+                                                            <ContentPresenter />
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                </ListBox>
+
+
+
+                            </Border>
+                        </componentsViews:Container>
+                    </StackPanel>
+                </Border>
+
+
+
+                <componentsViews:Container Grid.Column="1" Title="Выберите директорию">
+                    <StackPanel>
+                        <Border>
+                            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                <ListBox Margin="0" ItemsSource="{Binding Directories}" SelectedIndex="{Binding SelectedDirectory}">
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                            <Setter Property="Padding" Value="0"/>
+                                            <Setter Property="Margin" Value="0"/>
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ListBoxItem">
+                                                        <Border Background="{TemplateBinding Background}">
+                                                            <ContentPresenter />
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Height="650"/>
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border x:Name="ItemBorder" Background="#222222" Padding="15">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Width="30" Source="/images/file.png"/>
+                                                    <TextBlock FontSize="15" Grid.Column="1" Margin="10 0 0 0"
+                                               VerticalAlignment="Center" FontWeight="Bold" Foreground="White"
+                                               Text="{Binding Item2}"/>
+                                                </Grid>
+                                            </Border>
+                                            <DataTemplate.Triggers>
+                                                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True">
+                                                    <Setter TargetName="ItemBorder" Property="Background" Value="#ff4500"/>
+                                                </DataTrigger>
+                                            </DataTemplate.Triggers>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </ScrollViewer>
+                        </Border>
+                        <Border Padding="15">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Height="50" Command="{Binding CloseCommand}" Background="White" Content="Закрыть" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                                <Button Grid.Column="1" Height="50" Command="{Binding NextCommand}" Background="White" Content="Выбрать" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </componentsViews:Container>
+
+
+
+            </Grid>
+
+        </Border>
+    </Grid>
+</UserControl>

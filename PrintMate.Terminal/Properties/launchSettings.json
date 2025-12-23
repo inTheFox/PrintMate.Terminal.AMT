@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PrintMate.Terminal": {
+      "commandName": "Project",
+      "executablePath": "$(TargetPath)"
+    }
+  }
+}
