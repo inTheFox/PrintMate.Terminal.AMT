@@ -8,7 +8,7 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:regions="http://prismlibrary.com/"
              xmlns:region="clr-namespace:PrintMate.Terminal.Region"
-             d:DesignHeight="1080" d:DesignWidth="1400">
+             d:DesignHeight="768" d:DesignWidth="724">
 
     <UserControl.Resources>
         <!-- Fade In Animation -->
@@ -55,15 +55,15 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="CornerRadius" Value="12"/>
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
 
         <!-- Icon Container Style -->
         <Style x:Key="IconContainerStyle" TargetType="Border">
-            <Setter Property="Width" Value="52"/>
-            <Setter Property="Height" Value="52"/>
-            <Setter Property="CornerRadius" Value="14"/>
+            <Setter Property="Width" Value="26"/>
+            <Setter Property="Height" Value="26"/>
+            <Setter Property="CornerRadius" Value="7"/>
             <Setter Property="Background">
                 <Setter.Value>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -76,9 +76,9 @@
 
         <!-- Selected Icon Container Style -->
         <Style x:Key="SelectedIconContainerStyle" TargetType="Border">
-            <Setter Property="Width" Value="64"/>
-            <Setter Property="Height" Value="64"/>
-            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Width" Value="32"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="CornerRadius" Value="8"/>
             <Setter Property="Background">
                 <Setter.Value>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -130,7 +130,7 @@
             </Grid.RowDefinitions>
 
             <!-- Header Section -->
-            <StackPanel x:Name="HeaderSection" Grid.Row="0" Margin="0 35 0 0" HorizontalAlignment="Center">
+            <StackPanel x:Name="HeaderSection" Grid.Row="0" Margin="0 8 0 0" HorizontalAlignment="Center">
                 <StackPanel.RenderTransform>
                     <TranslateTransform/>
                 </StackPanel.RenderTransform>
@@ -138,18 +138,18 @@
                 <!-- Main Title with Gradient -->
                 <TextBlock HorizontalAlignment="Center"
                            FontWeight="Bold"
-                           FontSize="46"
+                           FontSize="18"
                            Foreground="{StaticResource HeaderGradient}">
                     <TextBlock.Effect>
-                        <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.3" Color="#ffffff"/>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.3" Color="#ffffff"/>
                     </TextBlock.Effect>
                     Процесс
                 </TextBlock>
 
                 <!-- Subtitle with Icon -->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 8 0 0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 3 0 0">
                     <!-- Decorative Line Left -->
-                    <Border Width="40" Height="2" CornerRadius="1" Margin="0 0 15 0" VerticalAlignment="Center">
+                    <Border Width="18" Height="1" CornerRadius="1" Margin="0 0 6 0" VerticalAlignment="Center">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                 <GradientStop Color="#00ff6f00" Offset="0"/>
@@ -158,13 +158,13 @@
                         </Border.Background>
                     </Border>
 
-                    <TextBlock Text="управление процессами принтера"
-                               FontSize="15"
+                    <TextBlock Text="управление процессами"
+                               FontSize="8"
                                FontWeight="Medium"
                                Foreground="{StaticResource SubtitleBrush}"/>
 
                     <!-- Decorative Line Right -->
-                    <Border Width="40" Height="2" CornerRadius="1" Margin="15 0 0 0" VerticalAlignment="Center">
+                    <Border Width="18" Height="1" CornerRadius="1" Margin="6 0 0 0" VerticalAlignment="Center">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                 <GradientStop Color="#ff6f00" Offset="0"/>
@@ -176,7 +176,7 @@
             </StackPanel>
 
             <!-- Menu Section -->
-            <Border x:Name="MenuSection" Grid.Row="1" Margin="10 20 10 10">
+            <Border x:Name="MenuSection" Grid.Row="1" Margin="3 6 3 3">
                 <Border.RenderTransform>
                     <TranslateTransform/>
                 </Border.RenderTransform>
@@ -199,9 +199,9 @@
                                 <Setter.Value>
                                     <ControlTemplate TargetType="ListBoxItem">
                                         <Border x:Name="itemBorder"
-                                                Margin="6"
-                                                MinWidth="260"
-                                                Padding="16"
+                                                Margin="2"
+                                                MinWidth="115"
+                                                Padding="6"
                                                 Style="{StaticResource ProcessCardStyle}">
 
                                             <Grid>
@@ -218,7 +218,7 @@
                                                     <Grid>
                                                         <!-- Glow Background -->
                                                         <Border x:Name="IconGlow"
-                                                                CornerRadius="14"
+                                                                CornerRadius="10"
                                                                 Opacity="0">
                                                             <Border.Background>
                                                                 <RadialGradientBrush>
@@ -228,7 +228,7 @@
                                                             </Border.Background>
                                                         </Border>
                                                         <Image Source="{Binding Image}"
-                                                               Width="30" Height="30"
+                                                               Width="14" Height="14"
                                                                HorizontalAlignment="Center"
                                                                VerticalAlignment="Center"
                                                                RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -238,34 +238,36 @@
                                                 <!-- Text Content -->
                                                 <StackPanel Grid.Column="1"
                                                             VerticalAlignment="Center"
-                                                            Margin="14 0 0 0">
+                                                            Margin="5 0 0 0">
                                                     <TextBlock x:Name="ActionName"
                                                                Text="{Binding Name}"
                                                                FontWeight="Bold"
-                                                               FontSize="16"
-                                                               Foreground="#e8e8e8"/>
+                                                               FontSize="10"
+                                                               Foreground="#e8e8e8"
+                                                               TextTrimming="CharacterEllipsis"/>
                                                     <TextBlock x:Name="ActionSubtitle"
-                                                               Text="настройка параметров"
-                                                               FontSize="12"
+                                                               Text="настройка"
+                                                               FontSize="8"
                                                                Foreground="#505050"
-                                                               Margin="0 3 0 0"/>
+                                                               Margin="0 1 0 0"
+                                                               TextTrimming="CharacterEllipsis"/>
                                                 </StackPanel>
 
                                                 <!-- Arrow Indicator -->
                                                 <Border x:Name="ArrowContainer"
                                                         Grid.Column="2"
-                                                        Width="32" Height="32"
-                                                        CornerRadius="8"
+                                                        Width="16" Height="16"
+                                                        CornerRadius="4"
                                                         VerticalAlignment="Center"
                                                         Background="#10ffffff">
                                                     <TextBlock x:Name="ArrowIcon"
                                                                Text="›"
-                                                               FontSize="22"
+                                                               FontSize="12"
                                                                FontWeight="Light"
                                                                Foreground="#404040"
                                                                HorizontalAlignment="Center"
                                                                VerticalAlignment="Center"
-                                                               Margin="0 -2 0 0"/>
+                                                               Margin="0 -1 0 0"/>
                                                 </Border>
                                             </Grid>
 

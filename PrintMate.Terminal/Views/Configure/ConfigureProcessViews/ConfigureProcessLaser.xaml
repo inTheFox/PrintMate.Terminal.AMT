@@ -8,13 +8,13 @@
              xmlns:opc2Lib="clr-namespace:Opc2Lib;assembly=Opc2Lib"
              mc:Ignorable="d" 
              Background="Black"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="350" d:DesignWidth="550">
     <Grid>
         <ScrollViewer PanningMode="Both" VerticalScrollBarVisibility="Hidden" ManipulationBoundaryFeedback="ScrollViewer_ManipulationBoundaryFeedback"
                   PanningRatio="1.0"
                   CanContentScroll="False">
             <StackPanel>
-                <controls:Container Margin="5 10 10 0" Title="Сигналы">
+                <controls:Container Margin="3 5 5 0" Title="Сигналы">
                     <UniformGrid Columns="2">
                         <controls:PLCLogicIndicator CommandInfo="{x:Static opc2Lib:OpcCommands.DM_Laser1_ChillerOK}" Margin="1"/>
                         <controls:PLCLogicIndicator CommandInfo="{x:Static opc2Lib:OpcCommands.DM_Laser2_ChillerOK}" Margin="1"/>
@@ -26,7 +26,7 @@
                 </controls:Container>
 
 
-                <controls:Container Margin="5 10 10 0" Title="Управление">
+                <controls:Container Margin="3 5 5 0" Title="Управление">
                     <UniformGrid Columns="2">
                         <controls:PLCBoolSwitch CommandInfo="{x:Static opc2Lib:OpcCommands.Com_Laser1_PowerChiller}" Margin="1"/>
                         <controls:PLCBoolSwitch CommandInfo="{x:Static opc2Lib:OpcCommands.Com_Laser2_PowerChiller}" Margin="1"/>

@@ -80,15 +80,9 @@ namespace PrintMate.Terminal.Views
             // Инициализация ModalService с поддержкой размытия фона
             modalService.Initialize(ModalContainer, ModalOverlay, RootBlurEffect);
 
-#if ATM16_DEBUG
+            // Фиксированное разрешение 1024x768
             Width = 1024;
             Height = 768;
-
-#endif
-#if ATM32_DEBUG
-            Width = 1920;
-            Height = 1080;
-#endif
 
             //WindowStyle = WindowStyle.None;
             Loaded += MainWindow_Loaded;

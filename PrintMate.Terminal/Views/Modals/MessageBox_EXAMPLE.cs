@@ -100,7 +100,7 @@ namespace PrintMate.Terminal.Examples
 
 Характеристики:
 • Версия .NET: 9.0
-• Разрешение: 1920x1080
+• Разрешение: 1024x768
 • Архитектура: MVVM + Prism
 • База данных: SQLite + EF Core
 • Связь с оборудованием: OPC UA

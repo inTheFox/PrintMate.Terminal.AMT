@@ -7,7 +7,7 @@
              xmlns:componentsViews="clr-namespace:PrintMate.Terminal.Views.ComponentsViews"
              mc:Ignorable="d" 
              Background="Black"
-             d:DesignHeight="1080" d:DesignWidth="1920">
+             d:DesignHeight="768" d:DesignWidth="1024">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PrintMate.Terminal.Views"
              xmlns:componentsViews="clr-namespace:PrintMate.Terminal.Views.ComponentsViews"
              mc:Ignorable="d" 
-             d:DesignHeight="1080" d:DesignWidth="1410">
+             d:DesignHeight="768" d:DesignWidth="724">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

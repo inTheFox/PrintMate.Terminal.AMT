@@ -8,7 +8,7 @@
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
              xmlns:hc="https://handyorg.github.io/handycontrol"
              mc:Ignorable="d"
-             d:DesignHeight="1080" d:DesignWidth="1920"
+             d:DesignHeight="768" d:DesignWidth="1024"
              Background="#1E1E1E">
     <UserControl.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>

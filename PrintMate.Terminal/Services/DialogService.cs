@@ -81,8 +81,8 @@ namespace PrintMate.Terminal.Services
 
             var newWindow = new Window
             {
-                Width = 1920,
-                Height = 1080,
+                Width = 1024,
+                Height = 768,
                 Title = "Клавиатура",
                 DataContext = model,
                 Content = contentContainer,

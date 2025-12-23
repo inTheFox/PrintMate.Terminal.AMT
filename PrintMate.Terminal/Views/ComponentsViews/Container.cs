@@ -122,7 +122,7 @@ namespace PrintMate.Terminal.Views.ComponentsViews
                 nameof(TitleSize),
                 typeof(int),
                 typeof(Container),
-                new PropertyMetadata(25));
+                new PropertyMetadata(15));
 
         public int TitleSize
         {

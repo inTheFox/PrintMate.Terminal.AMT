@@ -10,7 +10,7 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:region="clr-namespace:PrintMate.Terminal.Region"
              mc:Ignorable="d"
-             d:DesignHeight="1080" d:DesignWidth="1400">
+             d:DesignHeight="768" d:DesignWidth="724">
 
     <UserControl.Resources>
         <!-- Fade In Animation -->
@@ -57,15 +57,15 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="CornerRadius" Value="10"/>
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
 
         <!-- Icon Container Style -->
         <Style x:Key="IconContainerStyle" TargetType="Border">
-            <Setter Property="Width" Value="44"/>
-            <Setter Property="Height" Value="44"/>
-            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Width" Value="32"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="CornerRadius" Value="8"/>
             <Setter Property="Background">
                 <Setter.Value>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -111,7 +111,7 @@
             </Grid.RowDefinitions>
 
             <!-- Header Section -->
-            <StackPanel x:Name="HeaderSection" Grid.Row="0" Margin="0 30 0 0" HorizontalAlignment="Center">
+            <StackPanel x:Name="HeaderSection" Grid.Row="0" Margin="0 15 0 0" HorizontalAlignment="Center">
                 <StackPanel.RenderTransform>
                     <TranslateTransform/>
                 </StackPanel.RenderTransform>
@@ -119,18 +119,18 @@
                 <!-- Main Title with Gradient -->
                 <TextBlock HorizontalAlignment="Center"
                            FontWeight="Bold"
-                           FontSize="42"
+                           FontSize="28"
                            Foreground="{StaticResource HeaderGradient}">
                     <TextBlock.Effect>
-                        <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.3" Color="#ffffff"/>
+                        <DropShadowEffect BlurRadius="15" ShadowDepth="0" Opacity="0.3" Color="#ffffff"/>
                     </TextBlock.Effect>
                     Параметры
                 </TextBlock>
 
                 <!-- Subtitle with Decorative Lines -->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 8 0 0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5 0 0">
                     <!-- Decorative Line Left -->
-                    <Border Width="40" Height="2" CornerRadius="1" Margin="0 0 15 0" VerticalAlignment="Center">
+                    <Border Width="25" Height="1" CornerRadius="1" Margin="0 0 8 0" VerticalAlignment="Center">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                 <GradientStop Color="#00ff6f00" Offset="0"/>
@@ -139,13 +139,13 @@
                         </Border.Background>
                     </Border>
 
-                    <TextBlock Text="управление параметрами и настройками принтера"
-                               FontSize="14"
+                    <TextBlock Text="управление настройками принтера"
+                               FontSize="10"
                                FontWeight="Medium"
                                Foreground="{StaticResource SubtitleBrush}"/>
 
                     <!-- Decorative Line Right -->
-                    <Border Width="40" Height="2" CornerRadius="1" Margin="15 0 0 0" VerticalAlignment="Center">
+                    <Border Width="25" Height="1" CornerRadius="1" Margin="8 0 0 0" VerticalAlignment="Center">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                 <GradientStop Color="#ff6f00" Offset="0"/>
@@ -157,7 +157,7 @@
             </StackPanel>
 
             <!-- Menu Section -->
-            <Border x:Name="MenuSection" Grid.Row="1" Margin="15 18 15 10">
+            <Border x:Name="MenuSection" Grid.Row="1" Margin="8 10 8 5">
                 <Border.RenderTransform>
                     <TranslateTransform/>
                 </Border.RenderTransform>
@@ -180,9 +180,9 @@
                                 <Setter.Value>
                                     <ControlTemplate TargetType="ListBoxItem">
                                         <Border x:Name="itemBorder"
-                                                Margin="4"
-                                                MinWidth="170"
-                                                Padding="12"
+                                                Margin="2"
+                                                MinWidth="120"
+                                                Padding="8"
                                                 Style="{StaticResource ParameterCardStyle}">
 
                                             <Grid>
@@ -198,7 +198,7 @@
                                                     <Grid>
                                                         <!-- Glow Background -->
                                                         <Border x:Name="IconGlow"
-                                                                CornerRadius="12"
+                                                                CornerRadius="8"
                                                                 Opacity="0">
                                                             <Border.Background>
                                                                 <RadialGradientBrush>
@@ -208,7 +208,7 @@
                                                             </Border.Background>
                                                         </Border>
                                                         <Image Source="{Binding Path}"
-                                                               Width="24" Height="24"
+                                                               Width="18" Height="18"
                                                                HorizontalAlignment="Center"
                                                                VerticalAlignment="Center"
                                                                RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -220,10 +220,11 @@
                                                            Grid.Column="1"
                                                            Text="{Binding Name}"
                                                            VerticalAlignment="Center"
-                                                           Margin="12 0 0 0"
+                                                           Margin="8 0 0 0"
                                                            FontWeight="SemiBold"
-                                                           FontSize="14"
-                                                           Foreground="#e0e0e0"/>
+                                                           FontSize="11"
+                                                           Foreground="#e0e0e0"
+                                                           TextTrimming="CharacterEllipsis"/>
                                             </Grid>
 
                                             <i:Interaction.Triggers>

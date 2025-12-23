@@ -15,7 +15,7 @@ PrintMate.Terminal is an industrial HMI (Human-Machine Interface) application fo
 
 **Platform Requirements:**
 - Windows-only (uses WPF and P/Invoke for console)
-- Fixed 1920x1080 fullscreen resolution
+- Fixed 1024x768 fullscreen resolution
 - .NET 9.0 runtime
 
 ## Common Commands

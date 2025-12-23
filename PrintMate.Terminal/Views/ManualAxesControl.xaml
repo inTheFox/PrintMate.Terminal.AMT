@@ -9,9 +9,9 @@
              xmlns:opc2Lib="clr-namespace:Opc2Lib;assembly=Opc2Lib"
              xmlns:componentsViews="clr-namespace:PrintMate.Terminal.Views.ComponentsViews"
              xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-             Margin="0 30 0 0"
+             Margin="0 15 0 0"
              mc:Ignorable="d"
-             d:DesignHeight="800" d:DesignWidth="1418">
+             d:DesignHeight="550" d:DesignWidth="724">
 
     <UserControl.Resources>
         <!-- Glassmorphism Card Style -->
@@ -33,10 +33,10 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="CornerRadius" Value="10"/>
             <Setter Property="Effect">
                 <Setter.Value>
-                    <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.3" Color="Black"/>
+                    <DropShadowEffect BlurRadius="12" ShadowDepth="0" Opacity="0.3" Color="Black"/>
                 </Setter.Value>
             </Setter>
         </Style>
@@ -60,11 +60,11 @@
                 </Setter.Value>
             </Setter>-->
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="12"/>
-            <Setter Property="Padding" Value="15"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="10"/>
             <Setter Property="Effect">
                 <Setter.Value>
-                    <DropShadowEffect BlurRadius="15" ShadowDepth="0" Opacity="0.4" Color="#ff6f00"/>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.4" Color="#ff6f00"/>
                 </Setter.Value>
             </Setter>
         </Style>
@@ -88,10 +88,10 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="10"/>
-            <Setter Property="MinHeight" Value="55"/>
-            <Setter Property="MinWidth" Value="90"/>
-            <Setter Property="Padding" Value="12 8"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="MinHeight" Value="36"/>
+            <Setter Property="MinWidth" Value="60"/>
+            <Setter Property="Padding" Value="8 5"/>
         </Style>
 
         <!-- Interactive Card Style -->
@@ -113,8 +113,8 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="12"/>
-            <Setter Property="Padding" Value="12"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="8"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
@@ -147,16 +147,16 @@
             </Setter>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontSize" Value="11"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border x:Name="border"
-                                CornerRadius="8"
+                                CornerRadius="6"
                                 Background="{TemplateBinding Background}"
                                 BorderThickness="0"
-                                Padding="15 10">
+                                Padding="10 6">
                             <Border.Effect>
                                 <DropShadowEffect BlurRadius="8" ShadowDepth="0" Opacity="0.3" Color="#ff6f00"/>
                             </Border.Effect>
@@ -215,17 +215,17 @@
         <!-- Section Title Style -->
         <Style x:Key="SectionTitle" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#888888"/>
-            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontSize" Value="9"/>
             <Setter Property="FontWeight" Value="Medium"/>
-            <Setter Property="Margin" Value="0 0 0 8"/>
+            <Setter Property="Margin" Value="0 0 0 5"/>
         </Style>
     </UserControl.Resources>
 
     <Grid>
         <StackPanel>
             <!-- Header -->
-            <StackPanel Orientation="Horizontal" Margin="50 0 0 20">
-                <Border Width="4" Height="35" CornerRadius="2" Margin="0 0 15 0">
+            <StackPanel Orientation="Horizontal" Margin="25 0 0 10">
+                <Border Width="3" Height="22" CornerRadius="2" Margin="0 0 10 0">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                             <GradientStop Color="#ff6f00" Offset="0"/>
@@ -233,7 +233,7 @@
                         </LinearGradientBrush>
                     </Border.Background>
                 </Border>
-                <TextBlock Text="Управление осями" Foreground="White" FontSize="32" FontWeight="Bold" VerticalAlignment="Center"/>
+                <TextBlock Text="Управление осями" Foreground="White" FontSize="20" FontWeight="Bold" VerticalAlignment="Center"/>
             </StackPanel>
 
             <Grid ShowGridLines="False">
@@ -245,7 +245,7 @@
 
                 <!-- Left Column - Recoater Left Controls -->
                 <StackPanel Grid.Column="0">
-                    <WrapPanel Margin="0 200 10 0" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <WrapPanel Margin="0 100 5 0" VerticalAlignment="Center" HorizontalAlignment="Right">
                         <local:OpcJogButton Title="Крайнее положение" DisableTitle="False" Grid.Column="0" Margin="10 2 0 2" StartImagePath="/images/arrow_left_end_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_RecoaterJogExtremeLeft}"/>
                         <local:OpcJogButton Title="Влево" DisableTitle="True" Grid.Column="1" Margin="5 2 10 2" StartImagePath="/images/arrow_left_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_RecoaterJogLeft}"/>
                     </WrapPanel>
@@ -254,63 +254,63 @@
                 <!-- Center Column - Main Visualization -->
                 <Canvas Grid.Column="1">
                     <!-- Printer Visualization -->
-                    <Image HorizontalAlignment="Center" Canvas.Left="0" Canvas.Top="0" Width="480" Height="800" Source="/images/amt32_axes_main.png"/>
-                    <Image HorizontalAlignment="Center" Canvas.Left="{Binding CurrentRecouterPosition}" Canvas.Top="225" Width="40" Source="/images/amt32_recoater.png"/>
-                    <Image Source="/images/gradient.png" Width="1420" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <Image HorizontalAlignment="Center" Canvas.Left="0" Canvas.Top="0" Width="256" Height="430" Source="/images/amt32_axes_main.png"/>
+                    <Image HorizontalAlignment="Center" Canvas.Left="{Binding CurrentRecouterPosition}" Canvas.Top="120" Width="22" Source="/images/amt32_recoater.png"/>
+                    <Image Source="/images/gradient.png" Width="724" HorizontalAlignment="Left" VerticalAlignment="Center" />
 
                     <!-- Platform Area -->
-                    <Border Canvas.Left="165" Canvas.Top="312" Background="Black" Width="122" Height="215" ClipToBounds="True">
-                        <Canvas Canvas.Left="165" Canvas.Top="310">
-                            <Image Canvas.Top="{Binding PlatformTop}" Width="122" Source="/images/amt32_platform.png"/>
+                    <Border Canvas.Left="88" Canvas.Top="168" Background="Black" Width="65" Height="115" ClipToBounds="True">
+                        <Canvas Canvas.Left="88" Canvas.Top="168">
+                            <Image Canvas.Top="{Binding PlatformTop}" Width="65" Source="/images/amt32_platform.png"/>
                         </Canvas>
                     </Border>
 
                     <!-- Reference Controls Panel (Left Side) -->
-                    <Border Canvas.Top="850" Canvas.Left="-450" Style="{StaticResource GlassCard}" Padding="15">
+                    <Border Canvas.Top="460" Canvas.Left="-240" Style="{StaticResource GlassCard}" Padding="8">
                         <StackPanel Orientation="Horizontal">
-                            <local:OpcJogButton DisableTitle="False" Margin="0 4" StartImagePath="/images/zero_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_PlatformRefREL}"/>
-                            <local:OpcJogButton DisableTitle="False" Margin="0 4" StartImagePath="/images/zero_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_PlatformPosZero}"/>
-                            <local:OpcJogButton DisableTitle="False" Margin="0 4" StartImagePath="/images/reference_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_RecoaterRef}"/>
-                            <componentsViews:PLCLogicIndicator Padding="10 5" CommandInfo="{x:Static opc2Lib:OpcCommands.Trig_Axes_RecoaterRef}" Margin="0 4 0 0"/>
+                            <local:OpcJogButton DisableTitle="False" Margin="0 2" StartImagePath="/images/zero_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_PlatformRefREL}"/>
+                            <local:OpcJogButton DisableTitle="False" Margin="0 2" StartImagePath="/images/zero_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_PlatformPosZero}"/>
+                            <local:OpcJogButton DisableTitle="False" Margin="0 2" StartImagePath="/images/reference_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_RecoaterRef}"/>
+                            <componentsViews:PLCLogicIndicator Padding="6 3" CommandInfo="{x:Static opc2Lib:OpcCommands.Trig_Axes_RecoaterRef}" Margin="0 2 0 0"/>
                         </StackPanel>
                     </Border>
 
                     <!-- Step Up/Down Controls (Left of Platform) -->
-                    <Border Canvas.Top="365" Canvas.Left="-230" Style="{StaticResource GlassCard}" Width="250" Padding="12">
+                    <Border Canvas.Top="195" Canvas.Left="-120" Style="{StaticResource GlassCard}" Width="140" Padding="8">
                         <StackPanel>
                             <TextBlock Style="{StaticResource SectionTitle}" Text="Шаговое управление"/>
-                            <local:OpcJogButton Title="Шаг вверх" DisableTitle="False" Margin="0 4" EndImagePath="/images/arrow_step_top_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_PlatformStepUp}"/>
-                            <local:OpcJogButton Title="Шаг вниз" DisableTitle="False" Margin="0 4" EndImagePath="/images/arrow_step_bottom_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_PlatformStepDown}"/>
+                            <local:OpcJogButton Title="Шаг вверх" DisableTitle="False" Margin="0 2" EndImagePath="/images/arrow_step_top_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_PlatformStepUp}"/>
+                            <local:OpcJogButton Title="Шаг вниз" DisableTitle="False" Margin="0 2" EndImagePath="/images/arrow_step_bottom_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_PlatformStepDown}"/>
                         </StackPanel>
                     </Border>
 
                     <!-- Jog Up/Down Controls (Right of Platform) -->
-                    <Border Canvas.Top="365" Canvas.Left="504" Style="{StaticResource GlassCard}" Width="220" Padding="12" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Border Canvas.Top="195" Canvas.Left="270" Style="{StaticResource GlassCard}" Width="130" Padding="8" HorizontalAlignment="Left" VerticalAlignment="Center">
                         <StackPanel>
                             <TextBlock Style="{StaticResource SectionTitle}" Text="Ручное перемещение"/>
-                            <local:OpcJogButton Title="Вверх" DisableTitle="False" Margin="0 4" StartImagePath="/images/arrow_top_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_PlatformJogUp}"/>
-                            <local:OpcJogButton Title="Вниз" DisableTitle="False" Margin="0 4" StartImagePath="/images/arrow_bottom_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_PlatformJogDown}"/>
+                            <local:OpcJogButton Title="Вверх" DisableTitle="False" Margin="0 2" StartImagePath="/images/arrow_top_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_PlatformJogUp}"/>
+                            <local:OpcJogButton Title="Вниз" DisableTitle="False" Margin="0 2" StartImagePath="/images/arrow_bottom_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_PlatformJogDown}"/>
                         </StackPanel>
                     </Border>
 
                     <!-- Position Info Panel -->
-                    <Border Canvas.Top="540" Canvas.Left="80" Style="{StaticResource ControlPanelCard}" Width="380">
+                    <Border Canvas.Top="290" Canvas.Left="43" Style="{StaticResource ControlPanelCard}" Width="220">
                         <StackPanel>
                             <TextBlock Style="{StaticResource SectionTitle}" Text="Позиция платформы"/>
 
                             <!-- Current Position -->
-                            <Grid Margin="0 0 0 12">
+                            <Grid Margin="0 0 0 8">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel VerticalAlignment="Center">
-                                    <TextBlock FontSize="14" Foreground="White" FontWeight="SemiBold">Текущая позиция</TextBlock>
-                                    <TextBlock FontSize="11" Foreground="#666666">мм</TextBlock>
+                                    <TextBlock FontSize="11" Foreground="White" FontWeight="SemiBold">Текущая позиция</TextBlock>
+                                    <TextBlock FontSize="9" Foreground="#666666">мм</TextBlock>
                                 </StackPanel>
                                 <Border Grid.Column="1" Style="{StaticResource ValueDisplayCard}">
                                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                               FontSize="22" FontWeight="Bold" Text="{Binding CurrentPlatformStep}">
+                                               FontSize="14" FontWeight="Bold" Text="{Binding CurrentPlatformStep}">
                                         <TextBlock.Foreground>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                                 <GradientStop Color="#ff6f00" Offset="0"/>
@@ -322,7 +322,7 @@
                             </Grid>
 
                             <!-- Set Position -->
-                            <Border Style="{StaticResource InteractiveCard}" Margin="0 0 0 12"
+                            <Border Style="{StaticResource InteractiveCard}" Margin="0 0 0 8"
                                     MouseDown="SetStepMouseDown" TouchDown="SetStepTouchDown">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -330,12 +330,12 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <StackPanel VerticalAlignment="Center">
-                                        <TextBlock FontSize="14" Foreground="White" FontWeight="SemiBold">Заданная позиция</TextBlock>
-                                        <TextBlock FontSize="11" Foreground="#666666">Нажмите для изменения</TextBlock>
+                                        <TextBlock FontSize="11" Foreground="White" FontWeight="SemiBold">Заданная позиция</TextBlock>
+                                        <TextBlock FontSize="9" Foreground="#666666">Нажмите для изменения</TextBlock>
                                     </StackPanel>
                                     <Border Grid.Column="1" Style="{StaticResource ValueDisplayCard}">
                                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                                   FontSize="22" Foreground="White" FontWeight="Bold" Text="{Binding SetPlatformStep}"/>
+                                                   FontSize="14" Foreground="White" FontWeight="Bold" Text="{Binding SetPlatformStep}"/>
                                     </Border>
                                 </Grid>
                             </Border>
@@ -348,11 +348,11 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <StackPanel VerticalAlignment="Center">
-                                        <TextBlock FontSize="14" Foreground="White" FontWeight="SemiBold">Крайнее нижнее</TextBlock>
-                                        <TextBlock FontSize="11" Foreground="#666666">Опустить платформу</TextBlock>
+                                        <TextBlock FontSize="11" Foreground="White" FontWeight="SemiBold">Крайнее нижнее</TextBlock>
+                                        <TextBlock FontSize="9" Foreground="#666666">Опустить платформу</TextBlock>
                                     </StackPanel>
-                                    <Border Grid.Column="1" Background="#2a2a2a" CornerRadius="10" Width="50" Height="50">
-                                        <Image Width="24" Source="/images/arrow_bottom_64.png" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <Border Grid.Column="1" Background="#2a2a2a" CornerRadius="6" Width="32" Height="32">
+                                        <Image Width="16" Source="/images/arrow_bottom_64.png" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                     </Border>
                                 </Grid>
                             </Border>
@@ -362,25 +362,25 @@
 
                 <!-- Right Column - Recoater Right Controls -->
                 <StackPanel Grid.Column="2" Margin="0">
-                    <StackPanel Orientation="Horizontal" Margin="70 200 0 0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal" Margin="35 100 0 0" VerticalAlignment="Center" HorizontalAlignment="Left">
                         <local:OpcJogButton Title="Вправо" DisableTitle="True" Grid.Column="0" Margin="1 2 5 2" EndImagePath="/images/arrow_right_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_RecoaterJogRight}"/>
                         <local:OpcJogButton Title="Крайнее положение" DisableTitle="False" Grid.Column="1" Margin="1 2 10 2" EndImagePath="/images/arrow_right_end_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_RecoaterJogExtremeRight}"/>
                     </StackPanel>
 
                     <!-- Stop Button -->
                     <Canvas>
-                        <local:OpcJogButton Canvas.Top="380" Canvas.Left="80" DisableTitle="False" Margin="1 2 10 2" EndImagePath="/images/stop_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_Stop}"/>
+                        <local:OpcJogButton Canvas.Top="200" Canvas.Left="40" DisableTitle="False" Margin="1 2 5 2" EndImagePath="/images/stop_64.png" Cmd="{x:Static opc2Lib:OpcCommands.Com_Axes_Stop}"/>
                     </Canvas>
                 </StackPanel>
 
                 <!-- Dose Counter Panel -->
                 <Canvas>
-                    <Border Canvas.Top="20" Canvas.Left="550" Style="{StaticResource ControlPanelCard}" Width="180">
+                    <Border Canvas.Top="10" Canvas.Left="295" Style="{StaticResource ControlPanelCard}" Width="110">
                         <StackPanel>
                             <TextBlock Style="{StaticResource SectionTitle}" Text="Дозатор" HorizontalAlignment="Center"/>
 
                             <!-- Dose Count Value -->
-                            <TextBlock Text="{Binding DoseCounts}" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5">
+                            <TextBlock Text="{Binding DoseCounts}" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 3">
                                 <TextBlock.Foreground>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                         <GradientStop Color="#ff6f00" Offset="0"/>
@@ -388,7 +388,7 @@
                                     </LinearGradientBrush>
                                 </TextBlock.Foreground>
                             </TextBlock>
-                            <TextBlock Text="Количество доз" FontSize="12" Foreground="#888888" HorizontalAlignment="Center" Margin="0 0 0 12"/>
+                            <TextBlock Text="Количество доз" FontSize="9" Foreground="#888888" HorizontalAlignment="Center" Margin="0 0 0 8"/>
 
                             <!-- Change Button -->
                             <Button Content="Изменить"

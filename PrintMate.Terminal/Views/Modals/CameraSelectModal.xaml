@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:PrintMate.Terminal.Views.Modals"
              xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d"
-             Width="1920" Height="1080"
-             d:DesignHeight="1080" d:DesignWidth="1920">
+             Width="1024" Height="768"
+             d:DesignHeight="768" d:DesignWidth="1024">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <!-- Затемнённый фон -->
         <Grid.Background>

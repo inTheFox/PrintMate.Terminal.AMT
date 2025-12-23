@@ -9,7 +9,7 @@
              mc:Ignorable="d"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:region="clr-namespace:PrintMate.Terminal.Region"
-             d:DesignHeight="1080" d:DesignWidth="1400">
+             d:DesignHeight="550" d:DesignWidth="524">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -22,16 +22,16 @@
 
         <!-- Fixed Sidebar Menu -->
         <Border Grid.Column="1"
-                Width="150"
-                CornerRadius="10"
-                Padding="10"
-                Margin="5"
+                Width="90"
+                CornerRadius="8"
+                Padding="5"
+                Margin="3"
                 Background="#0c0c0c"
                 BorderBrush="#242424"
                 BorderThickness="1"
                 VerticalAlignment="Stretch">
                         <ListBox Grid.Column="1" x:Name="mainViewGrid" ItemsSource="{Binding Items}"
- Margin="0 0 0 0"
+ Margin="0"
  SelectedItem="{Binding SelectedItem}"
  BorderThickness="0"
  Background="Transparent"
@@ -47,25 +47,25 @@
                                         <Setter.Value>
                                             <ControlTemplate TargetType="ListBoxItem">
                                                 <Border x:Name="itemBorder"
-                        Margin="5"
-                        Padding="20"
-                        BorderThickness="3"
+                        Margin="2"
+                        Padding="8"
+                        BorderThickness="2"
                         BorderBrush="#313131"
-                        CornerRadius="10"
+                        CornerRadius="6"
                         Background="#191919"
                         Cursor="Hand">
                                                     <StackPanel>
-                                                        <Grid Width="40" Height="40">
+                                                        <Grid Width="26" Height="26">
                                                             <!-- Белая иконка (обычное состояние) -->
-                                                            <Image x:Name="iconWhite" Source="{Binding Image}" Width="40" Height="40" Visibility="Visible"/>
+                                                            <Image x:Name="iconWhite" Source="{Binding Image}" Width="26" Height="26" Visibility="Visible"/>
                                                             <!-- Чёрная иконка (выделенное состояние) -->
-                                                            <Rectangle x:Name="iconBlack" Width="40" Height="40" Fill="Black" Visibility="Collapsed">
+                                                            <Rectangle x:Name="iconBlack" Width="26" Height="26" Fill="Black" Visibility="Collapsed">
                                                                 <Rectangle.OpacityMask>
                                                                     <ImageBrush ImageSource="{Binding Image}"/>
                                                                 </Rectangle.OpacityMask>
                                                             </Rectangle>
                                                         </Grid>
-                                                        <TextBlock x:Name="itemText" Margin="0 10 0 0" FontWeight="Regular" FontSize="10" Foreground="White" HorizontalAlignment="Center" Text="{Binding Name}"/>
+                                                        <TextBlock x:Name="itemText" Margin="0 5 0 0" FontWeight="Regular" FontSize="8" Foreground="White" HorizontalAlignment="Center" Text="{Binding Name}" TextWrapping="Wrap" TextAlignment="Center" MaxWidth="70"/>
                                                     </StackPanel>
 
 
@@ -82,7 +82,7 @@
                                                     <Trigger Property="IsSelected" Value="True">
                                                         <Setter TargetName="itemBorder" Property="Background" Value="#ff6f00"/>
                                                         <Setter TargetName="itemBorder" Property="BorderBrush" Value="Transparent"/>
-                                                        <Setter TargetName="itemBorder" Property="BorderThickness" Value="3"/>
+                                                        <Setter TargetName="itemBorder" Property="BorderThickness" Value="2"/>
                                                         <!-- Переключаем на чёрную иконку -->
                                                         <Setter TargetName="iconWhite" Property="Visibility" Value="Collapsed"/>
                                                         <Setter TargetName="iconBlack" Property="Visibility" Value="Visible"/>
@@ -91,7 +91,7 @@
                                                         <!-- Свечение -->
                                                         <Setter TargetName="itemBorder" Property="Effect">
                                                             <Setter.Value>
-                                                                <DropShadowEffect BlurRadius="30" ShadowDepth="0" Opacity="0.6" Color="#ff6f00"/>
+                                                                <DropShadowEffect BlurRadius="15" ShadowDepth="0" Opacity="0.5" Color="#ff6f00"/>
                                                             </Setter.Value>
                                                         </Setter>
                                                     </Trigger>

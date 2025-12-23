@@ -6,7 +6,7 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d"
              Background="Transparent"
-             d:DesignHeight="1080" d:DesignWidth="200">
+             d:DesignHeight="768" d:DesignWidth="150">
 
     <UserControl.Resources>
         <!-- Animation -->
@@ -31,9 +31,9 @@
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
-            <Setter Property="CornerRadius" Value="20"/>
-            <Setter Property="Padding" Value="12"/>
-            <Setter Property="Margin" Value="5"/>
+            <Setter Property="CornerRadius" Value="14"/>
+            <Setter Property="Padding" Value="6"/>
+            <Setter Property="Margin" Value="3"/>
         </Style>
 
         <!-- Navigation Item Style -->
@@ -44,9 +44,9 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBoxItem">
                         <Border x:Name="itemBorder"
-                                Margin="0 0 0 8"
-                                Padding="12"
-                                CornerRadius="16"
+                                Margin="0 0 0 4"
+                                Padding="6"
+                                CornerRadius="10"
                                 Cursor="Hand">
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -64,9 +64,9 @@
 
                             <StackPanel HorizontalAlignment="Center">
                                 <!-- Icon Container with Glow -->
-                                <Grid Width="52" Height="52" HorizontalAlignment="Center">
+                                <Grid Width="36" Height="36" HorizontalAlignment="Center">
                                     <!-- Glow Background -->
-                                    <Border x:Name="iconGlow" CornerRadius="14" Opacity="0">
+                                    <Border x:Name="iconGlow" CornerRadius="10" Opacity="0">
                                         <Border.Background>
                                             <RadialGradientBrush>
                                                 <GradientStop Color="#40ff6f00" Offset="0"/>
@@ -76,7 +76,7 @@
                                     </Border>
 
                                     <!-- Icon Background -->
-                                    <Border x:Name="iconBg" Width="48" Height="48" CornerRadius="12">
+                                    <Border x:Name="iconBg" Width="32" Height="32" CornerRadius="8">
                                         <Border.Background>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                                 <GradientStop Color="#181818" Offset="0"/>
@@ -87,21 +87,21 @@
                                         <!-- White Icon (default) -->
                                         <Image x:Name="iconWhite"
                                                Source="{Binding Image}"
-                                               Width="28" Height="28"
+                                               Width="18" Height="18"
                                                HorizontalAlignment="Center"
                                                VerticalAlignment="Center"
                                                RenderOptions.BitmapScalingMode="HighQuality"/>
                                     </Border>
 
                                     <!-- Colored Icon (selected state) -->
-                                    <Border x:Name="iconColoredBg" Width="48" Height="48" CornerRadius="12" Visibility="Collapsed">
+                                    <Border x:Name="iconColoredBg" Width="32" Height="32" CornerRadius="8" Visibility="Collapsed">
                                         <Border.Background>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                                 <GradientStop Color="#ff6f00" Offset="0"/>
                                                 <GradientStop Color="#e65c00" Offset="1"/>
                                             </LinearGradientBrush>
                                         </Border.Background>
-                                        <Rectangle Width="28" Height="28" Fill="#0a0a0a">
+                                        <Rectangle Width="18" Height="18" Fill="#0a0a0a">
                                             <Rectangle.OpacityMask>
                                                 <ImageBrush ImageSource="{Binding Image}"/>
                                             </Rectangle.OpacityMask>
@@ -111,15 +111,15 @@
 
                                 <!-- Label -->
                                 <TextBlock x:Name="itemText"
-                                           Margin="0 8 0 0"
+                                           Margin="0 4 0 0"
                                            FontWeight="SemiBold"
-                                           FontSize="11"
+                                           FontSize="8"
                                            Foreground="#888888"
                                            HorizontalAlignment="Center"
                                            Text="{Binding Name}"
                                            TextWrapping="Wrap"
                                            TextAlignment="Center"
-                                           MaxWidth="80"/>
+                                           MaxWidth="70"/>
                             </StackPanel>
 
                             <i:Interaction.Triggers>
@@ -216,8 +216,8 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="16"/>
-            <Setter Property="Padding" Value="12"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="6"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
@@ -248,14 +248,14 @@
 
         <!-- Section Header Style -->
         <Style x:Key="SectionHeaderStyle" TargetType="Grid">
-            <Setter Property="Margin" Value="0 0 0 10"/>
+            <Setter Property="Margin" Value="0 0 0 5"/>
         </Style>
 
         <!-- Icon Glow Style -->
         <Style x:Key="IconGlowStyle" TargetType="Border">
-            <Setter Property="Width" Value="44"/>
-            <Setter Property="Height" Value="44"/>
-            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Width" Value="28"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="CornerRadius" Value="8"/>
             <Setter Property="Background">
                 <Setter.Value>
                     <RadialGradientBrush>
@@ -290,7 +290,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Accent Line -->
-                <Border Width="3" Height="18" CornerRadius="2" Margin="0 0 8 0" VerticalAlignment="Center">
+                <Border Width="2" Height="12" CornerRadius="1" Margin="0 0 4 0" VerticalAlignment="Center">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                             <GradientStop Color="#ff6f00" Offset="0"/>
@@ -301,7 +301,7 @@
 
                 <TextBlock Grid.Column="1"
                            Text="Навигация"
-                           FontSize="14"
+                           FontSize="9"
                            FontWeight="Bold"
                            Foreground="#d0d0d0"
                            VerticalAlignment="Center"/>
@@ -327,7 +327,7 @@
             <!-- Quick Actions Section -->
             <StackPanel Grid.Row="2">
                 <!-- Section Divider -->
-                <Border Height="1" Margin="0 10 0 15">
+                <Border Height="1" Margin="0 5 0 8">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                             <GradientStop Color="#00ffffff" Offset="0"/>
@@ -344,7 +344,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Border Width="3" Height="18" CornerRadius="2" Margin="0 0 8 0" VerticalAlignment="Center">
+                    <Border Width="2" Height="12" CornerRadius="1" Margin="0 0 4 0" VerticalAlignment="Center">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                 <GradientStop Color="#4CAF50" Offset="0"/>
@@ -354,8 +354,8 @@
                     </Border>
 
                     <TextBlock Grid.Column="1"
-                               Text="Быстрые действия"
-                               FontSize="12"
+                               Text="Быстрые"
+                               FontSize="8"
                                FontWeight="SemiBold"
                                Foreground="#888888"
                                VerticalAlignment="Center"/>
@@ -366,7 +366,7 @@
                         Style="{StaticResource QuickActionStyle}"
                         MouseDown="LightBorderOn_OnMouseDown"
                         TouchDown="LightBorderOff_OnTouchDown"
-                        Margin="0 0 0 8">
+                        Margin="0 0 0 4">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -374,16 +374,16 @@
                         </Grid.ColumnDefinitions>
 
                         <!-- Light Icon with Glow -->
-                        <Border Style="{StaticResource IconGlowStyle}" Margin="0 0 10 0">
+                        <Border Style="{StaticResource IconGlowStyle}" Margin="0 0 4 0">
                             <Image Source="{Binding LightBlockImageSrc}"
-                                   Width="40" Height="40"
+                                   Width="22" Height="22"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    RenderOptions.BitmapScalingMode="HighQuality"/>
                         </Border>
 
                         <!-- Status Indicator -->
-                        <Border Grid.Column="2" Width="10" Height="10" CornerRadius="5" VerticalAlignment="Center">
+                        <Border Grid.Column="2" Width="8" Height="8" CornerRadius="4" VerticalAlignment="Center">
                             <Border.Style>
                                 <Style TargetType="Border">
                                     <Setter Property="Background">
@@ -429,16 +429,16 @@
                         </Grid.ColumnDefinitions>
 
                         <!-- Door Icon with Glow -->
-                        <Border Style="{StaticResource IconGlowStyle}" Margin="0 0 10 0">
+                        <Border Style="{StaticResource IconGlowStyle}" Margin="0 0 4 0">
                             <Image Source="{Binding DoorBlockImageSrc}"
-                                   Width="40" Height="40"
+                                   Width="22" Height="22"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    RenderOptions.BitmapScalingMode="HighQuality"/>
                         </Border>
 
                         <!-- Status Indicator -->
-                        <Border Grid.Column="2" Width="10" Height="10" CornerRadius="5" VerticalAlignment="Center">
+                        <Border Grid.Column="2" Width="8" Height="8" CornerRadius="4" VerticalAlignment="Center">
                             <Border.Style>
                                 <Style TargetType="Border">
                                     <Setter Property="Background">

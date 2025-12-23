@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:PrintMate.Terminal.Views.Modals"
              mc:Ignorable="d"
-             Width="1920" Height="1080"
-             d:DesignHeight="550" d:DesignWidth="700">
+             Width="1024" Height="768"
+             d:DesignHeight="768" d:DesignWidth="1024">
 
     <Border Background="#1a1a1a" HorizontalAlignment="Center" VerticalAlignment="Center"
             CornerRadius="10"

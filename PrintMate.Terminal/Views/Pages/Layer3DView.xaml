@@ -7,7 +7,7 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
-             d:DesignHeight="1080" d:DesignWidth="1920"
+             d:DesignHeight="768" d:DesignWidth="1024"
              Background="#1E1E1E">
 
     <UserControl.Resources>

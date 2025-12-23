@@ -7,7 +7,7 @@
              xmlns:hc="https://handyorg.github.io/handycontrol"
              mc:Ignorable="d"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             d:DesignHeight="1080" d:DesignWidth="1410">
+             d:DesignHeight="768" d:DesignWidth="724">
 
     <UserControl.Resources>
         <!-- Стиль карточки проекта (без Effect для чёткости текста) -->

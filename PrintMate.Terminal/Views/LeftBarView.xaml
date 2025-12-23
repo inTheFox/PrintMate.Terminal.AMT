@@ -11,7 +11,7 @@
              xmlns:opc2Lib="clr-namespace:Opc2Lib;assembly=Opc2Lib"
              xmlns:componentsViews="clr-namespace:PrintMate.Terminal.Views.ComponentsViews"
              mc:Ignorable="d"
-             d:DesignHeight="1080" d:DesignWidth="300">
+             d:DesignHeight="768" d:DesignWidth="200">
 
     <UserControl.Resources>
         <!-- Animation -->
@@ -44,8 +44,8 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="16"/>
-            <Setter Property="Padding" Value="18"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="10"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
@@ -222,16 +222,16 @@
             <!-- Logo Section -->
             <Border Style="{StaticResource LogoContainer}"
                     MouseDown="OnClickToLogoType"
-                    Margin="15 15 15 10">
-                <Image Width="230" Source="/images/logo_full.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    Margin="8 8 8 5">
+                <Image Width="140" Source="/images/logo_full.png" RenderOptions.BitmapScalingMode="HighQuality"/>
             </Border>
 
             <!-- Menu Section -->
-            <StackPanel Margin="15 5 15 0">
+            <StackPanel Margin="8 3 8 0">
                 <!-- Profile Card -->
                 <Border Style="{StaticResource ModernMenuItem}"
                         MouseDown="OnProfileClick"
-                        Margin="0 0 0 8">
+                        Margin="0 0 0 5">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -240,8 +240,8 @@
                         </Grid.ColumnDefinitions>
 
                         <!-- Profile Icon with Glow -->
-                        <Border Style="{StaticResource IconGlow}" Margin="0 0 15 0">
-                            <Image Source="/images/add_user_32.png" Width="26" Height="26"
+                        <Border Style="{StaticResource IconGlow}" Margin="0 0 8 0" Width="36" Height="36">
+                            <Image Source="/images/add_user_32.png" Width="20" Height="20"
                                    HorizontalAlignment="Center" VerticalAlignment="Center"
                                    RenderOptions.BitmapScalingMode="HighQuality"/>
                         </Border>
@@ -251,17 +251,19 @@
                             <TextBlock Text="{Binding UserFullName}"
                                        FontWeight="Bold"
                                        Foreground="#e0e0e0"
-                                       FontSize="15"/>
+                                       FontSize="12"
+                                       TextTrimming="CharacterEllipsis"/>
                             <TextBlock Text="{Binding UserRole}"
                                        Foreground="#606060"
-                                       FontSize="13"
-                                       Margin="0 2 0 0"/>
+                                       FontSize="10"
+                                       Margin="0 1 0 0"
+                                       TextTrimming="CharacterEllipsis"/>
                         </StackPanel>
 
                         <!-- Arrow Icon -->
-                        <Border Grid.Column="2" Width="28" Height="28" CornerRadius="8"
+                        <Border Grid.Column="2" Width="22" Height="22" CornerRadius="6"
                                 Background="#15ff6f00" VerticalAlignment="Center">
-                            <Rectangle Width="14" Height="14" Fill="#ff6f00">
+                            <Rectangle Width="10" Height="10" Fill="#ff6f00">
                                 <Rectangle.OpacityMask>
                                     <ImageBrush ImageSource="/images/arrow_right_32.png"/>
                                 </Rectangle.OpacityMask>
@@ -273,7 +275,7 @@
                 <!-- Monitoring Card -->
                 <Border Style="{StaticResource ModernMenuItem}"
                         MouseDown="MonitorButtonCallback"
-                        Margin="0 0 0 8">
+                        Margin="0 0 0 5">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -282,8 +284,8 @@
                         </Grid.ColumnDefinitions>
 
                         <!-- Monitor Icon with Glow -->
-                        <Border Style="{StaticResource IconGlow}" Margin="0 0 15 0">
-                            <Image Source="/images/monitor.png" Width="26" Height="26"
+                        <Border Style="{StaticResource IconGlow}" Margin="0 0 8 0" Width="36" Height="36">
+                            <Image Source="/images/monitor.png" Width="20" Height="20"
                                    HorizontalAlignment="Center" VerticalAlignment="Center"
                                    RenderOptions.BitmapScalingMode="HighQuality"/>
                         </Border>
@@ -293,17 +295,19 @@
                             <TextBlock Text="Измерения"
                                        FontWeight="Bold"
                                        Foreground="#e0e0e0"
-                                       FontSize="15"/>
-                            <TextBlock Text="мониторинг и анализ"
+                                       FontSize="12"
+                                       TextTrimming="CharacterEllipsis"/>
+                            <TextBlock Text="мониторинг"
                                        Foreground="#606060"
-                                       FontSize="13"
-                                       Margin="0 2 0 0"/>
+                                       FontSize="10"
+                                       Margin="0 1 0 0"
+                                       TextTrimming="CharacterEllipsis"/>
                         </StackPanel>
 
                         <!-- Arrow Icon -->
-                        <Border Grid.Column="2" Width="28" Height="28" CornerRadius="8"
+                        <Border Grid.Column="2" Width="22" Height="22" CornerRadius="6"
                                 Background="#15ff6f00" VerticalAlignment="Center">
-                            <Rectangle Width="14" Height="14" Fill="#ff6f00">
+                            <Rectangle Width="10" Height="10" Fill="#ff6f00">
                                 <Rectangle.OpacityMask>
                                     <ImageBrush ImageSource="/images/arrow_right_32.png"/>
                                 </Rectangle.OpacityMask>
@@ -315,7 +319,7 @@
                 <!-- Notifications Card -->
                 <Border Style="{StaticResource ModernMenuItem}"
                         MouseDown="OnNotificationsClick"
-                        Margin="0 0 0 8">
+                        Margin="0 0 0 5">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -324,9 +328,9 @@
                         </Grid.ColumnDefinitions>
 
                         <!-- Message Icon with Badge -->
-                        <Grid Margin="0 0 15 0">
-                            <Border Style="{StaticResource IconGlow}">
-                                <Image Source="/images/message.png" Width="26" Height="26"
+                        <Grid Margin="0 0 8 0">
+                            <Border Style="{StaticResource IconGlow}" Width="36" Height="36">
+                                <Image Source="/images/message.png" Width="20" Height="20"
                                        HorizontalAlignment="Center" VerticalAlignment="Center"
                                        RenderOptions.BitmapScalingMode="HighQuality"/>
                             </Border>
@@ -334,7 +338,7 @@
                             <Border Style="{StaticResource NotificationBadge}"
                                     Visibility="{Binding UnreadBadgeVisibility}">
                                 <TextBlock Text="{Binding UnreadCountText}"
-                                           FontSize="11"
+                                           FontSize="9"
                                            FontWeight="Bold"
                                            Foreground="White"
                                            HorizontalAlignment="Center"
@@ -347,17 +351,19 @@
                             <TextBlock Text="Сообщения"
                                        FontWeight="Bold"
                                        Foreground="#e0e0e0"
-                                       FontSize="15"/>
-                            <TextBlock Text="важные уведомления"
+                                       FontSize="12"
+                                       TextTrimming="CharacterEllipsis"/>
+                            <TextBlock Text="важные уведомл."
                                        Foreground="#606060"
-                                       FontSize="13"
-                                       Margin="0 2 0 0"/>
+                                       FontSize="10"
+                                       Margin="0 1 0 0"
+                                       TextTrimming="CharacterEllipsis"/>
                         </StackPanel>
 
                         <!-- Arrow Icon -->
-                        <Border Grid.Column="2" Width="28" Height="28" CornerRadius="8"
+                        <Border Grid.Column="2" Width="22" Height="22" CornerRadius="6"
                                 Background="#15ff6f00" VerticalAlignment="Center">
-                            <Rectangle Width="14" Height="14" Fill="#ff6f00">
+                            <Rectangle Width="10" Height="10" Fill="#ff6f00">
                                 <Rectangle.OpacityMask>
                                     <ImageBrush ImageSource="/images/arrow_right_32.png"/>
                                 </Rectangle.OpacityMask>
@@ -370,7 +376,7 @@
                 <Border x:Name="BlockedScreenBorder"
                         Style="{StaticResource BlockedScreenCard}"
                         Visibility="Collapsed"
-                        Margin="0 0 0 8">
+                        Margin="0 0 0 5">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -378,44 +384,46 @@
                         </Grid.ColumnDefinitions>
 
                         <!-- Block Icon -->
-                        <Border Width="48" Height="48" CornerRadius="12" Margin="0 0 15 0">
+                        <Border Width="36" Height="36" CornerRadius="10" Margin="0 0 8 0">
                             <Border.Background>
                                 <RadialGradientBrush>
                                     <GradientStop Color="#30ff4444" Offset="0"/>
                                     <GradientStop Color="#00ff4444" Offset="1"/>
                                 </RadialGradientBrush>
                             </Border.Background>
-                            <Image Source="/images/block.png" Width="26" Height="26"
+                            <Image Source="/images/block.png" Width="20" Height="20"
                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
 
                         <!-- Info -->
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <TextBlock Text="Экран заблокирован"
+                            <TextBlock Text="Заблокировано"
                                        FontWeight="Bold"
                                        Foreground="#cc5555"
-                                       FontSize="15"/>
-                            <TextBlock Text="переведите ключ в рабочее положение"
+                                       FontSize="11"
+                                       TextTrimming="CharacterEllipsis"/>
+                            <TextBlock Text="переведите ключ"
                                        Foreground="#606060"
-                                       FontSize="12"
-                                       TextWrapping="Wrap"
-                                       Margin="0 2 0 0"/>
+                                       FontSize="10"
+                                       TextWrapping="NoWrap"
+                                       TextTrimming="CharacterEllipsis"
+                                       Margin="0 1 0 0"/>
                         </StackPanel>
                     </Grid>
                 </Border>
             </StackPanel>
 
             <!-- Favorites Section -->
-            <StackPanel Margin="15 10 15 0">
+            <StackPanel Margin="8 5 8 0">
                 <!-- Section Header -->
-                <Grid Margin="0 0 0 10">
+                <Grid Margin="0 0 0 5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <!-- Accent Line -->
-                    <Border Width="3" Height="20" CornerRadius="2" Margin="0 0 10 0">
+                    <Border Width="3" Height="16" CornerRadius="2" Margin="0 0 6 0">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                 <GradientStop Color="#ff6f00" Offset="0"/>
@@ -425,15 +433,15 @@
                     </Border>
 
                     <TextBlock Grid.Column="1"
-                               Text="Избранные измерения"
-                               FontSize="16"
+                               Text="Избранное"
+                               FontSize="12"
                                FontWeight="Bold"
                                Foreground="#d0d0d0"
                                VerticalAlignment="Center"/>
                 </Grid>
 
                 <!-- Favorites List Container -->
-                <Border x:Name="FavoriteList" Style="{StaticResource FavoritesContainer}" Height="600" Padding="10">
+                <Border x:Name="FavoriteList" Style="{StaticResource FavoritesContainer}" Height="350" Padding="5">
                     <ScrollViewer PanningMode="Both"
                                   PanningRatio="0.5"
                                   VerticalScrollBarVisibility="Hidden"
@@ -458,9 +466,9 @@
                             <StackPanel Visibility="{Binding NotFavouritesInfoVisibility}"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center"
-                                        Margin="0 150 0 0">
+                                        Margin="0 80 0 0">
                                 <!-- Empty Icon -->
-                                <Border Width="80" Height="80" CornerRadius="40" Margin="0 0 0 20"
+                                <Border Width="50" Height="50" CornerRadius="25" Margin="0 0 0 10"
                                         HorizontalAlignment="Center">
                                     <Border.Background>
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -468,7 +476,7 @@
                                             <GradientStop Color="#10ff6f00" Offset="1"/>
                                         </LinearGradientBrush>
                                     </Border.Background>
-                                    <TextBlock Text="+" FontSize="40" FontWeight="Light"
+                                    <TextBlock Text="+" FontSize="24" FontWeight="Light"
                                                HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <TextBlock.Foreground>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
@@ -480,18 +488,17 @@
                                 </Border>
 
                                 <TextBlock Text="Список пуст"
-                                           FontSize="18"
+                                           FontSize="12"
                                            FontWeight="Bold"
                                            Foreground="#c0c0c0"
                                            HorizontalAlignment="Center"
-                                           Margin="0 0 0 8"/>
+                                           Margin="0 0 0 4"/>
 
-                                <TextBlock Text="Перейдите в раздел Измерения&#x0a;для выбора избранных показателей"
-                                           FontSize="13"
+                                <TextBlock Text="Перейдите в Измерения"
+                                           FontSize="10"
                                            Foreground="#505050"
                                            TextAlignment="Center"
-                                           HorizontalAlignment="Center"
-                                           LineHeight="20"/>
+                                           HorizontalAlignment="Center"/>
                             </StackPanel>
                         </Grid>
                     </ScrollViewer>

@@ -118,7 +118,7 @@ namespace PrintMate.Terminal
             Console.WriteLine($"[{DateTime.Now:HH:mm:ss}] Global exception handlers registered.");
 
             // Запускаем Observer если еще не запущен
-            StartObserverIfNeeded();
+            //StartObserverIfNeeded();
 
             this.DispatcherUnhandledException += App_DispatcherUnhandledException;
 

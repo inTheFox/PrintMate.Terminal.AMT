@@ -42,8 +42,8 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="16"/>
-            <Setter Property="Padding" Value="15"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="10"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Effect">
                 <Setter.Value>
@@ -80,10 +80,10 @@
 
         <!-- Icon Container Style -->
         <Style x:Key="IconContainerStyle" TargetType="Border">
-            <Setter Property="Width" Value="48"/>
-            <Setter Property="Height" Value="48"/>
-            <Setter Property="CornerRadius" Value="12"/>
-            <Setter Property="Margin" Value="0 0 12 0"/>
+            <Setter Property="Width" Value="32"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Margin" Value="0 0 8 0"/>
         </Style>
 
         <!-- Image Container Style -->
@@ -107,8 +107,8 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="20"/>
-            <Setter Property="Padding" Value="20"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="12"/>
             <Setter Property="Effect">
                 <Setter.Value>
                     <DropShadowEffect BlurRadius="25" ShadowDepth="0" Opacity="0.4" Color="#000000"/>
@@ -123,21 +123,21 @@
         </EventTrigger>
     </UserControl.Triggers>
 
-    <Grid x:Name="mainContainer" Opacity="0" Margin="20 0 20 20">
+    <Grid x:Name="mainContainer" Opacity="0" Margin="10 0 10 10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <Grid Grid.Row="0" Margin="0 0 0 20">
+        <Grid Grid.Row="0" Margin="0 0 0 10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <!-- Accent Line -->
-            <Border Width="4" CornerRadius="2" Margin="0 0 15 0" VerticalAlignment="Stretch">
+            <Border Width="3" CornerRadius="2" Margin="0 0 10 0" VerticalAlignment="Stretch">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                         <GradientStop Color="#ff6f00" Offset="0"/>
@@ -151,13 +151,13 @@
 
             <StackPanel Grid.Column="1" VerticalAlignment="Center">
                 <TextBlock Text="Управление системами"
-                           FontSize="28"
+                           FontSize="18"
                            FontWeight="Bold"
                            Foreground="#f0f0f0"/>
                 <TextBlock Text="Контроль газовой и лазерной систем оборудования"
-                           FontSize="14"
+                           FontSize="10"
                            Foreground="#606060"
-                           Margin="0 5 0 0"/>
+                           Margin="0 3 0 0"/>
             </StackPanel>
         </Grid>
 
@@ -169,7 +169,7 @@
             </Grid.ColumnDefinitions>
 
             <!-- Equipment Image -->
-            <Border Grid.Column="0" Style="{StaticResource ImageContainerStyle}" Margin="0 0 20 0">
+            <Border Grid.Column="0" Style="{StaticResource ImageContainerStyle}" Margin="0 0 10 0">
                 <Grid>
                     <!-- Main Equipment Image -->
                     <Image Source="/images/amt32_system_main.png"
@@ -185,9 +185,9 @@
             </Border>
 
             <!-- Control Panel -->
-            <StackPanel Grid.Column="1" Width="280" VerticalAlignment="Top">
+            <StackPanel Grid.Column="1" Width="180" VerticalAlignment="Top">
                 <!-- Gas System Card -->
-                <Border Style="{StaticResource SystemCardStyle}" Margin="0 0 0 15">
+                <Border Style="{StaticResource SystemCardStyle}" Margin="0 0 0 10">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -198,7 +198,7 @@
                         <!-- Icon -->
                         <Border Grid.Column="0" Style="{StaticResource IconContainerStyle}" Background="{Binding GasSystemColor}">
                             <Image Source="{Binding GasSystemImagePath}"
-                                   Width="26" Height="26"
+                                   Width="18" Height="18"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -207,17 +207,17 @@
                         <!-- Text -->
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <TextBlock Text="Система подачи газа"
-                                       FontSize="14"
+                                       FontSize="11"
                                        FontWeight="SemiBold"
                                        Foreground="#e0e0e0"/>
                             <TextBlock Text="защитная атмосфера"
-                                       FontSize="11"
+                                       FontSize="9"
                                        Foreground="#505050"
-                                       Margin="0 3 0 0"/>
+                                       Margin="0 2 0 0"/>
                         </StackPanel>
 
                         <!-- Status Indicator -->
-                        <Border Grid.Column="2" Width="12" Height="12" CornerRadius="6" VerticalAlignment="Center">
+                        <Border Grid.Column="2" Width="10" Height="10" CornerRadius="5" VerticalAlignment="Center">
                             <Border.Style>
                                 <Style TargetType="Border">
                                     <Setter Property="Background">
@@ -240,7 +240,7 @@
                                             </Setter>
                                             <Setter Property="Effect">
                                                 <Setter.Value>
-                                                    <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.7" Color="#4CAF50"/>
+                                                    <DropShadowEffect BlurRadius="8" ShadowDepth="0" Opacity="0.7" Color="#4CAF50"/>
                                                 </Setter.Value>
                                             </Setter>
                                         </DataTrigger>
@@ -271,7 +271,7 @@
                         <!-- Icon -->
                         <Border Grid.Column="0" Style="{StaticResource IconContainerStyle}" Background="{Binding LaserSystemColor}">
                             <Image Source="{Binding LaserSystemImagePath}"
-                                   Width="26" Height="26"
+                                   Width="18" Height="18"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -280,17 +280,17 @@
                         <!-- Text -->
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <TextBlock Text="Лазерная система"
-                                       FontSize="14"
+                                       FontSize="11"
                                        FontWeight="SemiBold"
                                        Foreground="#e0e0e0"/>
                             <TextBlock Text="источник излучения"
-                                       FontSize="11"
+                                       FontSize="9"
                                        Foreground="#505050"
-                                       Margin="0 3 0 0"/>
+                                       Margin="0 2 0 0"/>
                         </StackPanel>
 
                         <!-- Status Indicator -->
-                        <Border Grid.Column="2" Width="12" Height="12" CornerRadius="6" VerticalAlignment="Center">
+                        <Border Grid.Column="2" Width="10" Height="10" CornerRadius="5" VerticalAlignment="Center">
                             <Border.Style>
                                 <Style TargetType="Border">
                                     <Setter Property="Background">
@@ -313,7 +313,7 @@
                                             </Setter>
                                             <Setter Property="Effect">
                                                 <Setter.Value>
-                                                    <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.7" Color="#4CAF50"/>
+                                                    <DropShadowEffect BlurRadius="8" ShadowDepth="0" Opacity="0.7" Color="#4CAF50"/>
                                                 </Setter.Value>
                                             </Setter>
                                         </DataTrigger>
@@ -333,7 +333,7 @@
                 </Border>
 
                 <!-- Info Section -->
-                <Border Margin="0 20 0 0" Padding="15" CornerRadius="12">
+                <Border Margin="0 12 0 0" Padding="10" CornerRadius="8">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Color="#0c0c0c" Offset="0"/>
@@ -350,15 +350,15 @@
 
                     <StackPanel>
                         <TextBlock Text="Информация"
-                                   FontSize="12"
+                                   FontSize="9"
                                    FontWeight="SemiBold"
                                    Foreground="#888888"
-                                   Margin="0 0 0 8"/>
-                        <TextBlock Text="Нажмите на карточку системы для включения или отключения. Перед изменением состояния будет запрошено подтверждение."
-                                   FontSize="11"
+                                   Margin="0 0 0 5"/>
+                        <TextBlock Text="Нажмите на карточку системы для включения или отключения."
+                                   FontSize="8"
                                    Foreground="#505050"
                                    TextWrapping="Wrap"
-                                   LineHeight="18"/>
+                                   LineHeight="14"/>
                     </StackPanel>
                 </Border>
             </StackPanel>

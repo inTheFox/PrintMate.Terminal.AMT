@@ -6,7 +6,7 @@
              xmlns:prism="http://prismlibrary.com/"
              mc:Ignorable="d"
              prism:ViewModelLocator.AutoWireViewModel="True"
-             d:DesignHeight="1080" d:DesignWidth="1920"
+             d:DesignHeight="768" d:DesignWidth="1024"
              Background="Black">
 
     <Grid>
